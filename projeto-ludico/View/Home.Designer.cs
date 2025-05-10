@@ -30,66 +30,67 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.eventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.participantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.participantesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.instituiçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jogosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rPGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.participantsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.participantsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.institutionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gamesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rpgMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.eventosToolStripMenuItem,
-            this.participantesToolStripMenuItem,
-            this.jogosToolStripMenuItem,
-            this.rPGToolStripMenuItem});
+            this.eventsMenuItem,
+            this.participantsMenu,
+            this.gamesMenuItem,
+            this.rpgMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(584, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // eventosToolStripMenuItem
+            // eventsMenuItem
             // 
-            this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
-            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.eventosToolStripMenuItem.Text = "Eventos";
+            this.eventsMenuItem.Name = "eventsMenuItem";
+            this.eventsMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.eventsMenuItem.Text = "Eventos";
             // 
-            // participantesToolStripMenuItem
+            // participantsMenu
             // 
-            this.participantesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.participantesToolStripMenuItem1,
-            this.instituiçõesToolStripMenuItem});
-            this.participantesToolStripMenuItem.Name = "participantesToolStripMenuItem";
-            this.participantesToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
-            this.participantesToolStripMenuItem.Text = "Participantes";
+            this.participantsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.participantsMenuItem,
+            this.institutionsMenuItem});
+            this.participantsMenu.Name = "participantsMenu";
+            this.participantsMenu.Size = new System.Drawing.Size(87, 20);
+            this.participantsMenu.Text = "Participantes";
             // 
-            // participantesToolStripMenuItem1
+            // participantsMenuItem
             // 
-            this.participantesToolStripMenuItem1.Name = "participantesToolStripMenuItem1";
-            this.participantesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.participantesToolStripMenuItem1.Text = "Participantes";
+            this.participantsMenuItem.Name = "participantsMenuItem";
+            this.participantsMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.participantsMenuItem.Text = "Participantes";
             // 
-            // instituiçõesToolStripMenuItem
+            // institutionsMenuItem
             // 
-            this.instituiçõesToolStripMenuItem.Name = "instituiçõesToolStripMenuItem";
-            this.instituiçõesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.instituiçõesToolStripMenuItem.Text = "Instituições";
+            this.institutionsMenuItem.Name = "institutionsMenuItem";
+            this.institutionsMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.institutionsMenuItem.Text = "Instituições";
+            this.institutionsMenuItem.Click += new System.EventHandler(this.institutionsMenuItem_Click);
             // 
-            // jogosToolStripMenuItem
+            // gamesMenuItem
             // 
-            this.jogosToolStripMenuItem.Name = "jogosToolStripMenuItem";
-            this.jogosToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.jogosToolStripMenuItem.Text = "Jogos";
+            this.gamesMenuItem.Name = "gamesMenuItem";
+            this.gamesMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.gamesMenuItem.Text = "Jogos";
             // 
-            // rPGToolStripMenuItem
+            // rpgMenuItem
             // 
-            this.rPGToolStripMenuItem.Name = "rPGToolStripMenuItem";
-            this.rPGToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.rPGToolStripMenuItem.Text = "RPG";
+            this.rpgMenuItem.Name = "rpgMenuItem";
+            this.rpgMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.rpgMenuItem.Text = "RPG";
             // 
             // Home
             // 
@@ -115,11 +116,11 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem eventosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem participantesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem participantesToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem instituiçõesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem jogosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rPGToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eventsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem participantsMenu;
+        private System.Windows.Forms.ToolStripMenuItem participantsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem institutionsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gamesMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rpgMenuItem;
     }
 }
