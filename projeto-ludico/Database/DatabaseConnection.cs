@@ -26,6 +26,16 @@ namespace projeto_ludico.Database
             return _connection;
         }
 
-        
+
+        public void Dispose()
+        {
+            if (_connection != null && _connection.State == System.Data.ConnectionState.Open)
+            {
+                _connection.Close();
+                _connection.Dispose();
+            }
+        }
+
+
     }
 }

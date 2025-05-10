@@ -36,9 +36,13 @@
             // 
             // dataViewer
             // 
+            this.dataViewer.AllowUserToAddRows = false;
+            this.dataViewer.AllowUserToDeleteRows = false;
+            this.dataViewer.AllowUserToOrderColumns = true;
             this.dataViewer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataViewer.Location = new System.Drawing.Point(12, 86);
             this.dataViewer.Name = "dataViewer";
+            this.dataViewer.ReadOnly = true;
             this.dataViewer.Size = new System.Drawing.Size(360, 250);
             this.dataViewer.TabIndex = 0;
             // 
@@ -51,16 +55,20 @@
             this.btnRegister.Text = "Registrar";
             this.btnRegister.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // Institutions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 361);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.dataViewer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "Institutions";
             this.Text = "Sistema - Lúdico UTFPR";
+            this.Load += new System.EventHandler(this.Institutions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataViewer)).EndInit();
             this.ResumeLayout(false);
 

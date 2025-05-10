@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using projeto_ludico.Database;
 using projeto_ludico.View;
 
 namespace projeto_ludico
@@ -28,7 +27,6 @@ namespace projeto_ludico
 
         private void institutionsMenuItem_Click(object sender, EventArgs e)
         {
-            DatabaseConnection.GetConnection();
             loadScreen<Institutions>();
         }
     }

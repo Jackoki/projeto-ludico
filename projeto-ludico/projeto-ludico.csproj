@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="Utils\DataTableStructure.cs" />
     <Compile Include="View\Institutions.cs">
       <SubType>Form</SubType>
     </Compile>
