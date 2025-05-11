@@ -12,23 +12,25 @@ namespace projeto_ludico.Utils
     {
         //Função com responsabilidade de retornar a estrutura padrão do DataView, nele se recebe 4 parâmetros:
         //O nome da tabela do banco de dados, a informação a ser buscada, as colunas a serem retornadas da tabela e por fim, os nomes das colunas a serem mostradas no formulário
-        public DataTable getTableSearchStructure(string tableName, string searchInfo, string[] columns, Dictionary<string, string> columnMappings)
+        public DataTable getTableSearchStructure(string tableName, string searchInfo, string[] columns, Dictionary<string, string> columnMappings, string[] searchableColumns)
         {
             // Montar as colunas a serem selecionadas
             string selectedColumns = columns != null && columns.Length > 0 ? string.Join(", ", columns) : "*";
 
             // Construir a consulta com filtro, se necessário
             string query = $"SELECT {selectedColumns} FROM {tableName}";
-            if (!string.IsNullOrEmpty(searchInfo))
+
+            if (!string.IsNullOrEmpty(searchInfo) && searchableColumns != null && searchableColumns.Length > 0)
             {
                 query += " WHERE ";
                 List<string> conditions = new List<string>();
-                foreach (string column in columns)
+                foreach (string column in searchableColumns) // Use searchableColumns em vez de columns
                 {
                     conditions.Add($"{column} LIKE @searchInfo");
                 }
                 query += string.Join(" OR ", conditions);
             }
+
             query += ";";
 
             // Realizar a consulta

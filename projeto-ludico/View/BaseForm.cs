@@ -19,14 +19,6 @@ namespace projeto_ludico.View
             AddActionButtonsToViewer(dataViewer);
         }
 
-        protected void ConfigureSearchDataViewer(DataGridView dataViewer, string searchInfo, string tableName, string[] desiredColumns, Dictionary<string, string> columnMappings)
-        {
-            //Chamada da função que realiza a pesquisa da tabela do SQLite e posteriormente nomeação das colunas da tabela
-            //A diferença dessa função com a de cima, é que ele tem como utilidade a realização de busca a partir do que o usuário digitar
-            var tableData = GetSearchDataForViewer(tableName, searchInfo, desiredColumns, columnMappings);
-            dataViewer.DataSource = tableData;
-        }
-
         protected DataTable GetDataForViewer(string tableName, string[] desiredColumns, Dictionary<string, string> columnMappings)
         {
             //Realiza a função de pesquisa do nome da tabela e a nomeação das colunas da classe DataTableStructure
@@ -34,11 +26,18 @@ namespace projeto_ludico.View
             return tableStructure.getTableStructure(tableName, desiredColumns, columnMappings);
         }
 
-        protected DataTable GetSearchDataForViewer(string tableName, string searchInfo, string[] desiredColumns, Dictionary<string, string> columnMappings)
+        protected void ConfigureSearchDataViewer(DataGridView dataViewer, string searchInfo, string tableName, string[] desiredColumns, Dictionary<string, string> columnMappings, string[] searchableColumns)
         {
-            //Realiza a função de pesquisa do nome da tabela e a nomeação das colunas da classe DataTableSearchStructure
+            // Chamada da função que realiza a pesquisa da tabela do SQLite
+            var tableData = GetSearchDataForViewer(tableName, searchInfo, desiredColumns, columnMappings, searchableColumns);
+            dataViewer.DataSource = tableData;
+        }
+
+        //A diferença é que essa função necessita de 2 lista de strings a mais, sendo um de colunas desejadas e outra de colunas a serem consideradas na consulta
+        protected DataTable GetSearchDataForViewer(string tableName, string searchInfo, string[] desiredColumns, Dictionary<string, string> columnMappings, string[] searchableColumns)
+        {
             var tableStructure = new DataTableSearchStructure();
-            return tableStructure.getTableSearchStructure(tableName, searchInfo, desiredColumns, columnMappings);
+            return tableStructure.getTableSearchStructure(tableName, searchInfo, desiredColumns, columnMappings, searchableColumns);
         }
 
         //Função para adicionar os botões de edição e deleção na linha
@@ -65,6 +64,17 @@ namespace projeto_ludico.View
             return btnDataGridViewDelete.getDeleteButton();
         }
 
+        //Função utilizada para ocultar colunas da tabela, sendo passada a tabela e as colunas a serem ocultadas
+        protected void OccultColumns(DataGridView viewer, params string[] columnsToOccult)
+        {
+            foreach (var column in columnsToOccult)
+            {
+                if (viewer.Columns.Contains(column))
+                {
+                    viewer.Columns[column].Visible = false;
+                }
+            }
+        }
 
     }
 }

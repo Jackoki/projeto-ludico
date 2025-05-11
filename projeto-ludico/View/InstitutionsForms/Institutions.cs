@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Windows.Forms;
 using projeto_ludico.Controllers;
 using projeto_ludico.View;
@@ -20,7 +21,7 @@ namespace projeto_ludico.View.InstitutionsForms
         private void ConfigureInstitutionsViewer()
         {
             //Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite e um dicionário dos nomes a serem mostradas na coluna da tabela 
-            string[] desiredColumns = { "name" };
+            string[] desiredColumns = { "name", "id" };
             var columnMappings = new Dictionary<string, string>
             {
                 { "name", "Nome" }
@@ -28,20 +29,29 @@ namespace projeto_ludico.View.InstitutionsForms
 
             //A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário
             ConfigureDataViewer(dataViewer, "institutions", desiredColumns, columnMappings);
+
+            // Oculta as colunas especificadas
+            OccultColumns(dataViewer, "id");
         }
 
         private void PerformSearch(string searchString)
         {
-            //Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite e um dicionário dos nomes a serem mostradas na coluna da tabela 
-            string[] desiredColumns = { "name" };
+            // Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite
+            string[] desiredColumns = { "name", "id" }; // Colunas retornadas
+            string[] searchableColumns = { "name" };    // Colunas usadas na busca
+
             var columnMappings = new Dictionary<string, string>
             {
                 { "name", "Nome" }
             };
 
-            //A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário
-            ConfigureSearchDataViewer(dataViewer, searchString, "institutions", desiredColumns, columnMappings);
+            // A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário
+            ConfigureSearchDataViewer(dataViewer, searchString, "institutions", desiredColumns, columnMappings, searchableColumns);
+
+            // Oculta as colunas especificadas
+            OccultColumns(dataViewer, "id");
         }
+
 
         //Quando o usuário clicar no botão de pesquisa, será chamada a função de busca
         private void btnSearch_Click(object sender, EventArgs e)
@@ -62,6 +72,11 @@ namespace projeto_ludico.View.InstitutionsForms
 
             else if (dataViewer.Columns[e.ColumnIndex].Name == "btnDelete")
             {
+                DataGridViewRow row = dataViewer.Rows[e.RowIndex];
+                var id = row.Cells["id"].Value; // Supondo que o nome da coluna seja "nome"
+
+
+                //Deletar não precisa de uma outra tela, só será necessário realizar uma confirmação
                 InstitutionsDelete institutionsDelete = new InstitutionsDelete();
                 institutionsDelete.Show();
             }
