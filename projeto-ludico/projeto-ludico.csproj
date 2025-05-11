@@ -50,7 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ResearchTable.cs" />
     <Compile Include="Database\DatabaseConnection.cs" />
+    <Compile Include="Models\SearchFilter.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Utils\ButtonsDataGridView.cs" />
     <Compile Include="Utils\DataTableStructure.cs" />

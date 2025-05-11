@@ -37,7 +37,7 @@ namespace projeto_ludico.Utils
             return tableData;
         }
 
-        private void RenameColumns(DataTable table, Dictionary<string, string> columnMappings)
+        public void RenameColumns(DataTable table, Dictionary<string, string> columnMappings)
         {
             foreach (var mapping in columnMappings)
             {
