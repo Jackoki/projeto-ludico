@@ -1,4 +1,4 @@
-﻿namespace projeto_ludico.View
+﻿namespace projeto_ludico.View.InstitutionsForms
 {
     partial class Institutions
     {

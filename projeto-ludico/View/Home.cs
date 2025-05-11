@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using projeto_ludico.View;
+using projeto_ludico.View.InstitutionsForms;
 
 namespace projeto_ludico
 {
