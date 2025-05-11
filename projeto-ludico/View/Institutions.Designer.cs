@@ -41,6 +41,7 @@
             this.dataViewer.AllowUserToAddRows = false;
             this.dataViewer.AllowUserToDeleteRows = false;
             this.dataViewer.AllowUserToOrderColumns = true;
+            this.dataViewer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataViewer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataViewer.Location = new System.Drawing.Point(12, 86);
             this.dataViewer.Name = "dataViewer";
@@ -89,7 +90,6 @@
             this.MinimizeBox = false;
             this.Name = "Institutions";
             this.Text = "Sistema - Lúdico UTFPR";
-            this.Load += new System.EventHandler(this.Institutions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataViewer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

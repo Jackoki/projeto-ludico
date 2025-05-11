@@ -14,43 +14,38 @@ namespace projeto_ludico.View
             ConfigureInstitutionsViewer();
         }
 
+        //Ao inicializar o formulário, será chamada essa função
         private void ConfigureInstitutionsViewer()
         {
+            //Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite e um dicionário dos nomes a serem mostradas na coluna da tabela 
             string[] desiredColumns = { "name" };
             var columnMappings = new Dictionary<string, string>
             {
                 { "name", "Nome" }
             };
 
+            //A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário
             ConfigureDataViewer(dataViewer, "institutions", desiredColumns, columnMappings);
         }
 
-        private void Institutions_Load(object sender, EventArgs e)
+        private void PerformSearch(string searchString)
         {
-
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            string searchString = boxSearch.Text;
-
-            var filters = new List<SearchFilter>
+            //Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite e um dicionário dos nomes a serem mostradas na coluna da tabela 
+            string[] desiredColumns = { "name" };
+            var columnMappings = new Dictionary<string, string>
             {
-                new SearchFilter { ColumnName = "name", SearchTerm = searchString, Operator = SearchOperator.Contains }
+                { "name", "Nome" }
             };
 
-            try
-            {
-                var researchTable = new ResearchTable();
-                DataTable results = researchTable.SearchWithFilters("institutions", filters);
+            //A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário
+            ConfigureSearchDataViewer(dataViewer, searchString, "institutions", desiredColumns, columnMappings);
+        }
 
-                dataViewer.DataSource = results;
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao executar a pesquisa: {ex.Message}");
-            }
+        //Quando o usuário clicar no botão de pesquisa, será chamada a função de busca
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchString = boxSearch.Text.Trim();
+            PerformSearch(searchString);
         }
 
     }

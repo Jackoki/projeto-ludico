@@ -8,7 +8,5 @@
 public enum SearchOperator
 {
     Equals,
-    Contains,
-    StartsWith,
-    EndsWith
+    Contains
 }

@@ -8,7 +8,9 @@ namespace projeto_ludico.Utils
 {
     internal class DataTableStructure
     {
-        public DataTable getTableStructure(string tableName, string[] columns = null, Dictionary<string, string> columnMappings = null)
+        //Função com responsabilidade de retornar a estrutura padrão do DataView, nele se recebe 3 parâmetros:
+        //O nome da tabela do banco de dados, as colunas a serem retornadas da tabela e por fim, os nomes das colunas a serem mostradas no formulário
+        public DataTable getTableStructure(string tableName, string[] columns, Dictionary<string, string> columnMappings)
         {
             SqliteConnection _connection = DatabaseConnection.GetConnection();
 
@@ -17,10 +19,12 @@ namespace projeto_ludico.Utils
                 _connection.Open();
             }
 
+            //Realiza uma string para a montagem das colunas a serem selecionadas da tabela
             string selectedColumns = columns != null && columns.Length > 0 ? string.Join(", ", columns): "*";
 
             string query = $"SELECT {selectedColumns} FROM {tableName};";
 
+            //Realiza a consulta para o tableData
             DataTable tableData = new DataTable();
 
             using (var command = new SqliteCommand(query, _connection))
@@ -29,6 +33,8 @@ namespace projeto_ludico.Utils
                 tableData.Load(reader);
             }
 
+
+            //Se não for passada os nomes dass colunas, não irá realizar a função de renomear as colunas do DataView
             if (columnMappings != null)
             {
                 RenameColumns(tableData, columnMappings);
@@ -37,13 +43,14 @@ namespace projeto_ludico.Utils
             return tableData;
         }
 
-        public void RenameColumns(DataTable table, Dictionary<string, string> columnMappings)
+        public void RenameColumns(DataTable tableData, Dictionary<string, string> columnMappings)
         {
+            //Pra cada coluna passada, será retornada a estrutura dos nomes das colunas para a tabela
             foreach (var mapping in columnMappings)
             {
-                if (table.Columns.Contains(mapping.Key))
+                if (tableData.Columns.Contains(mapping.Key))
                 {
-                    table.Columns[mapping.Key].ColumnName = mapping.Value;
+                    tableData.Columns[mapping.Key].ColumnName = mapping.Value;
                 }
             }
         }

@@ -55,6 +55,7 @@
     <Compile Include="Models\SearchFilter.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Utils\ButtonsDataGridView.cs" />
+    <Compile Include="Utils\DataTableSearchStructure.cs" />
     <Compile Include="Utils\DataTableStructure.cs" />
     <Compile Include="View\BaseForm.cs">
       <SubType>Form</SubType>
