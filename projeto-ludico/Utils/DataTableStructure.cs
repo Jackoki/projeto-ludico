@@ -8,7 +8,7 @@ namespace projeto_ludico.Utils
 {
     internal class DataTableStructure
     {
-        public static DataTable getTableStructure(string tableName, string[] columns = null, Dictionary<string, string> columnMappings = null)
+        public DataTable getTableStructure(string tableName, string[] columns = null, Dictionary<string, string> columnMappings = null)
         {
             SqliteConnection _connection = DatabaseConnection.GetConnection();
 
@@ -37,7 +37,7 @@ namespace projeto_ludico.Utils
             return tableData;
         }
 
-        private static void RenameColumns(DataTable table, Dictionary<string, string> columnMappings)
+        private void RenameColumns(DataTable table, Dictionary<string, string> columnMappings)
         {
             foreach (var mapping in columnMappings)
             {
