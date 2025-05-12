@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Windows.Forms;
 using projeto_ludico.Controllers;
+using projeto_ludico.Models;
+using projeto_ludico.Service;
 using projeto_ludico.View;
 using projeto_ludico.View.Institutions;
 
@@ -73,12 +75,8 @@ namespace projeto_ludico.View.InstitutionsForms
             else if (dataViewer.Columns[e.ColumnIndex].Name == "btnDelete")
             {
                 DataGridViewRow row = dataViewer.Rows[e.RowIndex];
-                var id = row.Cells["id"].Value; // Supondo que o nome da coluna seja "nome"
-
-
-                //Deletar não precisa de uma outra tela, só será necessário realizar uma confirmação
                 InstitutionsDelete institutionsDelete = new InstitutionsDelete();
-                institutionsDelete.Show();
+                institutionsDelete.DeleteInstitution(row);
             }
         }
 

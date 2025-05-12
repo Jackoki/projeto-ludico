@@ -86,12 +86,7 @@
     <Compile Include="View\InstitutionsForms\InstitutionsCreate.Designer.cs">
       <DependentUpon>InstitutionsCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\InstitutionsForms\InstitutionsDelete.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\InstitutionsForms\InstitutionsDelete.Designer.cs">
-      <DependentUpon>InstitutionsDelete.cs</DependentUpon>
-    </Compile>
+    <Compile Include="View\InstitutionsForms\InstitutionsDelete.cs" />
     <Compile Include="View\InstitutionsForms\InstitutionsEdit.cs">
       <SubType>Form</SubType>
     </Compile>
