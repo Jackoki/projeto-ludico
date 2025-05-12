@@ -19,6 +19,21 @@ public class InstitutionRepository
         }
     }
 
+    public void UpdateInstitution(InstitutionsModel institutionsModel)
+    {
+        using (var connection = DatabaseConnection.GetConnection())
+        {
+            string sql = "UPDATE institutions SET Name = @Name WHERE Id = @Id;";
+            using (var command = new SqliteCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@Name", institutionsModel.Name);
+                command.Parameters.AddWithValue("@Id", institutionsModel.Id);
+                command.ExecuteNonQuery();
+            }
+        }
+    }
+
+
     public void DeleteInstitution(int id)
     {
         using (var connection = DatabaseConnection.GetConnection())

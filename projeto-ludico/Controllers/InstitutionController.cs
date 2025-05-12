@@ -47,6 +47,38 @@ public class InstitutionController
         }
     }
 
+    public void EditInstitution(InstitutionsModel institutionsModel)
+    {
+        try
+        {
+            // Valida o nome da instituição
+            if (!ValidationUtils.IsValidName(institutionsModel.Name))
+            {
+                throw new ArgumentException("Nome não pode ser vazio.");
+            }
+
+            // Atualiza a instituição no banco de dados
+            _institutionRepository.UpdateInstitution(institutionsModel);
+            MessageBox.Show("Instituição editada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        catch (ArgumentException ex)
+        {
+            // Exibe uma mensagem de erro caso o nome seja inválido
+            MessageBox.Show(ex.Message, "Falha na edição da instituição", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+        catch (InvalidOperationException ex)
+        {
+            // Exibe um erro relacionado ao banco de dados
+            MessageBox.Show(ex.Message, "Erro na operação do banco de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        catch (Exception ex)
+        {
+            // Exibe um erro inesperado
+            MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
+
+
     public void DeleteInstitution(InstitutionsModel institutionsModel)
     {
         try {

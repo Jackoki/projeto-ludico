@@ -66,15 +66,17 @@ namespace projeto_ludico.View.InstitutionsForms
         //Se o botão selecionado for o btnEdit, será aberto a tela de edição, se for o btnDelete, será a tela de deleção
         private void DataViewer_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            DataGridViewRow row = dataViewer.Rows[e.RowIndex];
+
             if (dataViewer.Columns[e.ColumnIndex].Name == "btnEdit")
             {
                 InstitutionsEdit institutionsEdit = new InstitutionsEdit();
+                institutionsEdit.EditInstitution(row);
                 institutionsEdit.Show();
             }
 
             else if (dataViewer.Columns[e.ColumnIndex].Name == "btnDelete")
             {
-                DataGridViewRow row = dataViewer.Rows[e.RowIndex];
                 InstitutionsDelete institutionsDelete = new InstitutionsDelete();
                 institutionsDelete.DeleteInstitution(row);
             }
