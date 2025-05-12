@@ -82,5 +82,10 @@ namespace projeto_ludico.View.InstitutionsForms
             }
         }
 
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            InstitutionsCreate institutionsCreate = new InstitutionsCreate();
+            institutionsCreate.Show();
+        }
     }
 }

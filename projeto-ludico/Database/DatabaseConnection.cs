@@ -11,22 +11,18 @@ namespace projeto_ludico.Database
         private static SqliteConnection _connection;
         public static SqliteConnection GetConnection()
         {
-            //Se não estiver conectado (null), tenterá realizar a conexão
-            if (_connection == null)
-            {
-                //Será pego o diretório, voltar 2 pastas e então pegar o diretório do Database.db
-                string directoryPath = AppDomain.CurrentDomain.BaseDirectory;
-                string databasePath = Path.Combine(directoryPath, @"..\..\Database\Database.db");
-                databasePath = Path.GetFullPath(databasePath);
+            //Será pego o diretório, voltar 2 pastas e então pegar o diretório do Database.db
+            string directoryPath = AppDomain.CurrentDomain.BaseDirectory;
+            string databasePath = Path.Combine(directoryPath, @"..\..\Database\Database.db");
+            databasePath = Path.GetFullPath(databasePath);
 
-                //Realiza a conexão a partir da string acima, retornando assim a conexão
-                string connectionString = $"Data Source={databasePath}";
-                _connection = new SqliteConnection(connectionString);
-                _connection.Open();
-            }
-
-            return _connection;
+            //Realiza a conexão a partir da string acima, retornando assim a conexão
+            string connectionString = $"Data Source={databasePath}";
+            var connection = new SqliteConnection(connectionString);
+            connection.Open();
+            return connection;
         }
+
 
 
         public void Dispose()

@@ -40,6 +40,9 @@ namespace projeto_ludico.Utils
                 RenameColumns(tableData, columnMappings);
             }
 
+            //Realiza o fechamento do banco de dados para permitir outras operações
+            _connection.Dispose();
+
             return tableData;
         }
 

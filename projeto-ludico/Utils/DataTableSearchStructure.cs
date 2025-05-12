@@ -56,6 +56,9 @@ namespace projeto_ludico.Utils
                         tableData.Load(reader);
                     }
                 }
+
+                //Realiza o fechamento da conexão para poder realizar outras operações
+                _connection.Dispose();
             }
 
             // Renomear colunas, se necessário
@@ -63,6 +66,7 @@ namespace projeto_ludico.Utils
             {
                 RenameColumns(tableData, columnMappings);
             }
+
 
             return tableData;
         }
