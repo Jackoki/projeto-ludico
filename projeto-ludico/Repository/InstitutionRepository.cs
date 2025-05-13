@@ -26,8 +26,8 @@ public class InstitutionRepository
             string sql = "UPDATE institutions SET Name = @Name WHERE Id = @Id;";
             using (var command = new SqliteCommand(sql, connection))
             {
-                command.Parameters.AddWithValue("@Name", institutionsModel.Name);
-                command.Parameters.AddWithValue("@Id", institutionsModel.Id);
+                command.Parameters.AddWithValue("@Name", institutionsModel.name);
+                command.Parameters.AddWithValue("@Id", institutionsModel.id);
                 command.ExecuteNonQuery();
             }
         }

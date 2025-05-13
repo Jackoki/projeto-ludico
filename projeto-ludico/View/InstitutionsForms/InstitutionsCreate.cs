@@ -21,7 +21,7 @@ namespace projeto_ludico.View.InstitutionsForms
         private void btnRegister_Click(object sender, EventArgs e)
         {
             InstitutionsModel institutionsModel = new InstitutionsModel();
-            institutionsModel.Name = txtBoxName.Text;
+            institutionsModel.name = txtBoxName.Text;
 
             InstitutionController institutionController = new InstitutionController();
             institutionController.RegisterInstitution(institutionsModel);

@@ -20,11 +20,11 @@ public class InstitutionController
         try
         {
             //Chamada da classe ValidationUtil para validar os tipos de dados do institutionsModel
-            if (!ValidationUtils.IsValidName(institutionsModel.Name)) {
+            if (!ValidationUtils.IsValidName(institutionsModel.name)) {
                 throw new ArgumentException("Nome não pode ser vazio.");
             }
 
-            _institutionRepository.AddInstitution(institutionsModel.Name);
+            _institutionRepository.AddInstitution(institutionsModel.name);
             MessageBox.Show("Registro bem-sucedido!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -52,7 +52,7 @@ public class InstitutionController
         try
         {
             // Valida o nome da instituição
-            if (!ValidationUtils.IsValidName(institutionsModel.Name))
+            if (!ValidationUtils.IsValidName(institutionsModel.name))
             {
                 throw new ArgumentException("Nome não pode ser vazio.");
             }
@@ -82,7 +82,7 @@ public class InstitutionController
     public void DeleteInstitution(InstitutionsModel institutionsModel)
     {
         try {
-            _institutionRepository.DeleteInstitution(institutionsModel.Id);
+            _institutionRepository.DeleteInstitution(institutionsModel.id);
             MessageBox.Show("Instituição deletada!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

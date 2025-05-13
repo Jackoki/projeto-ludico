@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using projeto_ludico.View;
 using projeto_ludico.View.InstitutionsForms;
+using projeto_ludico.View.ParticipantsForms;
 
 namespace projeto_ludico
 {
@@ -29,6 +30,11 @@ namespace projeto_ludico
         private void institutionsMenuItem_Click(object sender, EventArgs e)
         {
             loadScreen<Institutions>();
+        }
+
+        private void participantsMenuItem_Click(object sender, EventArgs e)
+        {
+            loadScreen<Participants>();
         }
     }
 }

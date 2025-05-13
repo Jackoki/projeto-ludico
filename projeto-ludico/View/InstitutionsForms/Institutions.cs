@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Windows.Forms;
-using projeto_ludico.Controllers;
-using projeto_ludico.Models;
 using projeto_ludico.Service;
-using projeto_ludico.View;
 using projeto_ludico.View.Institutions;
 
 namespace projeto_ludico.View.InstitutionsForms
@@ -30,7 +25,8 @@ namespace projeto_ludico.View.InstitutionsForms
             };
 
             //A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário
-            ConfigureDataViewer(dataViewer, "institutions", desiredColumns, columnMappings);
+            //Passamos o null no final pois não temos nenhum JOIN a ser retornado na tabela
+            ConfigureDataViewer(dataViewer, "institutions", desiredColumns, columnMappings, null);
 
             // Oculta as colunas especificadas
             OccultColumns(dataViewer, "id");
@@ -48,7 +44,8 @@ namespace projeto_ludico.View.InstitutionsForms
             };
 
             // A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário
-            ConfigureSearchDataViewer(dataViewer, searchString, "institutions", desiredColumns, columnMappings, searchableColumns);
+            //Passamos o null no final pois não temos nenhum JOIN a ser retornado na tabela
+            ConfigureSearchDataViewer(dataViewer, searchString, "institutions", desiredColumns, columnMappings, searchableColumns, null);
 
             // Oculta as colunas especificadas
             OccultColumns(dataViewer, "id");

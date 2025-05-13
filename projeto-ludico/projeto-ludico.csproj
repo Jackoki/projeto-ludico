@@ -51,11 +51,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\InstitutionController.cs" />
-    <Compile Include="Controllers\ResearchTable.cs" />
+    <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="Models\InstitutionsModel.cs" />
+    <Compile Include="Models\ParticipantsModel.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Repository\InstitutionRepository.cs" />
+    <Compile Include="Repository\ParticipantRepository.cs" />
     <Compile Include="Utils\ButtonsDataGridView.cs" />
     <Compile Include="Utils\DataTableSearchStructure.cs" />
     <Compile Include="Utils\DataTableStructure.cs" />
@@ -93,6 +95,13 @@
     <Compile Include="View\InstitutionsForms\InstitutionsEdit.Designer.cs">
       <DependentUpon>InstitutionsEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ParticipantsForms\Participants.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ParticipantsForms\Participants.Designer.cs">
+      <DependentUpon>Participants.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ParticipantsForms\ParticipantsDelete.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -113,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\InstitutionsForms\InstitutionsEdit.resx">
       <DependentUpon>InstitutionsEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ParticipantsForms\Participants.resx">
+      <DependentUpon>Participants.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Database\Database.db" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />

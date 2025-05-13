@@ -72,6 +72,7 @@
             this.participantsMenuItem.Name = "participantsMenuItem";
             this.participantsMenuItem.Size = new System.Drawing.Size(180, 22);
             this.participantsMenuItem.Text = "Participantes";
+            this.participantsMenuItem.Click += new System.EventHandler(this.participantsMenuItem_Click);
             // 
             // institutionsMenuItem
             // 

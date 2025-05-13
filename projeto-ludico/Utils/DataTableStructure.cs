@@ -1,62 +1,63 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using projeto_ludico.Database;
 using System.Collections.Generic;
 using System.Data;
-using Microsoft.Data.Sqlite;
-using projeto_ludico.Database;
 
-namespace projeto_ludico.Utils
+public class DataTableStructure
 {
-    internal class DataTableStructure
-    {
-        //Função com responsabilidade de retornar a estrutura padrão do DataView, nele se recebe 3 parâmetros:
-        //O nome da tabela do banco de dados, as colunas a serem retornadas da tabela e por fim, os nomes das colunas a serem mostradas no formulário
-        public DataTable getTableStructure(string tableName, string[] columns, Dictionary<string, string> columnMappings)
+    //Função responsável para chamar as outras funções de forma organizada
+    public DataTable GetTableStructure(string tableName, string[] columns, Dictionary<string, string> columnMappings, string joinClause) {
+        using (var connection = GetOpenConnection()) //Primeiramente nos conectamos no banco de dados
         {
-            SqliteConnection _connection = DatabaseConnection.GetConnection();
+            string query = BuildQuery(tableName, columns, joinClause); //Função chamada para montar a query
+            DataTable tableData = ExecuteQuery(query, connection); //Função chamada para executar a query
 
-            if (_connection.State != ConnectionState.Open)
-            {
-                _connection.Open();
+            if (columnMappings != null) {
+                RenameColumns(tableData, columnMappings); //Função chamada para realizar a nomeação das colunas no tableData a ser retornado
             }
-
-            //Realiza uma string para a montagem das colunas a serem selecionadas da tabela
-            string selectedColumns = columns != null && columns.Length > 0 ? string.Join(", ", columns): "*";
-
-            string query = $"SELECT {selectedColumns} FROM {tableName};";
-
-            //Realiza a consulta para o tableData
-            DataTable tableData = new DataTable();
-
-            using (var command = new SqliteCommand(query, _connection))
-            using (var reader = command.ExecuteReader())
-            {
-                tableData.Load(reader);
-            }
-
-
-            //Se não for passada os nomes dass colunas, não irá realizar a função de renomear as colunas do DataView
-            if (columnMappings != null)
-            {
-                RenameColumns(tableData, columnMappings);
-            }
-
-            //Realiza o fechamento do banco de dados para permitir outras operações
-            _connection.Dispose();
 
             return tableData;
         }
+    }
 
-        public void RenameColumns(DataTable tableData, Dictionary<string, string> columnMappings)
-        {
-            //Pra cada coluna passada, será retornada a estrutura dos nomes das colunas para a tabela
-            foreach (var mapping in columnMappings)
-            {
-                if (tableData.Columns.Contains(mapping.Key))
-                {
-                    tableData.Columns[mapping.Key].ColumnName = mapping.Value;
-                }
-            }
+    //Realiza a conexão por meio da classe DatabaseConnection que criamos
+    private SqliteConnection GetOpenConnection() {
+        var connection = DatabaseConnection.GetConnection();
+
+        if (connection.State != ConnectionState.Open) {
+            connection.Open();
         }
 
+        return connection;
+    }
+
+    //Realiza a montagem da query por meio do nome da tabela passada, colunas a serem retornadas e os joins
+    private string BuildQuery(string tableName, string[] columns, string joinClause) {
+        //Se não for passada nenhuma coluna em específico para o SELECT, será resgatado todas as colunas
+        string selectedColumns = columns != null && columns.Length > 0 ? string.Join(", ", columns) : "*";
+
+        return $"SELECT {selectedColumns} FROM {tableName} {joinClause};";
+    }
+
+    //Executa a query a partir da query montada acima
+    private DataTable ExecuteQuery(string query, SqliteConnection connection) {
+        DataTable tableData = new DataTable();
+
+        using (var command = new SqliteCommand(query, connection))
+        using (var reader = command.ExecuteReader())
+        {
+            tableData.Load(reader);
+        }
+
+        return tableData;
+    }
+
+    //Renomeia as colunas de forma vísual na tabela passada
+    private void RenameColumns(DataTable table, Dictionary<string, string> columnMappings) {
+        foreach (var mapping in columnMappings) {
+            if (table.Columns.Contains(mapping.Key)) {
+                table.Columns[mapping.Key].ColumnName = mapping.Value;
+            }
+        }
     }
 }

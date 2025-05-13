@@ -12,7 +12,7 @@ namespace projeto_ludico.Utils
     internal class ButtonsDataGridView
     {
         //Retorna um botão de linha de tabela nomeado btnEdit mas que está escrito Editar
-        public DataGridViewButtonColumn getEditButton()
+        public DataGridViewButtonColumn GetEditButton()
         {
             DataGridViewButtonColumn btnEdit = new DataGridViewButtonColumn();
             btnEdit.HeaderText = "";
@@ -23,7 +23,7 @@ namespace projeto_ludico.Utils
         }
 
         //Retorna um botão de linha de tabela nomeado btnDelete mas que está escrito Deletar
-        public DataGridViewButtonColumn getDeleteButton()
+        public DataGridViewButtonColumn GetDeleteButton()
         {
             DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
             btnDelete.HeaderText = "";

@@ -1,34 +1,33 @@
 ﻿using System.Windows.Forms;
+using projeto_ludico.Controllers;
 using projeto_ludico.Models;
 
 namespace projeto_ludico.Service
 {
-    public class InstitutionsDelete
+    public class ParticipantsDelete
     {
-        private readonly InstitutionController _institutionController;
+        private readonly ParticipantController _participantController;
 
-        public InstitutionsDelete()
-        {
-            _institutionController = new InstitutionController();
+        public ParticipantsDelete() {
+            _participantController = new ParticipantController();
         }
 
-        public void DeleteInstitution(DataGridViewRow row) {
-
+        public void DeleteParticipant(DataGridViewRow row) {
             //Análisa se o id é diferente de nulo e se consegue converter para INT
             if (row.Cells["id"].Value != null && int.TryParse(row.Cells["id"].Value.ToString(), out int id)) {
-                InstitutionsModel institutionsModel = new InstitutionsModel();
-                institutionsModel.id = id;
+                ParticipantsModel participantsModel = new ParticipantsModel();
+                participantsModel.id = id;
 
                 // Exibe uma mensagem de confirmação, se o usuário apertar Sim, irá deletar pelo controller
                 DialogResult result = MessageBox.Show("Tem certeza de que deseja excluir este registro?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes) {
-                    _institutionController.DeleteInstitution(institutionsModel);
+                    _participantController.DeleteParticipant(participantsModel);
                 }
             }
 
             else {
-                MessageBox.Show("Erro na deleção da instituição.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro na deleção do participante.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

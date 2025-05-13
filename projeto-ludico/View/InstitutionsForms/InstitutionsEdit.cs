@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using projeto_ludico.Models;
-using projeto_ludico.Controllers; // Supondo que o controlador esteja nesse namespace
 
 namespace projeto_ludico.View.Institutions
 {
@@ -19,13 +18,13 @@ namespace projeto_ludico.View.Institutions
         {
             if (row.Cells["id"].Value != null && int.TryParse(row.Cells["id"].Value.ToString(), out int id))
             {
-                institutionsModel.Id = id;
+                institutionsModel.id = id;
             }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            institutionsModel.Name = txtBoxName.Text;
+            institutionsModel.name = txtBoxName.Text;
 
             InstitutionController institutionController = new InstitutionController();
             institutionController.EditInstitution(institutionsModel);
