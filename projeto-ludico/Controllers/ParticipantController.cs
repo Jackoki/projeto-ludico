@@ -20,7 +20,7 @@ namespace projeto_ludico.Controllers
             _participantRepository = new ParticipantRepository();
         }
 
-        public void RegisterInstitution(ParticipantsModel participantsModel)
+        public void RegisterParticipant(ParticipantsModel participantsModel)
         {
             try
             {

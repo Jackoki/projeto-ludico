@@ -59,6 +59,7 @@
     <Compile Include="Repository\InstitutionRepository.cs" />
     <Compile Include="Repository\ParticipantRepository.cs" />
     <Compile Include="Utils\ButtonsDataGridView.cs" />
+    <Compile Include="Utils\ComboBoxLoader.cs" />
     <Compile Include="Utils\DataTableSearchStructure.cs" />
     <Compile Include="Utils\DataTableStructure.cs" />
     <Compile Include="Utils\ValidationUtils.cs" />
@@ -101,6 +102,12 @@
     <Compile Include="View\ParticipantsForms\Participants.Designer.cs">
       <DependentUpon>Participants.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ParticipantsForms\ParticipantsCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ParticipantsForms\ParticipantsCreate.Designer.cs">
+      <DependentUpon>ParticipantsCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ParticipantsForms\ParticipantsDelete.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -125,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ParticipantsForms\Participants.resx">
       <DependentUpon>Participants.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ParticipantsForms\ParticipantsCreate.resx">
+      <DependentUpon>ParticipantsCreate.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Database\Database.db" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />

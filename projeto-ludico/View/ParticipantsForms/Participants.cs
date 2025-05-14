@@ -96,7 +96,8 @@ namespace projeto_ludico.View.ParticipantsForms
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-
+            ParticipantsCreate participantsCreate = new ParticipantsCreate();
+            participantsCreate.Show();
         }
     }
 }

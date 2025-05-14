@@ -21,8 +21,14 @@ namespace projeto_ludico.Repository
 
                 using (var command = new SqliteCommand(sql, connection))
                 {
-                    // Adiciona os parâmetros com base nas propriedades do modelo
-                    command.Parameters.AddWithValue("@Id_Institution", participantsModel.id_institution);
+                    if(participantsModel.id_institution == 0) {
+                        command.Parameters.AddWithValue("@Id_Institution", DBNull.Value);
+                    }
+
+                    else {
+                        command.Parameters.AddWithValue("@Id_Institution", participantsModel.id_institution);
+                    }
+
                     command.Parameters.AddWithValue("@Name", participantsModel.name);
                     command.Parameters.AddWithValue("@Email", participantsModel.email);
                     command.Parameters.AddWithValue("@CPF", participantsModel.cpf);

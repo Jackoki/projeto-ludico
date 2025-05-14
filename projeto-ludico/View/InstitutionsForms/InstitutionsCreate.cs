@@ -13,6 +13,9 @@ namespace projeto_ludico.View.InstitutionsForms
 {
     public partial class InstitutionsCreate : Form
     {
+        //Classe EventHandler (nativa do C#), ele serve para mandar "notificação" para outras telas ao realizar alguma ação, acionando outras funções em outras telas
+        public event EventHandler InstitutionRegistered;
+
         public InstitutionsCreate()
         {
             InitializeComponent();
@@ -25,6 +28,15 @@ namespace projeto_ludico.View.InstitutionsForms
 
             InstitutionController institutionController = new InstitutionController();
             institutionController.RegisterInstitution(institutionsModel);
+
+            //Chama o EventHandler após tentar realizar o registro
+            OnInstitutionRegistered();
+        }
+
+        //Chamada do EventHandler depois de clicar no botão de Registrar, permitindo que outras funções de outras telas sejam chamadas
+        protected virtual void OnInstitutionRegistered()
+        {
+            InstitutionRegistered?.Invoke(this, EventArgs.Empty);
         }
     }
 }
