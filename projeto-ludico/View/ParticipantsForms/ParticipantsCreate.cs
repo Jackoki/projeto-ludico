@@ -16,11 +16,11 @@ namespace projeto_ludico.View.ParticipantsForms
 {
     public partial class ParticipantsCreate : Form
     {
-        ParticipantsModel participantsModel;
+        ParticipantsModel participantsModel = new ParticipantsModel();
 
+        //Ao renderizar a função, será carregado o ComboBox da função abaixo, atribuindo o Nome e Id como Valor
         public ParticipantsCreate() {
             InitializeComponent();
-            participantsModel = new ParticipantsModel();
             loadComboBox();
         }
 
@@ -30,6 +30,8 @@ namespace projeto_ludico.View.ParticipantsForms
             comboBoxInstitution.SelectedIndex = -1;
         }
 
+        //Se clicar no botão de criar instituição, será aberto o formulário de criação de instituição
+        //Se ele registrar uma instituição nova, será mandado um EventHendler, que é uma notificação para realizar o carregamento do ComboBox
         private void btnInstitution_Click(object sender, EventArgs e)
         {
             InstitutionsCreate institutionsCreate = new InstitutionsCreate();
@@ -43,6 +45,7 @@ namespace projeto_ludico.View.ParticipantsForms
 
         }
 
+        //Ao clicar no botão de criação, será montado as informações preenchidas ao participante, sendo esse passado no Controller, que por sua vez chama o Repository
         private void btnCreate_Click(object sender, EventArgs e) {
             participantsModel.name = textBoxName.Text;
             participantsModel.email = textBoxEmail.Text;

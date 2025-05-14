@@ -49,25 +49,24 @@ namespace projeto_ludico.Controllers
             }
         }
 
-        /*
-        public void EditInstitution(InstitutionsModel institutionsModel)
+        public void EditParticipant(ParticipantsModel participantsModel)
         {
             try
             {
                 // Valida o nome da instituição
-                if (!ValidationUtils.IsValidName(institutionsModel.Name))
+                if (!ValidationUtils.IsValidName(participantsModel.name))
                 {
                     throw new ArgumentException("Nome não pode ser vazio.");
                 }
 
                 // Atualiza a instituição no banco de dados
-                _institutionRepository.UpdateInstitution(institutionsModel);
-                MessageBox.Show("Instituição editada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _participantRepository.UpdateParticipant(participantsModel);
+                MessageBox.Show("Participante editado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (ArgumentException ex)
             {
                 // Exibe uma mensagem de erro caso o nome seja inválido
-                MessageBox.Show(ex.Message, "Falha na edição da instituição", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Falha na edição do participante", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (InvalidOperationException ex)
             {
@@ -81,7 +80,6 @@ namespace projeto_ludico.Controllers
             }
         }
 
-        */
         public void DeleteParticipant(ParticipantsModel participantsModel)
         {
             try {
@@ -96,6 +94,44 @@ namespace projeto_ludico.Controllers
             catch (Exception ex) {
                 // Captura qualquer outra exceção que não tenha sido tratada acima
                 MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public ParticipantsModel GetParticipantById(int id)
+        {
+            try
+            {
+                ParticipantsModel particpantsModel = new ParticipantsModel();
+
+                particpantsModel = _participantRepository.GetParticipantById(id);
+
+                if (particpantsModel == null)
+                {
+                    throw new KeyNotFoundException("Participante não encontrado.");
+                }
+
+                return particpantsModel;
+            }
+
+            catch (KeyNotFoundException ex)
+            {
+                // Se não encontrar o participante
+                MessageBox.Show(ex.Message, "Falha na consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+
+            catch (InvalidOperationException ex)
+            {
+                // Erro ao realizar a operação, como problemas com o banco de dados
+                MessageBox.Show(ex.Message, "Erro na operação do banco de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
+            catch (Exception ex)
+            {
+                // Qualquer outro erro inesperado
+                MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
     }

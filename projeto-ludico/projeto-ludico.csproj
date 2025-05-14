@@ -62,6 +62,7 @@
     <Compile Include="Utils\ComboBoxLoader.cs" />
     <Compile Include="Utils\DataTableSearchStructure.cs" />
     <Compile Include="Utils\DataTableStructure.cs" />
+    <Compile Include="Utils\DbNullUtil.cs" />
     <Compile Include="Utils\ValidationUtils.cs" />
     <Compile Include="View\BaseForm.cs">
       <SubType>Form</SubType>
@@ -102,6 +103,12 @@
     <Compile Include="View\ParticipantsForms\Participants.Designer.cs">
       <DependentUpon>Participants.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ParticipantsForms\ParticipantsEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ParticipantsForms\ParticipantsEdit.Designer.cs">
+      <DependentUpon>ParticipantsEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ParticipantsForms\ParticipantsCreate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ParticipantsForms\Participants.resx">
       <DependentUpon>Participants.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ParticipantsForms\ParticipantsEdit.resx">
+      <DependentUpon>ParticipantsEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ParticipantsForms\ParticipantsCreate.resx">
       <DependentUpon>ParticipantsCreate.cs</DependentUpon>

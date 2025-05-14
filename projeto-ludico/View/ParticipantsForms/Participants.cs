@@ -21,7 +21,7 @@ namespace projeto_ludico.View.ParticipantsForms
             ConfigureInstitutionsViewer();
         }
 
-
+        //Realiza a chamada das informações do SQL, passamos as colunas que queremos e as renomeamos no da DataGrid
         private void ConfigureInstitutionsViewer()
         {
             string[] desiredColumns = { 
@@ -45,6 +45,7 @@ namespace projeto_ludico.View.ParticipantsForms
             OccultColumns(dataViewer, "id", "institution_id");
         }
 
+        //Função responsável para realizar a atualização de pesquisa quando o usuário realizar a pesquisa no formulário
         private void PerformSearch(string searchString)
         {
             // Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite
@@ -79,13 +80,13 @@ namespace projeto_ludico.View.ParticipantsForms
             PerformSearch(searchString);
         }
 
+        //Criação dos botões de editar e deletar em cada linha de forma automática
         private void dataViewer_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             DataGridViewRow row = dataViewer.Rows[e.RowIndex];
 
             if (dataViewer.Columns[e.ColumnIndex].Name == "btnEdit") {
-                //InstitutionsEdit institutionsEdit = new InstitutionsEdit();
-                //institutionsEdit.EditInstitution(row);
-                //institutionsEdit.Show();
+                ParticipantsEdit participantsEdit = new ParticipantsEdit(row);
+                participantsEdit.Show();
             }
 
             else if (dataViewer.Columns[e.ColumnIndex].Name == "btnDelete") {
