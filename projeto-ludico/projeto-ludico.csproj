@@ -51,12 +51,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\InstitutionController.cs" />
+    <Compile Include="Controllers\BoardGamesController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="Models\InstitutionsModel.cs" />
+    <Compile Include="Models\BoardGamesModel.cs" />
     <Compile Include="Models\ParticipantsModel.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Repository\InstitutionRepository.cs" />
+    <Compile Include="Repository\BoardGamesRepository.cs" />
     <Compile Include="Repository\ParticipantRepository.cs" />
     <Compile Include="Utils\ButtonsDataGridView.cs" />
     <Compile Include="Utils\ComboBoxLoader.cs" />
@@ -69,6 +72,25 @@
     </Compile>
     <Compile Include="View\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\BoardGamesForms\BoardGames.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\BoardGamesForms\BoardGames.Designer.cs">
+      <DependentUpon>BoardGames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\BoardGamesForms\BoardGamesDelete.cs" />
+    <Compile Include="View\BoardGamesForms\BoardGamesCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\BoardGamesForms\BoardGamesCreate.Designer.cs">
+      <DependentUpon>BoardGamesCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\BoardGamesForms\BoardGamesEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\BoardGamesForms\BoardGamesEdit.Designer.cs">
+      <DependentUpon>BoardGamesEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="View\InstitutionsForms\Institutions.cs">
       <SubType>Form</SubType>
@@ -125,6 +147,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\BoardGamesForms\BoardGames.resx">
+      <DependentUpon>BoardGames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\BoardGamesForms\BoardGamesCreate.resx">
+      <DependentUpon>BoardGamesCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\BoardGamesForms\BoardGamesEdit.resx">
+      <DependentUpon>BoardGamesEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\InstitutionsForms\Institutions.resx">
       <DependentUpon>Institutions.cs</DependentUpon>
     </EmbeddedResource>

@@ -36,6 +36,7 @@
             this.institutionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gamesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rpgMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jogosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,28 +71,39 @@
             // participantsMenuItem
             // 
             this.participantsMenuItem.Name = "participantsMenuItem";
-            this.participantsMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.participantsMenuItem.Size = new System.Drawing.Size(142, 22);
             this.participantsMenuItem.Text = "Participantes";
             this.participantsMenuItem.Click += new System.EventHandler(this.participantsMenuItem_Click);
             // 
             // institutionsMenuItem
             // 
             this.institutionsMenuItem.Name = "institutionsMenuItem";
-            this.institutionsMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.institutionsMenuItem.Size = new System.Drawing.Size(142, 22);
             this.institutionsMenuItem.Text = "Instituições";
             this.institutionsMenuItem.Click += new System.EventHandler(this.institutionsMenuItem_Click);
             // 
             // gamesMenuItem
             // 
+            this.gamesMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.jogosToolStripMenuItem});
             this.gamesMenuItem.Name = "gamesMenuItem";
             this.gamesMenuItem.Size = new System.Drawing.Size(49, 20);
             this.gamesMenuItem.Text = "Jogos";
+            this.gamesMenuItem.Click += new System.EventHandler(this.gamesMenuItem_Click);
             // 
             // rpgMenuItem
             // 
             this.rpgMenuItem.Name = "rpgMenuItem";
             this.rpgMenuItem.Size = new System.Drawing.Size(41, 20);
             this.rpgMenuItem.Text = "RPG";
+            // 
+            // jogosToolStripMenuItem
+            // 
+            this.jogosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.jogosToolStripMenuItem.Name = "jogosToolStripMenuItem";
+            this.jogosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.jogosToolStripMenuItem.Text = "Jogos";
+            this.jogosToolStripMenuItem.Click += new System.EventHandler(this.jogosToolStripMenuItem_Click);
             // 
             // Home
             // 
@@ -123,5 +135,6 @@
         private System.Windows.Forms.ToolStripMenuItem institutionsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gamesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rpgMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem jogosToolStripMenuItem;
     }
 }
