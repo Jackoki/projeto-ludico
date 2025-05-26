@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using projeto_ludico.View;
+using projeto_ludico.View.BoardGamesForms;
 using projeto_ludico.View.InstitutionsForms;
 using projeto_ludico.View.ParticipantsForms;
 using projeto_ludico.View.PlacesForms;
@@ -41,6 +42,16 @@ namespace projeto_ludico
         private void locaisToolStripMenuItem_Click(object sender, EventArgs e)
         {
             loadScreen<Places>();
+        }
+
+        private void gamesMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void jogosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadScreen<BoardGames>();
         }
     }
 }

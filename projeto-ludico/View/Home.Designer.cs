@@ -38,6 +38,7 @@
             this.institutionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gamesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rpgMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jogosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,15 +102,26 @@
             // 
             // gamesMenuItem
             // 
+            this.gamesMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.jogosToolStripMenuItem});
             this.gamesMenuItem.Name = "gamesMenuItem";
             this.gamesMenuItem.Size = new System.Drawing.Size(49, 20);
             this.gamesMenuItem.Text = "Jogos";
+            this.gamesMenuItem.Click += new System.EventHandler(this.gamesMenuItem_Click);
             // 
             // rpgMenuItem
             // 
             this.rpgMenuItem.Name = "rpgMenuItem";
             this.rpgMenuItem.Size = new System.Drawing.Size(41, 20);
             this.rpgMenuItem.Text = "RPG";
+            // 
+            // jogosToolStripMenuItem
+            // 
+            this.jogosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.jogosToolStripMenuItem.Name = "jogosToolStripMenuItem";
+            this.jogosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.jogosToolStripMenuItem.Text = "Jogos";
+            this.jogosToolStripMenuItem.Click += new System.EventHandler(this.jogosToolStripMenuItem_Click);
             // 
             // Home
             // 
@@ -143,5 +155,6 @@
         private System.Windows.Forms.ToolStripMenuItem rpgMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eventosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem locaisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem jogosToolStripMenuItem;
     }
 }
