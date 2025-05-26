@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Institutions));
             this.dataViewer = new System.Windows.Forms.DataGridView();
-            this.btnRegister = new System.Windows.Forms.Button();
             this.boxSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,16 +48,6 @@
             this.dataViewer.ReadOnly = true;
             this.dataViewer.Size = new System.Drawing.Size(360, 250);
             this.dataViewer.TabIndex = 0;
-            // 
-            // btnRegister
-            // 
-            this.btnRegister.Location = new System.Drawing.Point(263, 12);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(109, 25);
-            this.btnRegister.TabIndex = 1;
-            this.btnRegister.Text = "Registrar";
-            this.btnRegister.UseVisualStyleBackColor = true;
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // boxSearch
             // 
@@ -75,6 +65,16 @@
             this.btnSearch.Text = "Buscar";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.Location = new System.Drawing.Point(263, 12);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(109, 25);
+            this.btnRegister.TabIndex = 1;
+            this.btnRegister.Text = "Registrar";
+            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // Institutions
             // 
@@ -100,8 +100,8 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataViewer;
-        private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.TextBox boxSearch;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnRegister;
     }
 }

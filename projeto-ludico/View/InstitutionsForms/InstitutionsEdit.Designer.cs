@@ -42,6 +42,7 @@
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nome:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtBoxName
             // 
@@ -49,6 +50,7 @@
             this.txtBoxName.Name = "txtBoxName";
             this.txtBoxName.Size = new System.Drawing.Size(191, 20);
             this.txtBoxName.TabIndex = 1;
+            this.txtBoxName.TextChanged += new System.EventHandler(this.txtBoxName_TextChanged);
             // 
             // btnEdit
             // 

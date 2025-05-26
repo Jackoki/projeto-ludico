@@ -29,5 +29,15 @@ namespace projeto_ludico.View.Institutions
             InstitutionController institutionController = new InstitutionController();
             institutionController.EditInstitution(institutionsModel);
         }
+
+        private void txtBoxName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

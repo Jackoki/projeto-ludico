@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.eventsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.locaisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.participantsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.participantsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.institutionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,9 +56,25 @@
             // 
             // eventsMenuItem
             // 
+            this.eventsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.eventosToolStripMenuItem,
+            this.locaisToolStripMenuItem});
             this.eventsMenuItem.Name = "eventsMenuItem";
             this.eventsMenuItem.Size = new System.Drawing.Size(60, 20);
             this.eventsMenuItem.Text = "Eventos";
+            // 
+            // eventosToolStripMenuItem
+            // 
+            this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
+            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eventosToolStripMenuItem.Text = "Eventos";
+            // 
+            // locaisToolStripMenuItem
+            // 
+            this.locaisToolStripMenuItem.Name = "locaisToolStripMenuItem";
+            this.locaisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.locaisToolStripMenuItem.Text = "Locais";
+            this.locaisToolStripMenuItem.Click += new System.EventHandler(this.locaisToolStripMenuItem_Click);
             // 
             // participantsMenu
             // 
@@ -70,14 +88,14 @@
             // participantsMenuItem
             // 
             this.participantsMenuItem.Name = "participantsMenuItem";
-            this.participantsMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.participantsMenuItem.Size = new System.Drawing.Size(142, 22);
             this.participantsMenuItem.Text = "Participantes";
             this.participantsMenuItem.Click += new System.EventHandler(this.participantsMenuItem_Click);
             // 
             // institutionsMenuItem
             // 
             this.institutionsMenuItem.Name = "institutionsMenuItem";
-            this.institutionsMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.institutionsMenuItem.Size = new System.Drawing.Size(142, 22);
             this.institutionsMenuItem.Text = "Instituições";
             this.institutionsMenuItem.Click += new System.EventHandler(this.institutionsMenuItem_Click);
             // 
@@ -123,5 +141,7 @@
         private System.Windows.Forms.ToolStripMenuItem institutionsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gamesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rpgMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eventosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem locaisToolStripMenuItem;
     }
 }

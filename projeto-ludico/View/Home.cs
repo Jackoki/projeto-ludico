@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using projeto_ludico.View;
 using projeto_ludico.View.InstitutionsForms;
 using projeto_ludico.View.ParticipantsForms;
+using projeto_ludico.View.PlacesForms;
 
 namespace projeto_ludico
 {
@@ -35,6 +36,11 @@ namespace projeto_ludico
         private void participantsMenuItem_Click(object sender, EventArgs e)
         {
             loadScreen<Participants>();
+        }
+
+        private void locaisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadScreen<Places>();
         }
     }
 }
