@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Places));
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.boxSearch = new System.Windows.Forms.TextBox();
@@ -85,8 +86,9 @@
             this.Controls.Add(this.boxSearch);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnRegister);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Places";
-            this.Text = "Places";
+            this.Text = "Sistema - Lúdico UTFPR";
             this.Load += new System.EventHandler(this.Places_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataViewer)).EndInit();
             this.ResumeLayout(false);

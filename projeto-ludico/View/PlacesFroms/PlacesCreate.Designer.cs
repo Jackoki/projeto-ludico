@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlacesCreate));
             this.label1 = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
             this.txtBoxName = new System.Windows.Forms.TextBox();
@@ -38,9 +39,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.Size = new System.Drawing.Size(82, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Nome da Instituição";
+            this.label1.Text = "Nome do Local:";
             // 
             // btnRegister
             // 
@@ -67,8 +68,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.txtBoxName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PlacesCreate";
-            this.Text = "PlacesCreate";
+            this.Text = "Sistema - Lúdico UTFPR";
             this.ResumeLayout(false);
             this.PerformLayout();
 

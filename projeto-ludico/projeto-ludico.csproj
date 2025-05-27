@@ -69,6 +69,7 @@
     <Compile Include="Utils\DataTableSearchStructure.cs" />
     <Compile Include="Utils\DataTableStructure.cs" />
     <Compile Include="Utils\DbNullUtil.cs" />
+    <Compile Include="Utils\ParseIntOrDefault.cs" />
     <Compile Include="Utils\ValidationUtils.cs" />
     <Compile Include="View\BaseForm.cs">
       <SubType>Form</SubType>

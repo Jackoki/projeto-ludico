@@ -17,6 +17,7 @@ namespace projeto_ludico.View.BoardGamesForms
     public partial class BoardGamesCreate : Form
     {
         BoardGamesModel boardgamesModel = new BoardGamesModel();
+        ParseIntOrDefault parseIntOrDefault = new ParseIntOrDefault();
 
         //Ao renderizar a função, será carregado o ComboBox da função abaixo, atribuindo o Nome e Id como Valor
         public BoardGamesCreate() {
@@ -27,9 +28,9 @@ namespace projeto_ludico.View.BoardGamesForms
         private void btnCreate_Click(object sender, EventArgs e) {
             boardgamesModel.name = textBoxName.Text;
             boardgamesModel.description = textBoxDescription.Text;
-            boardgamesModel.min_players = textBoxMinPlayers.Text;
-            boardgamesModel.max_players = textBoxMaxPlayers.Text;
-            boardgamesModel.game_time = textBoxGameTime.Text;
+            boardgamesModel.min_players = parseIntOrDefault.ParseInt(textBoxMinPlayers.Text, "número mínimo de jogadores");
+            boardgamesModel.max_players = parseIntOrDefault.ParseInt(textBoxMaxPlayers.Text, "número máximo de jogadores");
+            boardgamesModel.game_time = parseIntOrDefault.ParseInt(textBoxGameTime.Text, "tempo de jogo");
 
             BoardGamesController boardgamesController = new BoardGamesController();
             boardgamesController.RegisterBoardGames(boardgamesModel);

@@ -18,6 +18,7 @@ namespace projeto_ludico.View.BoardGamesForms
     {
         BoardGamesModel boardgamesModel = new BoardGamesModel();
         BoardGamesController boardgamesController = new BoardGamesController();
+        ParseIntOrDefault parseIntOrDefault = new ParseIntOrDefault();
 
         //Ao renderizar esse formulário, passamos o ID do participante pela identificação do row
         public BoardGamesEdit(DataGridViewRow row) {
@@ -36,9 +37,9 @@ namespace projeto_ludico.View.BoardGamesForms
 
             textBoxName.Text = boardgamesModel.name;
             textBoxDescription.Text = boardgamesModel.description;
-            textBoxMinPlayers.Text = boardgamesModel.min_players;
-            textBoxMaxPlayers.Text = boardgamesModel.max_players;
-            textBoxGameTime.Text = boardgamesModel.game_time;
+            textBoxMinPlayers.Text = boardgamesModel.min_players.ToString();
+            textBoxMaxPlayers.Text = boardgamesModel.max_players.ToString();
+            textBoxGameTime.Text = boardgamesModel.game_time.ToString();
         }
 
         private void loadComboBox() {
@@ -56,9 +57,9 @@ namespace projeto_ludico.View.BoardGamesForms
             newBoardGamesModel.id = boardgamesModel.id;
             newBoardGamesModel.name = textBoxName.Text;
             newBoardGamesModel.description = textBoxDescription.Text;
-            newBoardGamesModel.min_players = textBoxMinPlayers.Text;
-            newBoardGamesModel.max_players = textBoxMaxPlayers.Text;
-            newBoardGamesModel.game_time = textBoxGameTime.Text;
+            newBoardGamesModel.min_players = parseIntOrDefault.ParseInt(textBoxMinPlayers.Text, "número mínimo de jogadores");
+            newBoardGamesModel.max_players = parseIntOrDefault.ParseInt(textBoxMaxPlayers.Text, "número máximo de jogadores");
+            newBoardGamesModel.game_time = parseIntOrDefault.ParseInt(textBoxGameTime.Text, "tempo de jogo");
 
             return newBoardGamesModel;
         }
