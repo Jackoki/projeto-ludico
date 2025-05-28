@@ -23,19 +23,17 @@ namespace projeto_ludico.View.BoardGamesForms
         //Realiza a chamada das informações do SQL, passamos as colunas que queremos e as renomeamos no da DataGrid
         private void ConfigureBoardGamesViewer()
         {
+            // Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite
             string[] desiredColumns = {
-                "board_games.id", "board_games_names.name", "board_games.description", "board_games.min_players", "board_games.max_players",
-                "board_games.game_time"
+                "board_games.id", "board_games_names.name"
             };
+
+            string[] searchableColumns = { "board_games_names.name", "board_games.id" };  // Colunas usadas na busca
 
             var columnMappings = new Dictionary<string, string>
             {
                 { "id", "Id" },
-                { "name", "Nome" },
-                { "description", "Descrição" },
-                { "min_players", "Minimo de Jogadores" },
-                { "max_players", "Maximo de Jogadores" },
-                { "game_time", "Duração de Jogo" }
+                { "name", "Nome" }
             };
 
             string joinClause = "LEFT JOIN board_games_names ON (board_games_names.id_board_game = board_games.id AND board_games_names.is_principal = 1)";
@@ -52,8 +50,7 @@ namespace projeto_ludico.View.BoardGamesForms
         {
             // Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite
             string[] desiredColumns = {
-                "board_games.id", "board_games_names.name", "board_games.description", "board_games.min_players", "board_games.max_players",
-                "board_games.game_time"
+                "board_games.id", "board_games_names.name"
             };
 
             string[] searchableColumns = { "board_games_names.name", "board_games.id" };  // Colunas usadas na busca
@@ -61,11 +58,7 @@ namespace projeto_ludico.View.BoardGamesForms
             var columnMappings = new Dictionary<string, string>
             {
                 { "id", "Id" },
-                { "name", "Nome" },
-                { "description", "Descrição" },
-                { "min_players", "Minimo de Jogadores" },
-                { "max_players", "Maximo de Jogadores" },
-                { "game_time", "Duração de Jogo" }
+                { "name", "Nome" }
             };
 
             string joinClause = "LEFT JOIN board_games_names ON (board_games_names.id_board_game = board_games.id AND board_games_names.is_principal = 1)";

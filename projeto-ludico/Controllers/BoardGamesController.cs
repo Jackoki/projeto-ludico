@@ -25,9 +25,9 @@ namespace projeto_ludico.Controllers
             try
             {
                 //Chamada da classe ValidationUtil para validar os tipos de dados do institutionsModel
-                if (!ValidationUtils.IsValidName(boardgamesModel.name)) {
-                    throw new ArgumentException("Nome não pode ser vazio.");
-                }
+                //if (!ValidationUtils.IsValidName(boardgamesModel.name)) {
+                    //throw new ArgumentException("Nome não pode ser vazio.");
+                //}
 
                 _boardgamesRepository.AddBoardGames(boardgamesModel);
                 MessageBox.Show("Registro bem-sucedido!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -54,10 +54,10 @@ namespace projeto_ludico.Controllers
             try
             {
                 // Valida o nome da instituição
-                if (!ValidationUtils.IsValidName(boardgamesModel.name))
-                {
-                    throw new ArgumentException("Nome não pode ser vazio.");
-                }
+                //if (!ValidationUtils.IsValidName(boardgamesModel.name))
+                //{
+                  //  throw new ArgumentException("Nome não pode ser vazio.");
+                //}
 
                 // Atualiza a instituição no banco de dados
                 _boardgamesRepository.UpdateBoardGames(boardgamesModel);

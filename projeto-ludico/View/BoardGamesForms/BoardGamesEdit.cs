@@ -35,11 +35,11 @@ namespace projeto_ludico.View.BoardGamesForms
 
             boardgamesModel = boardgamesController.GetBoardGamesById(boardgamesModel.id);
 
-            textBoxName.Text = boardgamesModel.name;
             textBoxDescription.Text = boardgamesModel.description;
             textBoxMinPlayers.Text = boardgamesModel.min_players.ToString();
             textBoxMaxPlayers.Text = boardgamesModel.max_players.ToString();
             textBoxGameTime.Text = boardgamesModel.game_time.ToString();
+            textBoxGameTime.Text = boardgamesModel.year.ToString();
         }
 
         private void loadComboBox() {
@@ -55,11 +55,11 @@ namespace projeto_ludico.View.BoardGamesForms
         private BoardGamesModel loadNewValues() {
             BoardGamesModel newBoardGamesModel = new BoardGamesModel();
             newBoardGamesModel.id = boardgamesModel.id;
-            newBoardGamesModel.name = textBoxName.Text;
             newBoardGamesModel.description = textBoxDescription.Text;
             newBoardGamesModel.min_players = parseIntOrDefault.ParseInt(textBoxMinPlayers.Text, "número mínimo de jogadores");
             newBoardGamesModel.max_players = parseIntOrDefault.ParseInt(textBoxMaxPlayers.Text, "número máximo de jogadores");
             newBoardGamesModel.game_time = parseIntOrDefault.ParseInt(textBoxGameTime.Text, "tempo de jogo");
+            //newBoardGamesModel.year = parseIntOrDefault.ParseInt(textBoxMinPlayers.Text, "ano do jogo");
 
             return newBoardGamesModel;
         }

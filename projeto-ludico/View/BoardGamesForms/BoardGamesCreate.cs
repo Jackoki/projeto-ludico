@@ -24,23 +24,51 @@ namespace projeto_ludico.View.BoardGamesForms
             InitializeComponent();
         }
 
-        //Ao clicar no botão de criação, será montado as informações preenchidas ao participante, sendo esse passado no Controller, que por sua vez chama o Repository
-        private void btnCreate_Click(object sender, EventArgs e) {
-            boardgamesModel.name = textBoxName.Text;
-            boardgamesModel.description = textBoxDescription.Text;
-            boardgamesModel.min_players = parseIntOrDefault.ParseInt(textBoxMinPlayers.Text, "número mínimo de jogadores");
-            boardgamesModel.max_players = parseIntOrDefault.ParseInt(textBoxMaxPlayers.Text, "número máximo de jogadores");
-            boardgamesModel.game_time = parseIntOrDefault.ParseInt(textBoxGameTime.Text, "tempo de jogo");
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Tem certeza que deseja cancelar?", "Cancelar", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            boardgamesModel.description = txtDescricao.Text;
+            boardgamesModel.min_players = parseIntOrDefault.ParseInt(txtQtdMin.Text, "número mínimo de jogadores");
+            boardgamesModel.max_players = parseIntOrDefault.ParseInt(txtQtdMax.Text, "número máximo de jogadores");
+            boardgamesModel.game_time = parseIntOrDefault.ParseInt(txtTempoJogo.Text, "tempo de jogo");
+            boardgamesModel.year = parseIntOrDefault.ParseInt(txtAno.Text, "ano do jogo");
 
             BoardGamesController boardgamesController = new BoardGamesController();
             boardgamesController.RegisterBoardGames(boardgamesModel);
         }
 
-        private void btnCancel_Click(object sender, EventArgs e) {
-            var result = MessageBox.Show("Tem certeza que deseja cancelar?", "Cancelar", MessageBoxButtons.YesNo);
+        private void btnAddNome_Click(object sender, EventArgs e)
+        {
+            lbAlternateNames.Items.Add(txtNomeAlternativo.Text);
+        }
 
-            if (result == DialogResult.Yes) {
-                this.Close();
+        private void btnRemoveName_Click(object sender, EventArgs e)
+        {
+            if (lbAlternateNames.SelectedIndex != -1)
+            {
+                lbAlternateNames.Items.RemoveAt(lbAlternateNames.SelectedIndex);
+            }
+        }
+
+        private void btnAddBarCode_Click(object sender, EventArgs e)
+        {
+            lbCodigosBarras.Items.Add(txtCodigoBarras.Text);
+        }
+
+        private void btnRemoveBarCode_Click(object sender, EventArgs e)
+        {
+            if (lbCodigosBarras.SelectedIndex != -1)
+            {
+                lbCodigosBarras.Items.RemoveAt(lbCodigosBarras.SelectedIndex);
             }
         }
     }

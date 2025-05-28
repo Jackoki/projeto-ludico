@@ -10,11 +10,11 @@ namespace projeto_ludico.Models
     {        
         // Propriedades
         public int id { get; set; }
-        public string name { get; set; }
         public string description { get; set; }
         public int min_players { get; set; }
         public int max_players { get; set; }
         public int game_time { get; set; }
+        public int year { get; set; }
 
         public BoardGamesModel() { }
     }
