@@ -41,6 +41,10 @@ namespace projeto_ludico.View.BoardGamesForms
             string joinClause = "LEFT JOIN board_games_names ON (board_games_names.id_board_game = board_games.id AND board_games_names.is_principal = 1)";
 
             ConfigureDataViewer(dataViewer, "board_games", desiredColumns, columnMappings, joinClause);
+
+
+            // Oculta as colunas especificadas
+            OccultColumns(dataViewer, "id");
         }
 
         //Função responsável para realizar a atualização de pesquisa quando o usuário realizar a pesquisa no formulário
@@ -72,6 +76,10 @@ namespace projeto_ludico.View.BoardGamesForms
             ConfigureSearchDataViewer(dataViewer, searchString, "board_games", desiredColumns, columnMappings, searchableColumns, joinClause);
 
             // Oculta as colunas especificadas
+
+
+            // Oculta as colunas especificadas
+            OccultColumns(dataViewer, "id");
         }
 
         private void btnSearch_Click(object sender, EventArgs e) {
