@@ -41,6 +41,7 @@ namespace projeto_ludico.Controllers
 
             catch (InvalidOperationException ex) {
                 MessageBox.Show(ex.Message, "Erro na operação do banco de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("InvalidOperationException: " + ex.Message);
             }
 
             catch (Exception ex) {

@@ -59,6 +59,7 @@
     <Compile Include="Database\Configurations\BoardGamesModelConfiguration.cs" />
     <Compile Include="Database\Configurations\BoardGamesNamesModelConfiguration.cs" />
     <Compile Include="Database\DatabaseConnection.cs" />
+    <Compile Include="Database\DatabaseHelper.cs" />
     <Compile Include="Models\BoardGamesBarCodesModel.cs" />
     <Compile Include="Models\BoardGamesNamesModel.cs" />
     <Compile Include="Models\EventsModel.cs" />
@@ -250,6 +251,9 @@
       <Version>9.0.4</Version>
     </PackageReference>
     <PackageReference Include="System.Data.SQLite">
+      <Version>1.0.119</Version>
+    </PackageReference>
+    <PackageReference Include="System.Data.SQLite.EF6">
       <Version>1.0.119</Version>
     </PackageReference>
   </ItemGroup>
