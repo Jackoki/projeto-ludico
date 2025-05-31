@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace projeto_ludico.Models
 {
-    internal class BoardGamesNamesModel
+    public class BoardGamesNamesModel
     {        
         // Propriedades
         public int id { get; set; }

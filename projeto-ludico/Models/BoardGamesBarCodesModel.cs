@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace projeto_ludico.Models
 {
-    internal class BoardGamesBarCodesModel
+    public class BoardGamesBarCodesModel
     {        
         // Propriedades
         public int id { get; set; }

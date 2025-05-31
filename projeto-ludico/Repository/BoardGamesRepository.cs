@@ -14,25 +14,12 @@ namespace projeto_ludico.Repository
 {
     internal class BoardGamesRepository
     {
-        public void AddBoardGames(BoardGamesModel boardgamesModel) {
-            using (var connection = DatabaseConnection.GetConnection())
+        public void AddBoardGames(BoardGamesModel boardGameModel)
+        {
+            using (var context = new AppDbContext())
             {
-                // Realiza a adição do participante pela Query abaixo
-                string sql = @"INSERT INTO board_games  (description, min_players, max_players, game_time, year) 
-                             VALUES (@Description, @Min_players, @Max_players, @Game_time, @Year);";
-
-                //Ocorre a atribuição de variáveis a partir do command, que resgata os valores do participantModel passado no parâmetro
-                using (var command = new SqliteCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@Description", boardgamesModel.description);
-                    command.Parameters.AddWithValue("@Min_players", boardgamesModel.min_players);
-                    command.Parameters.AddWithValue("@Max_players", boardgamesModel.max_players);
-                    command.Parameters.AddWithValue("@Game_time", boardgamesModel.game_time);
-                    command.Parameters.AddWithValue("@Year", boardgamesModel.year);
-
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
+                context.BoardGames.Add(boardGameModel);
+                context.SaveChanges();
             }
         }
 
@@ -83,22 +70,7 @@ namespace projeto_ludico.Repository
         //Realiza a deleção do participante pelo Id na query
         public void DeleteBoardGames(int id)
         {
-            using (var connection = DatabaseConnection.GetConnection())
-            {
-                string sql = "DELETE FROM board_games WHERE Id = @Id;";
-                using (var command = new SqliteCommand(sql, connection))
-                {
-                    // Adiciona o parâmetro do ID
-                    command.Parameters.AddWithValue("@Id", id);
-
-                    // Executa o comando de exclusão
-                    int rowsAffected = command.ExecuteNonQuery();
-
-                    if (rowsAffected == 0) {
-                        throw new InvalidOperationException($"Nenhum jogo encontrado.");
-                    }
-                }
-            }
+            
         }
 
         //Retorna todas as informações do ParticipantModel a partir do SELECT filtrado pelo id no parâmetro

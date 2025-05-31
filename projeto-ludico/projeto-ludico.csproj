@@ -54,7 +54,14 @@
     <Compile Include="Controllers\BoardGamesController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Controllers\PlacesController.cs" />
+    <Compile Include="Database\AppDbContext.cs" />
+    <Compile Include="Database\Configurations\BoardGamesBarCodesModelConfiguration.cs" />
+    <Compile Include="Database\Configurations\BoardGamesModelConfiguration.cs" />
+    <Compile Include="Database\Configurations\BoardGamesNamesModelConfiguration.cs" />
     <Compile Include="Database\DatabaseConnection.cs" />
+    <Compile Include="Models\BoardGamesBarCodesModel.cs" />
+    <Compile Include="Models\BoardGamesNamesModel.cs" />
+    <Compile Include="Models\EventsModel.cs" />
     <Compile Include="Models\InstitutionsModel.cs" />
     <Compile Include="Models\BoardGamesModel.cs" />
     <Compile Include="Models\ParticipantsModel.cs" />
