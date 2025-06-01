@@ -24,11 +24,6 @@ namespace projeto_ludico.Controllers
         {
             try
             {
-                //Chamada da classe ValidationUtil para validar os tipos de dados do institutionsModel
-                //if (!ValidationUtils.IsValidName(boardgamesModel.name)) {
-                    //throw new ArgumentException("Nome não pode ser vazio.");
-                //}
-
                 _boardgamesRepository.AddBoardGames(boardgamesModel);
                 MessageBox.Show("Registro bem-sucedido!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -54,15 +49,8 @@ namespace projeto_ludico.Controllers
         {
             try
             {
-                // Valida o nome da instituição
-                //if (!ValidationUtils.IsValidName(boardgamesModel.name))
-                //{
-                  //  throw new ArgumentException("Nome não pode ser vazio.");
-                //}
-
-                // Atualiza a instituição no banco de dados
                 _boardgamesRepository.UpdateBoardGames(boardgamesModel);
-                MessageBox.Show("Participante editado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Jogo editado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (ArgumentException ex)
             {
@@ -85,7 +73,7 @@ namespace projeto_ludico.Controllers
         {
             try {
                 _boardgamesRepository.DeleteBoardGames(boardgamesModel.id);
-                MessageBox.Show("Participante deletado!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Jogo deletado!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             catch (InvalidOperationException ex) {
@@ -108,7 +96,7 @@ namespace projeto_ludico.Controllers
 
                 if (boardgamesModel == null)
                 {
-                    throw new KeyNotFoundException("Participante não encontrado.");
+                    throw new KeyNotFoundException("Jogo não encontrado.");
                 }
 
                 return boardgamesModel;

@@ -27,7 +27,7 @@ namespace projeto_ludico.Service
             }
 
             else {
-                MessageBox.Show("Erro na deleção do jogo de mesa.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro na deleção do jogo.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

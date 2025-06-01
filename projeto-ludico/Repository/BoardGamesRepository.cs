@@ -24,93 +24,93 @@ namespace projeto_ludico.Repository
         }
 
         //Funcionamento basicamente identico com a função acima, única diferença seria a query do SQL, que é um Update
-        public void UpdateBoardGames(BoardGamesModel boardgamesModel)
+        public void UpdateBoardGames(BoardGamesModel updatedBoardGame)
         {
-            using (var connection = DatabaseConnection.GetConnection())
+            using (var context = new AppDbContext())
             {
-                // Certifique-se de que o nome da tabela e as colunas estejam corretos
-                string sql = @"UPDATE board_games 
-                       SET
-                           Description = @Description, 
-                           Min_players = @Min_players, 
-                           Max_players = @Max_players, 
-                           Game_time = @Game_time 
-                           Year = @Year,
-                       WHERE id = @Id;";
+                var existingBoardGame = context.BoardGames
+                    .Include(bg => bg.names)
+                    .Include(bg => bg.codes)
+                    .FirstOrDefault(bg => bg.id == updatedBoardGame.id);
 
-                using (var command = new SqliteCommand(sql, connection))
+                if (existingBoardGame == null)
+                    throw new InvalidOperationException("Jogo de tabuleiro não encontrado.");
+
+                // Atualiza campos simples
+                existingBoardGame.description = updatedBoardGame.description;
+                existingBoardGame.min_players = updatedBoardGame.min_players;
+                existingBoardGame.max_players = updatedBoardGame.max_players;
+                existingBoardGame.game_time = updatedBoardGame.game_time;
+                existingBoardGame.year = updatedBoardGame.year;
+
+                // Remove os filhos explicitamente do contexto
+                context.BoardGamesNames.RemoveRange(existingBoardGame.names);
+                context.BoardGamesBarCodes.RemoveRange(existingBoardGame.codes);
+
+                // Salva para aplicar remoção dos filhos
+                context.SaveChanges();
+
+                // Adiciona os novos filhos, com FK correta
+                foreach (var name in updatedBoardGame.names)
                 {
-                    command.Parameters.AddWithValue("@Description", DbNullUtil.GetDBNullIfEmpty(boardgamesModel.description));
-                    command.Parameters.AddWithValue("@Min_players", DbNullUtil.GetDBNullIfEmpty(boardgamesModel.min_players));
-                    command.Parameters.AddWithValue("@Max_players", DbNullUtil.GetDBNullIfEmpty(boardgamesModel.max_players));
-                    command.Parameters.AddWithValue("@Game_time", DbNullUtil.GetDBNullIfEmpty(boardgamesModel.game_time));
-                    command.Parameters.AddWithValue("@Year", DbNullUtil.GetDBNullIfEmpty(boardgamesModel.year));
-                    command.Parameters.AddWithValue("@Id", boardgamesModel.id);
-
-                    Console.WriteLine(boardgamesModel.id);
-                    Console.WriteLine(boardgamesModel.year);
-                    Console.WriteLine(boardgamesModel.description);
-                    Console.WriteLine(boardgamesModel.min_players);
-                    Console.WriteLine(boardgamesModel.max_players);
-                    Console.WriteLine(boardgamesModel.game_time);
-
-
-                    // Abre a conexão e executa o comando
-                    connection.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
-
-                    // Valida se alguma linha foi alterada
-                    if (rowsAffected == 0) {
-                        throw new InvalidOperationException("Nenhum participante foi encontrado para atualização.");
-                    }
+                    name.id_board_game = existingBoardGame.id;
+                    context.BoardGamesNames.Add(name);
                 }
+
+                foreach (var code in updatedBoardGame.codes)
+                {
+                    code.id_board_game = existingBoardGame.id;
+                    context.BoardGamesBarCodes.Add(code);
+                }
+
+                // Salva as mudanças finais
+                context.SaveChanges();
             }
         }
+
+
 
         //Realiza a deleção do participante pelo Id na query
         public void DeleteBoardGames(int id)
         {
-            
+            using (var context = new AppDbContext())
+            {
+                // Busca o jogo pelo ID
+                var boardGame = context.BoardGames.SingleOrDefault(b => b.id == id);
+
+                if (boardGame == null)
+                {
+                    throw new KeyNotFoundException($"Nenhum jogo encontrado com o ID {id}.");
+                }
+
+                // Remove o jogo do contexto
+                context.BoardGames.Remove(boardGame);
+
+                // Salva as alterações no banco de dados
+                context.SaveChanges();
+            }
         }
 
         //Retorna todas as informações do ParticipantModel a partir do SELECT filtrado pelo id no parâmetro
-        public BoardGamesModel GetBoardGamesById(int id) {
-            BoardGamesModel boardgamesModel = new BoardGamesModel();
+        public BoardGamesModel GetBoardGamesById(int id)
+        {
+            using (var context = new AppDbContext())
+            {
+                // Busca o jogo pelo ID com as listas relacionadas
+                var boardGame = context.BoardGames
+                    .Include(b => b.names)
+                    .Include(b => b.codes)
+                    .SingleOrDefault(b => b.id == id);
 
-            try {
-                using (var connection = DatabaseConnection.GetConnection()) {
-                    string sql = @"SELECT id, Description, Min_players, Max_players, Game_time 
-                           FROM board_games
-                           WHERE Id = @Id;";
-
-                    using (var command = new SqliteCommand(sql, connection)) {
-                        // Adiciona o parâmetro do ID
-                        command.Parameters.AddWithValue("@Id", id);
-
-                        using (var reader = command.ExecuteReader()) {
-                            if (reader.Read()) {
-                                // Inicializa o modelo apenas se o participante for encontrado
-                                boardgamesModel = new BoardGamesModel {
-                                    id = reader.GetInt32(reader.GetOrdinal("id")),
-                                    description = reader.GetString(reader.GetOrdinal("description")),
-                                    min_players = reader.GetInt32(reader.GetOrdinal("min_players")),
-                                    max_players = reader.GetInt32(reader.GetOrdinal("max_players")),
-                                    game_time = reader.GetInt32(reader.GetOrdinal("game_time")),
-                                    year = reader.GetInt32(reader.GetOrdinal("year"))
-                                };
-                            }
-                        }
-                    }
+                if (boardGame == null)
+                {
+                    throw new KeyNotFoundException($"Nenhum jogo encontrado com o ID {id}.");
                 }
-            }
 
-            catch (Exception ex) {
-                // Lidar com exceções relacionadas ao banco de dados ou outras
-                throw new InvalidOperationException("Erro ao buscar participante no banco de dados.", ex);
+                return boardGame;
             }
-
-            return boardgamesModel;
         }
+
 
 
 

@@ -26,10 +26,12 @@ public class AppDbContext : DbContext
 
     public DbSet<BoardGamesModel> BoardGames { get; set; }
     public DbSet<BoardGamesNamesModel> BoardGamesNames { get; set; }
+    public DbSet<BoardGamesBarCodesModel> BoardGamesBarCodes { get; set; }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
         modelBuilder.Configurations.Add(new BoardGamesModelConfiguration());
         modelBuilder.Configurations.Add(new BoardGamesNamesModelConfiguration());
+        modelBuilder.Configurations.Add(new BoardGamesBarCodesModelConfiguration());
     }
 }

@@ -13,9 +13,12 @@ namespace projeto_ludico.Utils
                 return result;
             }
 
-            else {
-                MessageBox.Show($"Por favor, insira um número válido para {fieldName}.");
+            else if (string.IsNullOrWhiteSpace(input)) {
                 return 0;
+            }
+
+            else {
+                throw new ArgumentException($"O valor fornecido para {fieldName} não é um número válido.");
             }
         }
     }

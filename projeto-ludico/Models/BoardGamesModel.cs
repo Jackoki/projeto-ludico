@@ -18,6 +18,9 @@ namespace projeto_ludico.Models
         public List<BoardGamesNamesModel> names { get; set; }
         public List<BoardGamesBarCodesModel> codes { get; set; }
 
-        public BoardGamesModel() { }
+        public BoardGamesModel() {
+            names = new List<BoardGamesNamesModel>();
+            codes = new List<BoardGamesBarCodesModel>();
+        }
     }
 }

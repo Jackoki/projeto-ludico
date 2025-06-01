@@ -53,7 +53,7 @@ namespace projeto_ludico.View.BoardGamesForms
                 "board_games.id", "board_games_names.name"
             };
 
-            string[] searchableColumns = { "board_games_names.name", "board_games.id" };  // Colunas usadas na busca
+            string[] searchableColumns = { "board_games_names.name"};  // Colunas usadas na busca
 
             var columnMappings = new Dictionary<string, string>
             {
