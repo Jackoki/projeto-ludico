@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using projeto_ludico.View;
 using projeto_ludico.View.BoardGamesForms;
 using projeto_ludico.View.InstitutionsForms;
+using projeto_ludico.View.ListForms;
 using projeto_ludico.View.ParticipantsForms;
 using projeto_ludico.View.PlacesForms;
 
@@ -53,6 +54,11 @@ namespace projeto_ludico
         private void jogosToolStripMenuItem_Click(object sender, EventArgs e)
         {   
             loadScreen<BoardGames>();
+        }
+
+        private void listaDeJogosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadScreen<List>();
         }
     }
 }

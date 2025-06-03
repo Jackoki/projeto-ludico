@@ -65,6 +65,5 @@ namespace projeto_ludico.View
                 }
             }
         }
-
     }
 }

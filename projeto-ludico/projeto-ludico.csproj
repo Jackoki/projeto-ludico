@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Controllers\InstitutionController.cs" />
     <Compile Include="Controllers\BoardGamesController.cs" />
+    <Compile Include="Controllers\ListController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Controllers\PlacesController.cs" />
     <Compile Include="Database\AppDbContext.cs" />
@@ -63,13 +64,16 @@
     <Compile Include="Models\BoardGamesBarCodesModel.cs" />
     <Compile Include="Models\BoardGamesNamesModel.cs" />
     <Compile Include="Models\EventsModel.cs" />
+    <Compile Include="Models\GameList.cs" />
     <Compile Include="Models\InstitutionsModel.cs" />
     <Compile Include="Models\BoardGamesModel.cs" />
+    <Compile Include="Models\ListModel.cs" />
     <Compile Include="Models\ParticipantsModel.cs" />
     <Compile Include="Models\PlacesModel.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Repository\InstitutionRepository.cs" />
     <Compile Include="Repository\BoardGamesRepository.cs" />
+    <Compile Include="Repository\ListRepository.cs" />
     <Compile Include="Repository\ParticipantRepository.cs" />
     <Compile Include="Repository\PlacesRepository.cs" />
     <Compile Include="Utils\ButtonsDataGridView.cs" />
@@ -131,6 +135,31 @@
     <Compile Include="View\InstitutionsForms\InstitutionsEdit.Designer.cs">
       <DependentUpon>InstitutionsEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ListForms\List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ListForms\List.Designer.cs">
+      <DependentUpon>List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListForms\ListCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ListForms\ListCreate.Designer.cs">
+      <DependentUpon>ListCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListForms\ListDelete.cs" />
+    <Compile Include="View\ListForms\ListEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ListForms\ListEdit.Designer.cs">
+      <DependentUpon>ListEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListForms\ListManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ListForms\ListManager.Designer.cs">
+      <DependentUpon>ListManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ParticipantsForms\Participants.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +207,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\BoardGamesForms\BoardGames.resx">
       <DependentUpon>BoardGames.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +230,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\InstitutionsForms\InstitutionsEdit.resx">
       <DependentUpon>InstitutionsEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ListForms\List.resx">
+      <DependentUpon>List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ListForms\ListCreate.resx">
+      <DependentUpon>ListCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ListForms\ListEdit.resx">
+      <DependentUpon>ListEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ListForms\ListManager.resx">
+      <DependentUpon>ListManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ParticipantsForms\Participants.resx">
       <DependentUpon>Participants.cs</DependentUpon>
@@ -249,6 +293,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Data.Sqlite">
       <Version>9.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Data.Sqlite.Core">
+      <Version>9.0.5</Version>
     </PackageReference>
     <PackageReference Include="System.Data.SQLite">
       <Version>1.0.119</Version>
