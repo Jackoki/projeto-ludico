@@ -13,18 +13,25 @@ namespace projeto_ludico.Repository
             using (var connection = DatabaseConnection.GetConnection())
             {
                 string sql = @"INSERT INTO events 
-                            (Name, Description, Date, Id_Local, Status, Created_At) 
+                            (Name, Date, Id_event_local, Is_active) 
                             VALUES 
-                            (@Name, @Description, @Date, @Id_Local, @Status, @Created_At);";
+                            (@Name, @Date, @Id_event_local, @Is_active);";
 
                 using (var command = new SqliteCommand(sql, connection))
                 {
+                    if (eventsModel.id_event_local == 0)
+                    {
+                        command.Parameters.AddWithValue("@Id_event_local", DBNull.Value);
+                    }
+
+                    else
+                    {
+                        command.Parameters.AddWithValue("@Id_event_local", eventsModel.id_event_local);
+                    }
+
                     command.Parameters.AddWithValue("@Name", eventsModel.name);
-                    command.Parameters.AddWithValue("@Description", eventsModel.description ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("@Date", eventsModel.date);
-                    command.Parameters.AddWithValue("@Id_Local", eventsModel.id_local);
-                    command.Parameters.AddWithValue("@Status", eventsModel.status);
-                    command.Parameters.AddWithValue("@Created_At", eventsModel.created_at);
+                    command.Parameters.AddWithValue("@Is_active", eventsModel.is_active);
                     command.ExecuteNonQuery();
                 }
             }
@@ -36,22 +43,27 @@ namespace projeto_ludico.Repository
             {
                 string sql = @"UPDATE events 
                             SET Name = @Name, 
-                                Description = @Description, 
                                 Date = @Date, 
-                                Id_Local = @Id_Local, 
-                                Status = @Status, 
-                                Updated_At = @Updated_At 
+                                Id_event_local = @id_event_local, 
+                                is_active = @is_active
                             WHERE Id = @Id;";
 
                 using (var command = new SqliteCommand(sql, connection))
                 {
+                    if (eventsModel.id_event_local == 0)
+                    {
+                        command.Parameters.AddWithValue("@id_event_local", DBNull.Value);
+                    }
+
+                    else
+                    {
+                        command.Parameters.AddWithValue("@id_event_local", eventsModel.id_event_local);
+                    }
+
                     command.Parameters.AddWithValue("@Id", eventsModel.id);
                     command.Parameters.AddWithValue("@Name", eventsModel.name);
-                    command.Parameters.AddWithValue("@Description", eventsModel.description ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("@Date", eventsModel.date);
-                    command.Parameters.AddWithValue("@Id_Local", eventsModel.id_local);
-                    command.Parameters.AddWithValue("@Status", eventsModel.status);
-                    command.Parameters.AddWithValue("@Updated_At", eventsModel.updated_at);
+                    command.Parameters.AddWithValue("@is_active", eventsModel.is_active);
                     command.ExecuteNonQuery();
                 }
             }
@@ -73,79 +85,49 @@ namespace projeto_ludico.Repository
             }
         }
 
-        public DataTable GetAllEvents()
+        public EventsModel GetEventsById(int id)
         {
-            using (var connection = DatabaseConnection.GetConnection())
+            EventsModel eventsModel = new EventsModel();
+
+            try
             {
-                string sql = @"SELECT e.*, l.Name as Local_Name 
-                            FROM events e 
-                            LEFT JOIN events_local l ON e.Id_Local = l.Id 
-                            ORDER BY e.Date DESC;";
-
-                using (var command = new SqliteCommand(sql, connection))
+                using (var connection = DatabaseConnection.GetConnection())
                 {
-                    using (var adapter = new SqliteDataAdapter(command))
-                    {
-                        var table = new DataTable();
-                        adapter.Fill(table);
-                        return table;
-                    }
-                }
-            }
-        }
+                    string sql = @"SELECT id, name, date, is_active, id_event_local 
+                           FROM events 
+                           WHERE id = @Id;";
 
-        public DataTable SearchEvents(string searchTerm)
-        {
-            using (var connection = DatabaseConnection.GetConnection())
-            {
-                string sql = @"SELECT e.*, l.Name as Local_Name 
-                            FROM events e 
-                            LEFT JOIN events_local l ON e.Id_Local = l.Id 
-                            WHERE e.Name LIKE @SearchTerm 
-                               OR e.Description LIKE @SearchTerm 
-                            ORDER BY e.Date DESC;";
-
-                using (var command = new SqliteCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@SearchTerm", $"%{searchTerm}%");
-                    using (var adapter = new SqliteDataAdapter(command))
+                    using (var command = new SqliteCommand(sql, connection))
                     {
-                        var table = new DataTable();
-                        adapter.Fill(table);
-                        return table;
-                    }
-                }
-            }
-        }
+                        // Adiciona o parâmetro do ID
+                        command.Parameters.AddWithValue("@Id", id);
 
-        public EventsModel GetEventById(int id)
-        {
-            using (var connection = DatabaseConnection.GetConnection())
-            {
-                string sql = "SELECT * FROM events WHERE Id = @Id;";
-                using (var command = new SqliteCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@Id", id);
-                    using (var reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
+                        using (var reader = command.ExecuteReader())
                         {
-                            return new EventsModel
+                            if (reader.Read())
                             {
-                                id = reader.GetInt32(reader.GetOrdinal("Id")),
-                                name = reader.GetString(reader.GetOrdinal("Name")),
-                                description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
-                                date = reader.GetDateTime(reader.GetOrdinal("Date")),
-                                id_local = reader.GetInt32(reader.GetOrdinal("Id_Local")),
-                                status = reader.GetString(reader.GetOrdinal("Status")),
-                                created_at = reader.GetDateTime(reader.GetOrdinal("Created_At")),
-                                updated_at = reader.IsDBNull(reader.GetOrdinal("Updated_At")) ? null : (DateTime?)reader.GetDateTime(reader.GetOrdinal("Updated_At"))
-                            };
+                                eventsModel = new EventsModel
+                                {
+                                    id = reader.GetInt32(reader.GetOrdinal("id")),
+                                    name = reader.GetString(reader.GetOrdinal("name")),
+                                    date = reader.GetDateTime(reader.GetOrdinal("date")),
+                                    is_active = reader.IsDBNull(reader.GetOrdinal("is_active")) ? false : reader.GetBoolean(reader.GetOrdinal("is_active")),
+                                    id_event_local = reader.IsDBNull(reader.GetOrdinal("id_event_local")) ? 0 : reader.GetInt32(reader.GetOrdinal("id_event_local"))
+                                };
+                            }
                         }
-                        return null;
                     }
                 }
             }
+
+            catch (Exception ex)
+            {
+                // Lidar com exceções relacionadas ao banco de dados ou outras
+                throw new InvalidOperationException("Erro ao buscar evento no banco de dados.", ex);
+            }
+
+            return eventsModel;
         }
+
     }
 } 

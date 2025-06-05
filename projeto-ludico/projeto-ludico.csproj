@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\InstitutionController.cs" />
     <Compile Include="Controllers\BoardGamesController.cs" />
     <Compile Include="Controllers\ListController.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Models\ParticipantsModel.cs" />
     <Compile Include="Models\PlacesModel.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="Repository\EventsRepository.cs" />
     <Compile Include="Repository\InstitutionRepository.cs" />
     <Compile Include="Repository\BoardGamesRepository.cs" />
     <Compile Include="Repository\ListRepository.cs" />
@@ -108,6 +110,25 @@
     <Compile Include="View\BoardGamesForms\BoardGamesEdit.Designer.cs">
       <DependentUpon>BoardGamesEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EventsForms\Events.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EventsForms\Events.Designer.cs">
+      <DependentUpon>Events.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsEdit.Designer.cs">
+      <DependentUpon>EventsEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsCreate.Designer.cs">
+      <DependentUpon>EventsCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsDelete.cs" />
     <Compile Include="View\InstitutionsForms\Institutions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +239,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\BoardGamesForms\BoardGamesEdit.resx">
       <DependentUpon>BoardGamesEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EventsForms\Events.resx">
+      <DependentUpon>Events.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EventsForms\EventsEdit.resx">
+      <DependentUpon>EventsEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EventsForms\EventsCreate.resx">
+      <DependentUpon>EventsCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\InstitutionsForms\Institutions.resx">
       <DependentUpon>Institutions.cs</DependentUpon>

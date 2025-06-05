@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using projeto_ludico.View;
 using projeto_ludico.View.BoardGamesForms;
+using projeto_ludico.View.EventsForms;
 using projeto_ludico.View.InstitutionsForms;
 using projeto_ludico.View.ListForms;
 using projeto_ludico.View.ParticipantsForms;
@@ -59,6 +60,11 @@ namespace projeto_ludico
         private void listaDeJogosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             loadScreen<List>();
+        }
+
+        private void eventosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadScreen<Events>();
         }
     }
 }

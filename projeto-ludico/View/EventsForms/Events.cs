@@ -1,122 +1,116 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using projeto_ludico.Controllers;
+using projeto_ludico.Service;
 using projeto_ludico.Utils;
+using projeto_ludico.View.BoardGamesForms;
+using projeto_ludico.View.Institutions;
+using projeto_ludico.View.InstitutionsForms;
+using projeto_ludico.View.ListForms;
 
 namespace projeto_ludico.View.EventsForms
 {
-    public partial class Events : Form
+    public partial class Events : BaseForm
     {
-        private EventsController _controller;
-        private DataTableStructure _dataTableStructure;
-        private ButtonsDataGridView _buttonsDataGridView;
-
         public Events()
         {
             InitializeComponent();
-            _controller = new EventsController();
-            ConfigureDataGridView();
-            LoadEvents();
+            ConfigureEventsViewer();
         }
 
-        private void ConfigureDataGridView()
+        private void ConfigureEventsViewer()
         {
-            _dataTableStructure = new DataTableStructure();
-            _buttonsDataGridView = new ButtonsDataGridView();
+            string[] desiredColumns = {
+                "events.id", "events.name", "events.date",
+                "events_local.name AS events_local", "events_local.id AS events_local_id"
+            };
 
-            // Configurar colunas
-            _dataTableStructure.ConfigureColumns(dataGridViewEvents, new[]
+            var columnMappings = new Dictionary<string, string>
             {
-                new DataColumn("Id", typeof(int)),
-                new DataColumn("Nome", typeof(string)),
-                new DataColumn("Descrição", typeof(string)),
-                new DataColumn("Data", typeof(DateTime)),
-                new DataColumn("Local", typeof(string)),
-                new DataColumn("Status", typeof(string))
-            });
+                { "name", "Nome" },
+                { "date", "Data" },
+                { "events_local", "Local do Evento" }
+            };
 
-            // Adicionar botões de ação
-            _buttonsDataGridView.AddButton(dataGridViewEvents, "Gerenciar", "btnManage");
-            _buttonsDataGridView.AddButton(dataGridViewEvents, "Editar", "btnEdit");
-            _buttonsDataGridView.AddButton(dataGridViewEvents, "Excluir", "btnDelete");
+            string[] searchableColumns = { "events.name" }; 
+
+            string joinClause = "LEFT JOIN events_local ON (events_local.id = events.id_event_local)";
+
+            //A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário
+            //Passamos o true para dizer que iremos adicionar o botão "Gerenciar" na linha
+            ConfigureDataViewer(dataViewer, "events", desiredColumns, columnMappings, joinClause, true);
+
+            OccultColumns(dataViewer, "id", "events_local_id");
         }
 
-        private void LoadEvents()
+
+        private void PerformSearch(string searchString)
         {
-            try
+            string[] desiredColumns = {
+                "events.id", "events.name", "events.date",
+                "events_local.name AS events_local", "events_local.id AS events_local_id"
+            };
+
+            var columnMappings = new Dictionary<string, string>
             {
-                var events = _controller.GetAllEvents();
-                dataGridViewEvents.DataSource = events;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao carregar eventos: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                { "name", "Nome" },
+                { "date", "Data" },
+                { "events_local", "Local do Evento" }
+            };
+
+            string[] searchableColumns = { "events.name" };  // Colunas usadas na busca
+
+            string joinClause = "LEFT JOIN events_local ON (events_local.id = events.id_event_local)";
+
+            //A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário
+            //Passamos o true para dizer que iremos adicionar o botão "Gerenciar" na linha
+            OccultColumns(dataViewer, "id", "events_local_id");
+
+            // A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário
+            //Passamos o null no final pois não temos nenhum JOIN a ser retornado na tabela
+            ConfigureSearchDataViewer(dataViewer, searchString, "events", desiredColumns, columnMappings, searchableColumns, joinClause);
+
+            // Oculta as colunas especificadas
+            OccultColumns(dataViewer, "id");
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchString = boxSearch.Text.Trim();
+            PerformSearch(searchString);
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            var createForm = new EventsCreate();
-            createForm.EventRegistered += (s, args) =>
-            {
-                LoadEvents();
-                createForm.Close();
-            };
-            createForm.Show();
+            EventsCreate eventsCreate = new EventsCreate();
+            eventsCreate.Show();
         }
 
-        private void dataGridViewEvents_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DataViewer_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            DataGridViewRow row = dataViewer.Rows[e.RowIndex];
 
-            var id = Convert.ToInt32(dataGridViewEvents.Rows[e.RowIndex].Cells["Id"].Value);
+            if (dataViewer.Columns[e.ColumnIndex].Name == "btnEdit")
+            {
+                EventsEdit eventsEdit = new EventsEdit(row);
+                eventsEdit.Show();
+            }
 
-            if (e.ColumnIndex == dataGridViewEvents.Columns["btnManage"].Index)
+            else if (dataViewer.Columns[e.ColumnIndex].Name == "btnDelete")
             {
-                // Implementar gerenciamento do evento
-                MessageBox.Show("Funcionalidade de gerenciamento em desenvolvimento", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                EventDelete eventDelete = new EventDelete();
+                eventDelete.DeleteEvent(row);
             }
-            else if (e.ColumnIndex == dataGridViewEvents.Columns["btnEdit"].Index)
+
+            else if (dataViewer.Columns[e.ColumnIndex].Name == "btnManagement")
             {
-                var editForm = new EventsEdit(id);
-                editForm.EventUpdated += (s, args) =>
-                {
-                    LoadEvents();
-                    editForm.Close();
-                };
-                editForm.Show();
-            }
-            else if (e.ColumnIndex == dataGridViewEvents.Columns["btnDelete"].Index)
-            {
-                if (MessageBox.Show("Deseja realmente excluir este evento?", "Confirmação",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    try
-                    {
-                        _controller.DeleteEvent(id);
-                        LoadEvents();
-                        MessageBox.Show("Evento excluído com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Erro ao excluir evento: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
+                //EventDelete eventDelete = new EventDelete();
+                //eventDelete.DeleteEvent(row);
             }
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                var searchResults = _controller.SearchEvents(txtSearch.Text);
-                dataGridViewEvents.DataSource = searchResults;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao pesquisar eventos: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+
     }
 } 

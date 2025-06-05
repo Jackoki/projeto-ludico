@@ -23,7 +23,8 @@ namespace projeto_ludico.View.ListForms
                 { "name", "Nome da Lista" },
             };
 
-            ConfigureDataViewer(dataViewer, "lists", desiredColumns, columnMappings, null);
+            //Passamos o false para dizer que não iremos adicionar o botão "Gerenciar" na linha
+            ConfigureDataViewer(dataViewer, "lists", desiredColumns, columnMappings, null, false);
             OccultColumns(dataViewer, "id");
 
             if (!dataViewer.Columns.Contains("btnManage"))

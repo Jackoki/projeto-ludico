@@ -38,7 +38,7 @@ namespace projeto_ludico.View.BoardGamesForms
 
             string joinClause = "LEFT JOIN board_games_names ON (board_games_names.id_board_game = board_games.id AND board_games_names.is_principal = 1)";
 
-            ConfigureDataViewer(dataViewer, "board_games", desiredColumns, columnMappings, joinClause);
+            ConfigureDataViewer(dataViewer, "board_games", desiredColumns, columnMappings, joinClause, false);
 
 
             // Oculta as colunas especificadas

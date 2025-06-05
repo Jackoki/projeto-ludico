@@ -28,7 +28,7 @@ namespace projeto_ludico.View.PlacesForms
                 { "name", "Nome" }
             };
 
-            ConfigureDataViewer(dataViewer, "events_local", desiredColumns, columnMappings, null);
+            ConfigureDataViewer(dataViewer, "events_local", desiredColumns, columnMappings, null, false);
             OccultColumns(dataViewer, "id");
         }
 
