@@ -41,5 +41,25 @@ namespace projeto_ludico.Utils
             btnManagement.UseColumnTextForButtonValue = true;
             return btnManagement;
         }
+
+        public DataGridViewButtonColumn GetAddButton()
+        {
+            DataGridViewButtonColumn btnManagement = new DataGridViewButtonColumn();
+            btnManagement.HeaderText = "";
+            btnManagement.Name = "btnAdd";
+            btnManagement.Text = "Adicionar";
+            btnManagement.UseColumnTextForButtonValue = true;
+            return btnManagement;
+        }
+
+        public DataGridViewButtonColumn GetRemoveButton()
+        {
+            DataGridViewButtonColumn btnRemove = new DataGridViewButtonColumn();
+            btnRemove.HeaderText = "";
+            btnRemove.Name = "btnRemove";
+            btnRemove.Text = "Remover";
+            btnRemove.UseColumnTextForButtonValue = true;
+            return btnRemove;
+        }
     }
 }

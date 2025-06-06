@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListEdit));
             this.btnEdit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBoxName = new System.Windows.Forms.TextBox();
@@ -35,7 +36,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(271, 102);
+            this.btnEdit.Location = new System.Drawing.Point(271, 71);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 6;
@@ -56,19 +57,22 @@
             // 
             this.txtBoxName.Location = new System.Drawing.Point(15, 25);
             this.txtBoxName.Name = "txtBoxName";
-            this.txtBoxName.Size = new System.Drawing.Size(191, 20);
+            this.txtBoxName.Size = new System.Drawing.Size(331, 20);
             this.txtBoxName.TabIndex = 8;
             // 
             // ListEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 137);
+            this.ClientSize = new System.Drawing.Size(358, 110);
             this.Controls.Add(this.txtBoxName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEdit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "ListEdit";
-            this.Text = "ListEdit";
+            this.Text = "Sistema - Lúdico UTFPR";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -53,7 +53,7 @@ namespace projeto_ludico.View.BoardGamesForms
                 "board_games.id", "board_games_names.name"
             };
 
-            string[] searchableColumns = { "board_games_names.name"};  // Colunas usadas na busca
+            string[] searchableColumns = { "board_games_names.name", "board_games_bar_codes.bar_code"};  // Colunas usadas na busca
 
             var columnMappings = new Dictionary<string, string>
             {
@@ -61,7 +61,9 @@ namespace projeto_ludico.View.BoardGamesForms
                 { "name", "Nome" }
             };
 
-            string joinClause = "LEFT JOIN board_games_names ON (board_games_names.id_board_game = board_games.id AND board_games_names.is_principal = 1)";
+            string joinClause = "LEFT JOIN board_games_names ON (board_games_names.id_board_game = board_games.id AND board_games_names.is_principal = 1) " +
+                                "LEFT JOIN board_games_bar_codes ON (board_games_bar_codes.id_board_game = board_games.id)";
+
 
 
             // A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário

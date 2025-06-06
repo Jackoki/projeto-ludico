@@ -10,68 +10,8 @@ using System.Windows.Forms;
 
 namespace projeto_ludico.Repository
 {
-    internal class ListRepository
+    internal class ListGamesRepository
     {
-        public void CreateList(ListModel listModel)
-        {
-            using (var connection = DatabaseConnection.GetConnection())
-            {
-                string sql;
-                SqliteCommand command;
-
-                sql = "INSERT INTO lists (name, id_event) VALUES (@name, @id_event);";
-                command = new SqliteCommand(sql, connection);
-
-                if (listModel.id_event == 0)
-                {
-                    command.Parameters.AddWithValue("@id_event", DBNull.Value);
-                }
-
-                else
-                {
-                    command.Parameters.AddWithValue("@id_event", listModel.id_event);
-                }
-
-                command.Parameters.AddWithValue("@name", listModel.name);
-
-                command.ExecuteNonQuery();
-            }
-        }
-
-        public void UpdateList(ListModel listModel)
-        {
-            using (var connection = DatabaseConnection.GetConnection())
-            {
-                string sql = "UPDATE lists SET name = @Name WHERE id = @Id;";
-                using (var command = new SqliteCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@Name", listModel.name);
-                    command.Parameters.AddWithValue("@Id", listModel.id);
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-
-        public void DeleteList(int id)
-        {
-            using (var connection = DatabaseConnection.GetConnection())
-            {
-                string deleteGamesSql = "DELETE FROM board_games_list WHERE id_list = @id;";
-                using (var deleteDependentsCommand = new SqliteCommand(deleteGamesSql, connection))
-                {
-                    deleteDependentsCommand.Parameters.AddWithValue("@id", id);
-                    deleteDependentsCommand.ExecuteNonQuery();
-                }
-
-                string deleteListSql = "DELETE FROM lists WHERE id = @id;";
-                using (var deleteListCommand = new SqliteCommand(deleteListSql, connection))
-                {
-                    deleteListCommand.Parameters.AddWithValue("@id", id);
-                    deleteListCommand.ExecuteNonQuery();
-                }
-            }
-        }
-
         public void AddGameToList(int id_list, int id_board_game)
         {
             
@@ -89,7 +29,7 @@ namespace projeto_ludico.Repository
                     if (count > 0)
                     {
                         MessageBox.Show("Este jogo já está na lista.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return; // Para aqui, não insere
+                        return;
                     }
                 }
 

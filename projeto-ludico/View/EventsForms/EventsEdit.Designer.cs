@@ -164,7 +164,7 @@ namespace projeto_ludico.View.EventsForms
             this.MaximizeBox = false;
             this.Name = "EventsEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Novo Evento";
+            this.Text = "Editar Evento";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

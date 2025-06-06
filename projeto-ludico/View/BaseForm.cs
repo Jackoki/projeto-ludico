@@ -18,6 +18,14 @@ namespace projeto_ludico.View
             AddActionButtonsToViewer(dataViewer, hasManagementButton);
         }
 
+        //Função utilizada para chamar o GetDataForViewer e mas sem a adição dos botões
+        protected void ConfigureDataViewerWithoutButtons(DataGridView dataViewer, string tableName, string[] desiredColumns, Dictionary<string, string> columnMappings, string joinClause)
+        {
+            //Chamada da função que realiza a pesquisa da tabela do SQLite e posteriormente nomeação das colunas da tabela
+            var tableData = GetDataForViewer(tableName, desiredColumns, columnMappings, joinClause);
+            dataViewer.DataSource = tableData;
+        }
+
         protected DataTable GetDataForViewer(string tableName, string[] desiredColumns, Dictionary<string, string> columnMappings, string joinClause) {
             //Realiza a função de pesquisa do nome da tabela e a nomeação das colunas da classe DataTableStructure
             var tableStructure = new DataTableStructure();

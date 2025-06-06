@@ -36,9 +36,6 @@ namespace projeto_ludico.View.ListForms
 
             ListController listController = new ListController();
             listController.EditList(listModel);
-
-            MessageBox.Show("Lista atualizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close(); // Fecha o formulário de edição
         }
     }
 }
