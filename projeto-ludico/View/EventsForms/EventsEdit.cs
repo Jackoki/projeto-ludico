@@ -8,96 +8,56 @@ namespace projeto_ludico.View.EventsForms
 {
     public partial class EventsEdit : Form
     {
-        public event EventHandler EventUpdated;
-        private EventsController _controller;
-        private int _eventId;
-        private EventsModel _currentEvent;
+        EventsModel eventsModel = new EventsModel();
+        EventsController eventsController = new EventsController();
 
-        public EventsEdit(int eventId)
+        public EventsEdit(DataGridViewRow row)
         {
             InitializeComponent();
-            _controller = new EventsController();
-            _eventId = eventId;
             LoadLocals();
-            LoadEventData();
-            ConfigureDatePicker();
+            loadBoardGames(row);
+        }
+
+        private void loadBoardGames(DataGridViewRow row)
+        {
+            if (row.Cells["id"].Value != null && int.TryParse(row.Cells["id"].Value.ToString(), out int id))
+            {
+                eventsModel.id = id;
+            }
+
+            eventsModel = eventsController.GetEventsById(eventsModel.id);
+
+            txtBoxName.Text = eventsModel.name;
+            datePickerEvent.Value = eventsModel.date;
+            checkBoxActive.Checked = eventsModel.is_active;
+            comboBoxLocal.SelectedValue = eventsModel.id_event_local;
         }
 
         private void LoadLocals()
         {
+            datePickerEvent.Format = DateTimePickerFormat.Custom;
+            datePickerEvent.CustomFormat = "dd/MM/yyyy HH:mm";
+
             ComboBoxLoader comboBoxLoader = new ComboBoxLoader();
             comboBoxLoader.LoadComboBox(comboBoxLocal, "events_local", "Id", "Name");
-        }
-
-        private void LoadEventData()
-        {
-            try
-            {
-                _currentEvent = _controller.GetEventById(_eventId);
-                if (_currentEvent != null)
-                {
-                    txtBoxName.Text = _currentEvent.name;
-                    txtBoxDescription.Text = _currentEvent.description;
-                    datePickerEvent.Value = _currentEvent.date;
-                    comboBoxLocal.SelectedValue = _currentEvent.id_local;
-                }
-                else
-                {
-                    MessageBox.Show("Evento não encontrado!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao carregar dados do evento: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Close();
-            }
-        }
-
-        private void ConfigureDatePicker()
-        {
-            datePickerEvent.MinDate = DateTime.Now;
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(txtBoxName.Text))
-                {
-                    MessageBox.Show("Nome do evento é obrigatório!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (comboBoxLocal.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Selecione um local para o evento!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                _currentEvent.name = txtBoxName.Text;
-                _currentEvent.description = txtBoxDescription.Text;
-                _currentEvent.date = datePickerEvent.Value;
-                _currentEvent.id_local = Convert.ToInt32(comboBoxLocal.SelectedValue);
-
-                _controller.UpdateEvent(_currentEvent);
-                MessageBox.Show("Evento atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                OnEventUpdated();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao atualizar evento: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        protected virtual void OnEventUpdated()
-        {
-            EventUpdated?.Invoke(this, EventArgs.Empty);
+            comboBoxLocal.SelectedIndex = -1;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            eventsModel.id = eventsModel.id;
+            eventsModel.name = txtBoxName.Text;
+            eventsModel.date = datePickerEvent.Value;
+            eventsModel.id_event_local = comboBoxLocal.SelectedValue != null ? Convert.ToInt32(comboBoxLocal.SelectedValue) : 0;
+            eventsModel.is_active = checkBoxActive.Checked;
+
+            EventsController eventController = new EventsController();
+            eventController.UpdateEvent(eventsModel);
         }
     }
 } 

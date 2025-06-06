@@ -8,8 +8,8 @@ namespace projeto_ludico.View.EventsForms
 {
     public partial class EventsCreate : Form
     {
-        public event EventHandler EventRegistered;
         private EventsController _controller;
+        EventsModel eventsModel = new EventsModel();
 
         public EventsCreate()
         {
@@ -28,47 +28,19 @@ namespace projeto_ludico.View.EventsForms
 
         private void ConfigureDatePicker()
         {
-            datePickerEvent.MinDate = DateTime.Now;
-            datePickerEvent.Value = DateTime.Now;
+            datePickerEvent.Format = DateTimePickerFormat.Custom;
+            datePickerEvent.CustomFormat = "dd/MM/yyyy HH:mm";
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(txtBoxName.Text))
-                {
-                    MessageBox.Show("Nome do evento é obrigatório!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+            eventsModel.name = txtBoxName.Text;
+            eventsModel.date = datePickerEvent.Value;
+            eventsModel.id_event_local = comboBoxLocal.SelectedValue != null ? Convert.ToInt32(comboBoxLocal.SelectedValue) : 0;
+            eventsModel.is_active = checkBoxActive.Checked;
 
-                if (comboBoxLocal.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Selecione um local para o evento!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                var eventModel = new EventsModel
-                {
-                    name = txtBoxName.Text,
-                    description = txtBoxDescription.Text,
-                    date = datePickerEvent.Value,
-                    id_local = Convert.ToInt32(comboBoxLocal.SelectedValue)
-                };
-
-                _controller.CreateEvent(eventModel);
-                MessageBox.Show("Evento registrado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                OnEventRegistered();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao registrar evento: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        protected virtual void OnEventRegistered()
-        {
-            EventRegistered?.Invoke(this, EventArgs.Empty);
+            EventsController eventController = new EventsController();
+            eventController.CreateEvent(eventsModel);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

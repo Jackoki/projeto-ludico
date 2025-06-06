@@ -1,6 +1,10 @@
 using projeto_ludico.Models;
+using projeto_ludico.Repository;
+using projeto_ludico.Utils;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Windows.Forms;
 
 namespace projeto_ludico.Controllers
 {
@@ -15,58 +19,130 @@ namespace projeto_ludico.Controllers
 
         public void CreateEvent(EventsModel eventsModel)
         {
-            if (string.IsNullOrEmpty(eventsModel.name))
-                throw new ArgumentException("Nome do evento é obrigatório.");
+            try
+            {
+                //Chamada da classe ValidationUtil para validar os tipos de dados
+                if (!ValidationUtils.IsValidName(eventsModel.name))
+                {
+                    throw new ArgumentException("Nome não pode ser vazio.");
+                }
 
-            if (eventsModel.date < DateTime.Now)
-                throw new ArgumentException("Data do evento deve ser futura.");
 
-            if (eventsModel.id_local <= 0)
-                throw new ArgumentException("Local do evento é obrigatório.");
+                _repository.AddEvent(eventsModel);
+                MessageBox.Show("Registro bem-sucedido!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
-            eventsModel.created_at = DateTime.Now;
-            eventsModel.status = "Ativo";
+
+            catch (ArgumentException ex)
+            {
+                // Captura a exceção de ArgumentException (campo de texto vazio) e exibe uma mensagem
+                MessageBox.Show(ex.Message, "Falha na criação do evento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Erro na operação do banco de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            catch (Exception ex)
+            {
+                // Captura qualquer outra exceção que não tenha sido tratada acima
+                MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             
-            _repository.AddEvent(eventsModel);
         }
 
         public void UpdateEvent(EventsModel eventsModel)
         {
-            if (string.IsNullOrEmpty(eventsModel.name))
-                throw new ArgumentException("Nome do evento é obrigatório.");
+            try
+            {
+                //Chamada da classe ValidationUtil para validar os tipos de dados
+                if (!ValidationUtils.IsValidName(eventsModel.name))
+                {
+                    throw new ArgumentException("Nome não pode ser vazio.");
+                }
 
-            if (eventsModel.date < DateTime.Now)
-                throw new ArgumentException("Data do evento deve ser futura.");
 
-            if (eventsModel.id_local <= 0)
-                throw new ArgumentException("Local do evento é obrigatório.");
+                _repository.UpdateEvent(eventsModel);
+                MessageBox.Show("Evento alterado!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
-            eventsModel.updated_at = DateTime.Now;
-            
-            _repository.UpdateEvent(eventsModel);
+
+            catch (ArgumentException ex)
+            {
+                // Captura a exceção de ArgumentException (campo de texto vazio) e exibe uma mensagem
+                MessageBox.Show(ex.Message, "Falha na edição do evento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Erro na operação do banco de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            catch (Exception ex)
+            {
+                // Captura qualquer outra exceção que não tenha sido tratada acima
+                MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         public void DeleteEvent(int id)
         {
-            if (id <= 0)
-                throw new ArgumentException("ID do evento inválido.");
+            try
+            {
+                _repository.DeleteEvent(id);
+                MessageBox.Show("Evento deletado!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
-            _repository.DeleteEvent(id);
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Erro na operação do banco de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            catch (Exception ex)
+            {
+                // Captura qualquer outra exceção que não tenha sido tratada acima
+                MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        public DataTable GetAllEvents()
+        public EventsModel GetEventsById(int id)
         {
-            return _repository.GetAllEvents();
-        }
+            try
+            {
+                EventsModel eventsModel = new EventsModel();
 
-        public DataTable SearchEvents(string searchTerm)
-        {
-            return _repository.SearchEvents(searchTerm);
-        }
+                eventsModel = _repository.GetEventsById(id);
 
-        public EventsModel GetEventById(int id)
-        {
-            return _repository.GetEventById(id);
+                if (eventsModel == null)
+                {
+                    throw new KeyNotFoundException("Evento não encontrado.");
+                }
+
+                return eventsModel;
+            }
+
+            catch (KeyNotFoundException ex)
+            {
+                // Se não encontrar o participante
+                MessageBox.Show(ex.Message, "Falha na consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+
+            catch (InvalidOperationException ex)
+            {
+                // Erro ao realizar a operação, como problemas com o banco de dados
+                MessageBox.Show(ex.Message, "Erro na operação do banco de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
+            catch (Exception ex)
+            {
+                // Qualquer outro erro inesperado
+                MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
     }
 } 

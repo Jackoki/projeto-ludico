@@ -23,20 +23,9 @@ namespace projeto_ludico.View.ListForms
                 { "name", "Nome da Lista" },
             };
 
-            ConfigureDataViewer(dataViewer, "lists", desiredColumns, columnMappings, null);
+            //Passamos o false para dizer que não iremos adicionar o botão "Gerenciar" na linha
+            ConfigureDataViewer(dataViewer, "lists", desiredColumns, columnMappings, null, true);
             OccultColumns(dataViewer, "id");
-
-            if (!dataViewer.Columns.Contains("btnManage"))
-            {
-                DataGridViewButtonColumn btnManage = new DataGridViewButtonColumn
-                {
-                    Name = "btnManage",
-                    HeaderText = "",
-                    Text = "Gerenciar",
-                    UseColumnTextForButtonValue = true
-                };
-                dataViewer.Columns.Add(btnManage);
-            }
         }
 
         private void PerformSearch(string searchString)
@@ -69,7 +58,7 @@ namespace projeto_ludico.View.ListForms
                 ListDelete deleteForm = new ListDelete();
                 deleteForm.DeleteList(row);
             }
-            else if (dataViewer.Columns[e.ColumnIndex].Name == "btnManage")
+            else if (dataViewer.Columns[e.ColumnIndex].Name == "btnManagement")
             {
                 ListManager manageForm = new ListManager();
                 manageForm.ManageList(row);
@@ -77,16 +66,16 @@ namespace projeto_ludico.View.ListForms
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            string searchString = textBox1.Text.Trim();
-            PerformSearch(searchString);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCreate_Click(object sender, EventArgs e)
         {
             ListCreate listCreate = new ListCreate();
             listCreate.Show();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchString = txtSearch.Text.Trim();
+            PerformSearch(searchString);
         }
     }
 }

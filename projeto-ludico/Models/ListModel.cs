@@ -10,7 +10,13 @@ namespace projeto_ludico.Models
     {
         public int id { get; set; }
         public string name { get; set; }
-        public Nullable<int> id_evnt { get; set; }
+        public int id_event { get; set; }
+        public List<BoardGamesList> games { get; set; }
+
+        public ListModel()
+        {
+            games = new List<BoardGamesList>();
+        }
 
     }
 }

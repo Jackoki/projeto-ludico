@@ -14,7 +14,6 @@ namespace projeto_ludico.View.ListForms
 {
     public partial class ListCreate : Form
     {
-        public event EventHandler ListRegistered;
         public ListCreate()
         {
             InitializeComponent();
@@ -25,17 +24,11 @@ namespace projeto_ludico.View.ListForms
             // Cria o modelo com os dados do formulário
             ListModel listModel = new ListModel();
             listModel.name = txtBoxName.Text;
+            listModel.id_event = 0;
 
             // Chama o controller para salvar no banco
             ListController listController = new ListController();
-            listController.CreateList(listModel.name, listModel.id_evnt);
-
-            // Dispara o evento
-            OnListRegistered();
-        }
-        protected virtual void OnListRegistered()
-        {
-            ListRegistered?.Invoke(this, EventArgs.Empty);
+            listController.CreateList(listModel);
         }
     }
 }

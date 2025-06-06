@@ -41,6 +41,7 @@
             this.listaDeJogosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rpgMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.escapeRoomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +73,7 @@
             this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
             this.eventosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eventosToolStripMenuItem.Text = "Eventos";
+            this.eventosToolStripMenuItem.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
             // 
             // locaisToolStripMenuItem
             // 
@@ -117,16 +119,9 @@
             // 
             this.jogosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.jogosToolStripMenuItem.Name = "jogosToolStripMenuItem";
-            this.jogosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.jogosToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.jogosToolStripMenuItem.Text = "Jogos";
             this.jogosToolStripMenuItem.Click += new System.EventHandler(this.jogosToolStripMenuItem_Click);
-            // 
-            // listaDeJogosToolStripMenuItem
-            // 
-            this.listaDeJogosToolStripMenuItem.Name = "listaDeJogosToolStripMenuItem";
-            this.listaDeJogosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.listaDeJogosToolStripMenuItem.Text = "Lista de Jogos";
-            this.listaDeJogosToolStripMenuItem.Click += new System.EventHandler(this.listaDeJogosToolStripMenuItem_Click);
             // 
             // rpgMenuItem
             // 
@@ -134,11 +129,12 @@
             this.rpgMenuItem.Size = new System.Drawing.Size(41, 20);
             this.rpgMenuItem.Text = "RPG";
             // 
-            // escapeRoomsToolStripMenuItem
+            // listaDeJogosToolStripMenuItem
             // 
-            this.escapeRoomsToolStripMenuItem.Name = "escapeRoomsToolStripMenuItem";
-            this.escapeRoomsToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.escapeRoomsToolStripMenuItem.Text = "Escape Rooms";
+            this.listaDeJogosToolStripMenuItem.Name = "listaDeJogosToolStripMenuItem";
+            this.listaDeJogosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listaDeJogosToolStripMenuItem.Text = "Lista de Jogos";
+            this.listaDeJogosToolStripMenuItem.Click += new System.EventHandler(this.listaDeJogosToolStripMenuItem_Click);
             // 
             // Home
             // 

@@ -28,29 +28,29 @@ namespace projeto_ludico.View.EventsForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EventsCreate));
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.txtBoxName = new System.Windows.Forms.TextBox();
-            this.lblDescription = new System.Windows.Forms.Label();
-            this.txtBoxDescription = new System.Windows.Forms.TextBox();
             this.lblDate = new System.Windows.Forms.Label();
             this.datePickerEvent = new System.Windows.Forms.DateTimePicker();
             this.lblLocal = new System.Windows.Forms.Label();
             this.comboBoxLocal = new System.Windows.Forms.ComboBox();
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.checkBoxActive = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
+            this.panel1.BackColor = System.Drawing.Color.Gray;
             this.panel1.Controls.Add(this.lblTitle);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(484, 60);
+            this.panel1.Size = new System.Drawing.Size(588, 60);
             this.panel1.TabIndex = 0;
             // 
             // lblTitle
@@ -60,7 +60,7 @@ namespace projeto_ludico.View.EventsForms
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(12, 18);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(144, 25);
+            this.lblTitle.Size = new System.Drawing.Size(146, 25);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Novo Evento";
             // 
@@ -77,30 +77,13 @@ namespace projeto_ludico.View.EventsForms
             // 
             this.txtBoxName.Location = new System.Drawing.Point(12, 96);
             this.txtBoxName.Name = "txtBoxName";
-            this.txtBoxName.Size = new System.Drawing.Size(460, 20);
+            this.txtBoxName.Size = new System.Drawing.Size(551, 20);
             this.txtBoxName.TabIndex = 2;
-            // 
-            // lblDescription
-            // 
-            this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(12, 128);
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(58, 13);
-            this.lblDescription.TabIndex = 3;
-            this.lblDescription.Text = "Descrição:";
-            // 
-            // txtBoxDescription
-            // 
-            this.txtBoxDescription.Location = new System.Drawing.Point(12, 144);
-            this.txtBoxDescription.Multiline = true;
-            this.txtBoxDescription.Name = "txtBoxDescription";
-            this.txtBoxDescription.Size = new System.Drawing.Size(460, 100);
-            this.txtBoxDescription.TabIndex = 4;
             // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(12, 256);
+            this.lblDate.Location = new System.Drawing.Point(12, 135);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(33, 13);
             this.lblDate.TabIndex = 5;
@@ -108,15 +91,15 @@ namespace projeto_ludico.View.EventsForms
             // 
             // datePickerEvent
             // 
-            this.datePickerEvent.Location = new System.Drawing.Point(12, 272);
+            this.datePickerEvent.Location = new System.Drawing.Point(12, 151);
             this.datePickerEvent.Name = "datePickerEvent";
-            this.datePickerEvent.Size = new System.Drawing.Size(200, 20);
+            this.datePickerEvent.Size = new System.Drawing.Size(331, 20);
             this.datePickerEvent.TabIndex = 6;
             // 
             // lblLocal
             // 
             this.lblLocal.AutoSize = true;
-            this.lblLocal.Location = new System.Drawing.Point(272, 256);
+            this.lblLocal.Location = new System.Drawing.Point(369, 134);
             this.lblLocal.Name = "lblLocal";
             this.lblLocal.Size = new System.Drawing.Size(36, 13);
             this.lblLocal.TabIndex = 7;
@@ -126,14 +109,14 @@ namespace projeto_ludico.View.EventsForms
             // 
             this.comboBoxLocal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxLocal.FormattingEnabled = true;
-            this.comboBoxLocal.Location = new System.Drawing.Point(272, 272);
+            this.comboBoxLocal.Location = new System.Drawing.Point(363, 150);
             this.comboBoxLocal.Name = "comboBoxLocal";
             this.comboBoxLocal.Size = new System.Drawing.Size(200, 21);
             this.comboBoxLocal.TabIndex = 8;
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(316, 315);
+            this.btnRegister.Location = new System.Drawing.Point(407, 193);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(75, 23);
             this.btnRegister.TabIndex = 9;
@@ -143,7 +126,7 @@ namespace projeto_ludico.View.EventsForms
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(397, 315);
+            this.btnCancel.Location = new System.Drawing.Point(488, 193);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 10;
@@ -151,23 +134,33 @@ namespace projeto_ludico.View.EventsForms
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // checkBoxActive
+            // 
+            this.checkBoxActive.AutoSize = true;
+            this.checkBoxActive.Location = new System.Drawing.Point(12, 194);
+            this.checkBoxActive.Name = "checkBoxActive";
+            this.checkBoxActive.Size = new System.Drawing.Size(80, 17);
+            this.checkBoxActive.TabIndex = 11;
+            this.checkBoxActive.Text = "Está Ativo?";
+            this.checkBoxActive.UseVisualStyleBackColor = true;
+            // 
             // EventsCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 361);
+            this.ClientSize = new System.Drawing.Size(588, 239);
+            this.Controls.Add(this.checkBoxActive);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.comboBoxLocal);
             this.Controls.Add(this.lblLocal);
             this.Controls.Add(this.datePickerEvent);
             this.Controls.Add(this.lblDate);
-            this.Controls.Add(this.txtBoxDescription);
-            this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.txtBoxName);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "EventsCreate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -185,13 +178,12 @@ namespace projeto_ludico.View.EventsForms
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtBoxName;
-        private System.Windows.Forms.Label lblDescription;
-        private System.Windows.Forms.TextBox txtBoxDescription;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.DateTimePicker datePickerEvent;
         private System.Windows.Forms.Label lblLocal;
         private System.Windows.Forms.ComboBox comboBoxLocal;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.CheckBox checkBoxActive;
     }
 } 

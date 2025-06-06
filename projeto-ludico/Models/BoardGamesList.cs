@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace projeto_ludico.Models
 {
-    internal class GameList
+    public class BoardGamesList
     {
         public int id { get; set; }
         public int id_list { get; set; }

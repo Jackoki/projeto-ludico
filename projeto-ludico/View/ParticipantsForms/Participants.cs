@@ -40,7 +40,8 @@ namespace projeto_ludico.View.ParticipantsForms
 
             string joinClause = "LEFT JOIN institutions ON (participants.id_institution = institutions.id)";
 
-            ConfigureDataViewer(dataViewer, "participants", desiredColumns, columnMappings, joinClause);
+            //Passamos o false para dizer que não iremos adicionar o botão "Gerenciar" na linha
+            ConfigureDataViewer(dataViewer, "participants", desiredColumns, columnMappings, joinClause, false);
 
             OccultColumns(dataViewer, "id", "institution_id");
         }

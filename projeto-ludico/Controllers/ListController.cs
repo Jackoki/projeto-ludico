@@ -19,16 +19,18 @@ namespace projeto_ludico.Controllers
             _repository = new ListRepository();
         }
 
-        public void CreateList(string name, int? id_evnt)
+        public void CreateList(ListModel listModel)
         {
             try
             {
-                if (!ValidationUtils.IsValidName(name))
+                if (!ValidationUtils.IsValidName(listModel.name))
                     throw new ArgumentException("O nome da lista é inválido.");
 
-                _repository.CreateList(name, id_evnt);
+                _repository.CreateList(listModel);
+
                 MessageBox.Show("Lista criada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao criar lista: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -66,35 +68,12 @@ namespace projeto_ludico.Controllers
                 _repository.DeleteList(id);
                 MessageBox.Show("Lista deletada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao deletar lista: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        public void AddGame(int id_list, int id_board_game)
-        {
-            try
-            {
-                _repository.AddGameToList(id_list, id_board_game);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao adicionar jogo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public void RemoveGame(int id_list, int id_board_game)
-        {
-            try
-            {
-                _repository.RemoveGameFromList(id_list, id_board_game);
-                MessageBox.Show("Jogo removido da lista!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao remover jogo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
     }
 }

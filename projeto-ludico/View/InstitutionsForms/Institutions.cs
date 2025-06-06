@@ -26,7 +26,8 @@ namespace projeto_ludico.View.InstitutionsForms
 
             //A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário
             //Passamos o null no final pois não temos nenhum JOIN a ser retornado na tabela
-            ConfigureDataViewer(dataViewer, "institutions", desiredColumns, columnMappings, null);
+            //Passamos o false para dizer que não iremos adicionar o botão "Gerenciar" na linha
+            ConfigureDataViewer(dataViewer, "institutions", desiredColumns, columnMappings, null, false);
 
             // Oculta as colunas especificadas
             OccultColumns(dataViewer, "id");

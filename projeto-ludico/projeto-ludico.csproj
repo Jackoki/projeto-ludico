@@ -50,8 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\InstitutionController.cs" />
     <Compile Include="Controllers\BoardGamesController.cs" />
+    <Compile Include="Controllers\ListGamesController .cs" />
     <Compile Include="Controllers\ListController.cs" />
     <Compile Include="Controllers\EscapeRoomsController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
@@ -61,11 +63,10 @@
     <Compile Include="Database\Configurations\BoardGamesModelConfiguration.cs" />
     <Compile Include="Database\Configurations\BoardGamesNamesModelConfiguration.cs" />
     <Compile Include="Database\DatabaseConnection.cs" />
-    <Compile Include="Database\DatabaseHelper.cs" />
     <Compile Include="Models\BoardGamesBarCodesModel.cs" />
     <Compile Include="Models\BoardGamesNamesModel.cs" />
     <Compile Include="Models\EventsModel.cs" />
-    <Compile Include="Models\GameList.cs" />
+    <Compile Include="Models\BoardGamesList.cs" />
     <Compile Include="Models\InstitutionsModel.cs" />
     <Compile Include="Models\BoardGamesModel.cs" />
     <Compile Include="Models\ListModel.cs" />
@@ -73,8 +74,10 @@
     <Compile Include="Models\ParticipantsModel.cs" />
     <Compile Include="Models\PlacesModel.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="Repository\EventsRepository.cs" />
     <Compile Include="Repository\InstitutionRepository.cs" />
     <Compile Include="Repository\BoardGamesRepository.cs" />
+    <Compile Include="Repository\ListGamesRepository .cs" />
     <Compile Include="Repository\ListRepository.cs" />
     <Compile Include="Repository\EscapeRoomsRepository.cs" />
     <Compile Include="Repository\ParticipantRepository.cs" />
@@ -111,6 +114,25 @@
     <Compile Include="View\BoardGamesForms\BoardGamesEdit.Designer.cs">
       <DependentUpon>BoardGamesEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EventsForms\Events.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EventsForms\Events.Designer.cs">
+      <DependentUpon>Events.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsEdit.Designer.cs">
+      <DependentUpon>EventsEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsCreate.Designer.cs">
+      <DependentUpon>EventsCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsDelete.cs" />
     <Compile Include="View\EscapeRoomsForms\EscapeRooms.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,10 +198,10 @@
     <Compile Include="View\ListForms\ListEdit.Designer.cs">
       <DependentUpon>ListEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ListForms\ListManager.cs">
+    <Compile Include="View\ListForms\ListManagerForms\ListManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\ListForms\ListManager.Designer.cs">
+    <Compile Include="View\ListForms\ListManagerForms\ListManager.Designer.cs">
       <DependentUpon>ListManager.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ParticipantsForms\Participants.cs">
@@ -201,23 +223,23 @@
       <DependentUpon>ParticipantsCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ParticipantsForms\ParticipantsDelete.cs" />
-    <Compile Include="View\PlacesFroms\Places.cs">
+    <Compile Include="View\PlacesForms\Places.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\PlacesFroms\Places.Designer.cs">
+    <Compile Include="View\PlacesForms\Places.Designer.cs">
       <DependentUpon>Places.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\PlacesFroms\PlacesCreate.cs">
+    <Compile Include="View\PlacesForms\PlacesCreate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\PlacesFroms\PlacesCreate.Designer.cs">
+    <Compile Include="View\PlacesForms\PlacesCreate.Designer.cs">
       <DependentUpon>PlacesCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\PlacesFroms\PlacesDelete.cs" />
-    <Compile Include="View\PlacesFroms\PlacesEdit.cs">
+    <Compile Include="View\PlacesForms\PlacesDelete.cs" />
+    <Compile Include="View\PlacesForms\PlacesEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\PlacesFroms\PlacesEdit.Designer.cs">
+    <Compile Include="View\PlacesForms\PlacesEdit.Designer.cs">
       <DependentUpon>PlacesEdit.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -241,15 +263,6 @@
     <EmbeddedResource Include="View\BoardGamesForms\BoardGamesEdit.resx">
       <DependentUpon>BoardGamesEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\EscapeRoomsForms\EscapeRooms.resx">
-      <DependentUpon>EscapeRooms.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\EscapeRoomsForms\EscapeRoomsCreate.resx">
-      <DependentUpon>EscapeRoomsCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\EscapeRoomsForms\EscapeRoomsEdit.resx">
-      <DependentUpon>EscapeRoomsEdit.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\InstitutionsForms\Institutions.resx">
       <DependentUpon>Institutions.cs</DependentUpon>
     </EmbeddedResource>
@@ -271,7 +284,7 @@
     <EmbeddedResource Include="View\ListForms\ListEdit.resx">
       <DependentUpon>ListEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\ListForms\ListManager.resx">
+    <EmbeddedResource Include="View\ListForms\ListManagerForms\ListManager.resx">
       <DependentUpon>ListManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ParticipantsForms\Participants.resx">
@@ -283,13 +296,13 @@
     <EmbeddedResource Include="View\ParticipantsForms\ParticipantsCreate.resx">
       <DependentUpon>ParticipantsCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\PlacesFroms\Places.resx">
+    <EmbeddedResource Include="View\PlacesForms\Places.resx">
       <DependentUpon>Places.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\PlacesFroms\PlacesCreate.resx">
+    <EmbeddedResource Include="View\PlacesForms\PlacesCreate.resx">
       <DependentUpon>PlacesCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\PlacesFroms\PlacesEdit.resx">
+    <EmbeddedResource Include="View\PlacesForms\PlacesEdit.resx">
       <DependentUpon>PlacesEdit.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Database\Database.db" />

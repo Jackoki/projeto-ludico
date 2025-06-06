@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListCreate));
             this.txtBoxName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
@@ -37,7 +38,7 @@
             // 
             this.txtBoxName.Location = new System.Drawing.Point(12, 25);
             this.txtBoxName.Name = "txtBoxName";
-            this.txtBoxName.Size = new System.Drawing.Size(176, 20);
+            this.txtBoxName.Size = new System.Drawing.Size(317, 20);
             this.txtBoxName.TabIndex = 4;
             // 
             // label1
@@ -51,9 +52,9 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(276, 112);
+            this.btnRegister.Location = new System.Drawing.Point(192, 72);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(75, 23);
+            this.btnRegister.Size = new System.Drawing.Size(137, 23);
             this.btnRegister.TabIndex = 7;
             this.btnRegister.Text = "Registrar";
             this.btnRegister.UseVisualStyleBackColor = true;
@@ -63,12 +64,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 147);
+            this.ClientSize = new System.Drawing.Size(350, 116);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBoxName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ListCreate";
-            this.Text = "ListCreate";
+            this.Text = "Sistema - Lúdico UTFPR";
             this.ResumeLayout(false);
             this.PerformLayout();
 
