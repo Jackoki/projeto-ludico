@@ -129,6 +129,7 @@
             // 
             // comboBoxInstitution
             // 
+            this.comboBoxInstitution.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxInstitution.FormattingEnabled = true;
             this.comboBoxInstitution.Location = new System.Drawing.Point(15, 253);
             this.comboBoxInstitution.Name = "comboBoxInstitution";

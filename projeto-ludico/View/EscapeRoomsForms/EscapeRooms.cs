@@ -24,22 +24,21 @@ namespace projeto_ludico.View.EscapeRoomsForms
         private void ConfigureEscapeRoomsViewer()
         {
             string[] desiredColumns = { 
-                "escape_rooms.id", "escape_rooms.name", "escape_rooms.description", "escape_rooms.id_event", 
-                "event.name AS event_name", "event.id AS id_event" 
+                "escape_rooms.id", "escape_rooms.name", 
+                "events.name AS event_name" 
             };
 
             var columnMappings = new Dictionary<string, string>
             {
                 { "name", "Nome" },
-                { "description", "Descrição" },
                 { "event_name", "Evento" }
             };
 
-            string joinClause = "LEFT JOIN events ON (escape_rooms.id_event = event.id)";
+            string joinClause = "LEFT JOIN events ON (escape_rooms.id_event = events.id)";
 
-            ConfigureDataViewer(dataViewer, "escape_rooms", desiredColumns, columnMappings, joinClause);
+            ConfigureDataViewer(dataViewer, "escape_rooms", desiredColumns, columnMappings, joinClause, true);
 
-            OccultColumns(dataViewer, "id", "id_event");
+            OccultColumns(dataViewer, "id");
         }
 
         //Função responsável para realizar a atualização de pesquisa quando o usuário realizar a pesquisa no formulário
@@ -47,8 +46,8 @@ namespace projeto_ludico.View.EscapeRoomsForms
         {
             // Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite
             string[] desiredColumns = {
-                "escape_rooms.id", "escape_rooms.name", "escape_rooms.description", "escape_rooms.id_event",
-                "event.name AS event_name", "event.id AS id_event"
+                "escape_rooms.id", "escape_rooms.name",
+                "events.name AS event_name"
             };
 
             string[] searchableColumns = { "escape_rooms.name" };  // Colunas usadas na busca
@@ -56,18 +55,17 @@ namespace projeto_ludico.View.EscapeRoomsForms
             var columnMappings = new Dictionary<string, string>
             {
                 { "name", "Nome" },
-                { "description", "Descrição" },
                 { "event_name", "Evento" }
             };
 
-            string joinClause = "LEFT JOIN events ON (escape_rooms.id_event = event.id)";
+            string joinClause = "LEFT JOIN events ON (escape_rooms.id_event = events.id)";
 
             // A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário
             //Passamos o null no final pois não temos nenhum JOIN a ser retornado na tabela
             ConfigureSearchDataViewer(dataViewer, searchString, "escape_rooms", desiredColumns, columnMappings, searchableColumns, joinClause);
 
             // Oculta as colunas especificadas
-            OccultColumns(dataViewer, "id", "id_event");
+            OccultColumns(dataViewer, "id");
         }
 
         private void btnSearch_Click(object sender, EventArgs e) {

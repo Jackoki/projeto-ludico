@@ -49,7 +49,7 @@ namespace projeto_ludico.Repository
                 string sql = @"UPDATE escape_rooms 
                        SET id_event = @Id_Event, 
                            Name = @Name, 
-                           Description = @Description, 
+                           Description = @Description
                        WHERE id = @Id;";
 
                 using (var command = new SqliteCommand(sql, connection))
@@ -58,12 +58,6 @@ namespace projeto_ludico.Repository
                     command.Parameters.AddWithValue("@Description", DbNullUtil.GetDBNullIfEmpty(escapeRoomsModel.description));
                     command.Parameters.AddWithValue("@Id_Event", DbNullUtil.GetDBNullIfEmpty(escapeRoomsModel.id_event));
                     command.Parameters.AddWithValue("@Id", escapeRoomsModel.id);
-
-                    Console.WriteLine(escapeRoomsModel.id);
-                    Console.WriteLine(escapeRoomsModel.name);
-                    Console.WriteLine(escapeRoomsModel.description);
-                    Console.WriteLine(escapeRoomsModel.id_event);
-
 
                     // Abre a conexão e executa o comando
                     connection.Open();
@@ -82,7 +76,7 @@ namespace projeto_ludico.Repository
         {
             using (var connection = DatabaseConnection.GetConnection())
             {
-                string sql = "DELETE FROM escape_room WHERE Id = @Id;";
+                string sql = "DELETE FROM escape_rooms WHERE Id = @Id;";
                 using (var command = new SqliteCommand(sql, connection))
                 {
                     // Adiciona o parâmetro do ID

@@ -29,12 +29,18 @@ namespace projeto_ludico.Controllers
                     throw new ArgumentException("Nome não pode ser vazio.");
                 }
 
+                if (escapeRoomsModel.id_event == 0)
+                {
+                    throw new ArgumentException("Não foi selecionado o evento do escape room.");
+                }
+
                 _escapeRoomsRepository.AddEscapeRooms(escapeRoomsModel);
                 MessageBox.Show("Registro bem-sucedido!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
 
-            catch (ArgumentException ex) {
+            catch (ArgumentException ex)
+            {
                 // Captura a exceção de ArgumentException (campo de texto vazio) e exibe uma mensagem
                 MessageBox.Show(ex.Message, "Falha na criação do escape room", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -44,6 +50,7 @@ namespace projeto_ludico.Controllers
             }
 
             catch (Exception ex) {
+
                 // Captura qualquer outra exceção que não tenha sido tratada acima
                 MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

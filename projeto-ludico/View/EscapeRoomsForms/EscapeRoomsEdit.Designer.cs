@@ -32,12 +32,12 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxEvents = new System.Windows.Forms.ComboBox();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBoxName
@@ -65,13 +65,6 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Informações";
             // 
-            // textBoxDescription
-            // 
-            this.textBoxDescription.Location = new System.Drawing.Point(15, 123);
-            this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(341, 20);
-            this.textBoxDescription.TabIndex = 9;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -84,7 +77,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 161);
+            this.label6.Location = new System.Drawing.Point(12, 322);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(41, 13);
             this.label6.TabIndex = 14;
@@ -92,15 +85,16 @@
             // 
             // comboBoxEvents
             // 
+            this.comboBoxEvents.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEvents.FormattingEnabled = true;
-            this.comboBoxEvents.Location = new System.Drawing.Point(15, 177);
+            this.comboBoxEvents.Location = new System.Drawing.Point(15, 338);
             this.comboBoxEvents.Name = "comboBoxEvents";
-            this.comboBoxEvents.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxEvents.Size = new System.Drawing.Size(341, 21);
             this.comboBoxEvents.TabIndex = 15;
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(190, 320);
+            this.btnCreate.Location = new System.Drawing.Point(190, 400);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(75, 23);
             this.btnCreate.TabIndex = 17;
@@ -110,7 +104,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(281, 320);
+            this.btnCancel.Location = new System.Drawing.Point(281, 400);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 18;
@@ -118,21 +112,32 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // txtDescricao
+            // 
+            this.txtDescricao.Location = new System.Drawing.Point(15, 123);
+            this.txtDescricao.Multiline = true;
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtDescricao.Size = new System.Drawing.Size(341, 175);
+            this.txtDescricao.TabIndex = 30;
+            // 
             // EscapeRoomsEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 361);
+            this.ClientSize = new System.Drawing.Size(384, 443);
+            this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.comboBoxEvents);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.label3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "EscapeRoomsEdit";
             this.Text = "Sistema - Lúdico UTFPR";
             this.ResumeLayout(false);
@@ -145,11 +150,11 @@
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxEvents;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TextBox txtDescricao;
     }
 }

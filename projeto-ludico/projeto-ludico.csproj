@@ -263,6 +263,24 @@
     <EmbeddedResource Include="View\BoardGamesForms\BoardGamesEdit.resx">
       <DependentUpon>BoardGamesEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\EscapeRoomsForms\EscapeRooms.resx">
+      <DependentUpon>EscapeRooms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EscapeRoomsForms\EscapeRoomsCreate.resx">
+      <DependentUpon>EscapeRoomsCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EscapeRoomsForms\EscapeRoomsEdit.resx">
+      <DependentUpon>EscapeRoomsEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EventsForms\Events.resx">
+      <DependentUpon>Events.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EventsForms\EventsCreate.resx">
+      <DependentUpon>EventsCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EventsForms\EventsEdit.resx">
+      <DependentUpon>EventsEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\InstitutionsForms\Institutions.resx">
       <DependentUpon>Institutions.cs</DependentUpon>
     </EmbeddedResource>

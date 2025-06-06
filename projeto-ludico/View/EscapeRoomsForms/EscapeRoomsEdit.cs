@@ -41,7 +41,7 @@ namespace projeto_ludico.View.EscapeRoomsForms
             escapeRoomsModel = escapeRoomsController.GetEscapeRoomsById(escapeRoomsModel.id);
 
             textBoxName.Text = escapeRoomsModel.name;
-            textBoxDescription.Text = escapeRoomsModel.description;
+            txtDescricao.Text = escapeRoomsModel.description;
             comboBoxEvents.SelectedValue = escapeRoomsModel.id_event;
         }
 
@@ -57,7 +57,7 @@ namespace projeto_ludico.View.EscapeRoomsForms
             EscapeRoomsModel newEscapeRoomsModel = new EscapeRoomsModel();
             newEscapeRoomsModel.id = escapeRoomsModel.id;
             newEscapeRoomsModel.name = textBoxName.Text;
-            newEscapeRoomsModel.description = textBoxDescription.Text;
+            newEscapeRoomsModel.description = txtDescricao.Text;
             newEscapeRoomsModel.id_event = comboBoxEvents.SelectedValue != null ? Convert.ToInt32(comboBoxEvents.SelectedValue) : 0;
 
 

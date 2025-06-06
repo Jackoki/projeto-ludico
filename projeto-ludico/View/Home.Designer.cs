@@ -41,7 +41,6 @@
             this.listaDeJogosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rpgMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.escapeRoomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,14 +70,14 @@
             // eventosToolStripMenuItem
             // 
             this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
-            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.eventosToolStripMenuItem.Text = "Eventos";
             this.eventosToolStripMenuItem.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
             // 
             // locaisToolStripMenuItem
             // 
             this.locaisToolStripMenuItem.Name = "locaisToolStripMenuItem";
-            this.locaisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.locaisToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.locaisToolStripMenuItem.Text = "Locais";
             this.locaisToolStripMenuItem.Click += new System.EventHandler(this.locaisToolStripMenuItem_Click);
             // 
@@ -94,14 +93,14 @@
             // participantsMenuItem
             // 
             this.participantsMenuItem.Name = "participantsMenuItem";
-            this.participantsMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.participantsMenuItem.Size = new System.Drawing.Size(142, 22);
             this.participantsMenuItem.Text = "Participantes";
             this.participantsMenuItem.Click += new System.EventHandler(this.participantsMenuItem_Click);
             // 
             // institutionsMenuItem
             // 
             this.institutionsMenuItem.Name = "institutionsMenuItem";
-            this.institutionsMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.institutionsMenuItem.Size = new System.Drawing.Size(142, 22);
             this.institutionsMenuItem.Text = "Instituições";
             this.institutionsMenuItem.Click += new System.EventHandler(this.institutionsMenuItem_Click);
             // 
@@ -123,18 +122,25 @@
             this.jogosToolStripMenuItem.Text = "Jogos";
             this.jogosToolStripMenuItem.Click += new System.EventHandler(this.jogosToolStripMenuItem_Click);
             // 
+            // listaDeJogosToolStripMenuItem
+            // 
+            this.listaDeJogosToolStripMenuItem.Name = "listaDeJogosToolStripMenuItem";
+            this.listaDeJogosToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.listaDeJogosToolStripMenuItem.Text = "Lista de Jogos";
+            this.listaDeJogosToolStripMenuItem.Click += new System.EventHandler(this.listaDeJogosToolStripMenuItem_Click);
+            // 
             // rpgMenuItem
             // 
             this.rpgMenuItem.Name = "rpgMenuItem";
             this.rpgMenuItem.Size = new System.Drawing.Size(41, 20);
             this.rpgMenuItem.Text = "RPG";
             // 
-            // listaDeJogosToolStripMenuItem
+            // escapeRoomsToolStripMenuItem
             // 
-            this.listaDeJogosToolStripMenuItem.Name = "listaDeJogosToolStripMenuItem";
-            this.listaDeJogosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.listaDeJogosToolStripMenuItem.Text = "Lista de Jogos";
-            this.listaDeJogosToolStripMenuItem.Click += new System.EventHandler(this.listaDeJogosToolStripMenuItem_Click);
+            this.escapeRoomsToolStripMenuItem.Name = "escapeRoomsToolStripMenuItem";
+            this.escapeRoomsToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.escapeRoomsToolStripMenuItem.Text = "Escape Rooms";
+            this.escapeRoomsToolStripMenuItem.Click += new System.EventHandler(this.escapeRoomsToolStripMenuItem_Click);
             // 
             // Home
             // 

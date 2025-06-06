@@ -38,9 +38,8 @@ namespace projeto_ludico.View.EscapeRoomsForms
         //Ao clicar no botão de criação, será montado as informações preenchidas ao participante, sendo esse passado no Controller, que por sua vez chama o Repository
         private void btnCreate_Click(object sender, EventArgs e) {
             escapeRoomsModel.name = textBoxName.Text;
-            escapeRoomsModel.description= textBoxDescription.Text;
+            escapeRoomsModel.description= txtDescricao.Text;
             escapeRoomsModel.id_event = comboBoxEvents.SelectedValue != null ? Convert.ToInt32(comboBoxEvents.SelectedValue) : 0;
-
 
             EscapeRoomsController escapeRoomsController = new EscapeRoomsController();
             escapeRoomsController.RegisterEscapeRooms(escapeRoomsModel);
