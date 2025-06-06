@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using projeto_ludico.Controllers;
+using projeto_ludico.Models;
+using projeto_ludico.Utils;
+using projeto_ludico.View.EscapeRoomsForms;
+
+namespace projeto_ludico.View.EscapeRoomsForms
+{
+    public partial class EscapeRoomsCreate : Form
+    {
+        EscapeRoomsModel escapeRoomsModel = new EscapeRoomsModel();
+
+        //Ao renderizar a função, será carregado o ComboBox da função abaixo, atribuindo o Nome e Id como Valor
+        public EscapeRoomsCreate() {
+            InitializeComponent();
+            loadComboBox();
+        }
+
+        private void loadComboBox()
+        {
+            ComboBoxLoader comboBoxLoader = new ComboBoxLoader();
+            comboBoxLoader.LoadComboBox(comboBoxEvents, "events", "id", "name");
+            comboBoxEvents.SelectedIndex = -1;
+        }
+
+        //Se clicar no botão de criar instituição, será aberto o formulário de criação de instituição
+        //Se ele registrar uma instituição nova, será mandado um EventHendler, que é uma notificação para realizar o carregamento do ComboBox
+
+
+        //Ao clicar no botão de criação, será montado as informações preenchidas ao participante, sendo esse passado no Controller, que por sua vez chama o Repository
+        private void btnCreate_Click(object sender, EventArgs e) {
+            escapeRoomsModel.name = textBoxName.Text;
+            escapeRoomsModel.description= textBoxDescription.Text;
+            escapeRoomsModel.id_event = comboBoxEvents.SelectedValue != null ? Convert.ToInt32(comboBoxEvents.SelectedValue) : 0;
+
+
+            EscapeRoomsController escapeRoomsController = new EscapeRoomsController();
+            escapeRoomsController.RegisterEscapeRooms(escapeRoomsModel);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e) {
+            var result = MessageBox.Show("Tem certeza que deseja cancelar?", "Cancelar", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes) {
+                this.Close();
+            }
+        }
+    }
+}

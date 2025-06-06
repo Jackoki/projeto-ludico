@@ -53,6 +53,7 @@
     <Compile Include="Controllers\InstitutionController.cs" />
     <Compile Include="Controllers\BoardGamesController.cs" />
     <Compile Include="Controllers\ListController.cs" />
+    <Compile Include="Controllers\EscapeRoomsController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Controllers\PlacesController.cs" />
     <Compile Include="Database\AppDbContext.cs" />
@@ -68,12 +69,14 @@
     <Compile Include="Models\InstitutionsModel.cs" />
     <Compile Include="Models\BoardGamesModel.cs" />
     <Compile Include="Models\ListModel.cs" />
+    <Compile Include="Models\EscapeRoomsModel.cs" />
     <Compile Include="Models\ParticipantsModel.cs" />
     <Compile Include="Models\PlacesModel.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Repository\InstitutionRepository.cs" />
     <Compile Include="Repository\BoardGamesRepository.cs" />
     <Compile Include="Repository\ListRepository.cs" />
+    <Compile Include="Repository\EscapeRoomsRepository.cs" />
     <Compile Include="Repository\ParticipantRepository.cs" />
     <Compile Include="Repository\PlacesRepository.cs" />
     <Compile Include="Utils\ButtonsDataGridView.cs" />
@@ -107,6 +110,25 @@
     </Compile>
     <Compile Include="View\BoardGamesForms\BoardGamesEdit.Designer.cs">
       <DependentUpon>BoardGamesEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EscapeRoomsForms\EscapeRooms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EscapeRoomsForms\EscapeRooms.Designer.cs">
+      <DependentUpon>EscapeRooms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EscapeRoomsForms\EscapeRoomsCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EscapeRoomsForms\EscapeRoomsCreate.Designer.cs">
+      <DependentUpon>EscapeRoomsCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EscapeRoomsForms\EscapeRoomsDelete.cs" />
+    <Compile Include="View\EscapeRoomsForms\EscapeRoomsEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EscapeRoomsForms\EscapeRoomsEdit.Designer.cs">
+      <DependentUpon>EscapeRoomsEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="View\InstitutionsForms\Institutions.cs">
       <SubType>Form</SubType>
@@ -218,6 +240,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\BoardGamesForms\BoardGamesEdit.resx">
       <DependentUpon>BoardGamesEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EscapeRoomsForms\EscapeRooms.resx">
+      <DependentUpon>EscapeRooms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EscapeRoomsForms\EscapeRoomsCreate.resx">
+      <DependentUpon>EscapeRoomsCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EscapeRoomsForms\EscapeRoomsEdit.resx">
+      <DependentUpon>EscapeRoomsEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\InstitutionsForms\Institutions.resx">
       <DependentUpon>Institutions.cs</DependentUpon>
