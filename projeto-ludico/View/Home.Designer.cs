@@ -134,6 +134,7 @@
             this.rpgMenuItem.Name = "rpgMenuItem";
             this.rpgMenuItem.Size = new System.Drawing.Size(41, 20);
             this.rpgMenuItem.Text = "RPG";
+            this.rpgMenuItem.Click += new System.EventHandler(this.rpgMenuItem_Click);
             // 
             // escapeRoomsToolStripMenuItem
             // 
