@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace projeto_ludico.Models
 {
-    internal class EscapeRoomsModel
+    public class EscapeRoomsModel
     {        
         // Propriedades
-        public int id { get; set; }
+        public int Id { get; set; }
         public int id_event { get; set; }
         public string name { get; set; }
         public string description { get; set; }

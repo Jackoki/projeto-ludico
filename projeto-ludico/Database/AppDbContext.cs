@@ -29,6 +29,8 @@ public class AppDbContext : DbContext
     public DbSet<BoardGamesBarCodesModel> BoardGamesBarCodes { get; set; }
     public DbSet<ListModel> List { get; set; }
     public DbSet<BoardGamesListModel> BoardGamesList { get; set; }
+    public DbSet<ParticipantsModel> Participants { get; set; }
+    public DbSet<ParticipantsEscapeRoomModel> ParticipantsEscapeRooms { get; set; }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
@@ -37,5 +39,7 @@ public class AppDbContext : DbContext
         modelBuilder.Configurations.Add(new BoardGamesBarCodesModelConfiguration());
         modelBuilder.Configurations.Add(new ListsModelConfiguration());
         modelBuilder.Configurations.Add(new BoardGamesListModelConfiguration());
+        modelBuilder.Configurations.Add(new ParticipantsModelConfiguration());
+        modelBuilder.Configurations.Add(new ParticipantsEscapeRoomModelConfiguration());
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using projeto_ludico.Service;
 using projeto_ludico.View.EscapeRoomsForms;
+using projeto_ludico.View.ListForms;
 
 namespace projeto_ludico.View.EscapeRoomsForms
 {
@@ -88,6 +89,11 @@ namespace projeto_ludico.View.EscapeRoomsForms
             else if (dataViewer.Columns[e.ColumnIndex].Name == "btnDelete") {
                 EscapeRoomsDelete escapeRoomsDelete = new EscapeRoomsDelete();
                 escapeRoomsDelete.DeleteEscapeRooms(row);
+            }
+
+            else if (dataViewer.Columns[e.ColumnIndex].Name == "btnManagement") {
+                EscapeRoomsParticipants escapeRoomsParticipants = new EscapeRoomsParticipants(row);
+                escapeRoomsParticipants.Show();
             }
         }
 

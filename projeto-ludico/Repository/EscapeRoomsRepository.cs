@@ -57,7 +57,7 @@ namespace projeto_ludico.Repository
                     command.Parameters.AddWithValue("@Name", escapeRoomsModel.name);
                     command.Parameters.AddWithValue("@Description", DbNullUtil.GetDBNullIfEmpty(escapeRoomsModel.description));
                     command.Parameters.AddWithValue("@Id_Event", DbNullUtil.GetDBNullIfEmpty(escapeRoomsModel.id_event));
-                    command.Parameters.AddWithValue("@Id", escapeRoomsModel.id);
+                    command.Parameters.AddWithValue("@Id", escapeRoomsModel.Id);
 
                     // Abre a conexão e executa o comando
                     connection.Open();
@@ -111,7 +111,7 @@ namespace projeto_ludico.Repository
                                 // Inicializa o modelo apenas se o participante for encontrado
                                 escapeRoomsModel = new EscapeRoomsModel
                                 {
-                                    id = reader.GetInt32(reader.GetOrdinal("id")),
+                                    Id = reader.GetInt32(reader.GetOrdinal("id")),
                                     name = reader.GetString(reader.GetOrdinal("name")),
                                     description = reader.IsDBNull(reader.GetOrdinal("description")) ? "" : reader.GetString(reader.GetOrdinal("description")),
                                     id_event = reader.IsDBNull(reader.GetOrdinal("id_event")) ? 0 : reader.GetInt32(reader.GetOrdinal("id_event"))

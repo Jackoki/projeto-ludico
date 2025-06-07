@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace projeto_ludico.Models
 {
-    internal class ParticipantsModel
+    public class ParticipantsModel
     {        
         // Propriedades
-        public int id { get; set; }
+        public int Id { get; set; }
         public int id_institution { get; set; }
         public string name { get; set; }
         public string email { get; set; }

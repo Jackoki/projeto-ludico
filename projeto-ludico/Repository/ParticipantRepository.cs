@@ -63,9 +63,9 @@ namespace projeto_ludico.Repository
                     command.Parameters.AddWithValue("@CPF", DbNullUtil.GetDBNullIfEmpty(participantsModel.cpf));
                     command.Parameters.AddWithValue("@Code", DbNullUtil.GetDBNullIfEmpty(participantsModel.code));
                     command.Parameters.AddWithValue("@Id_Institution", DbNullUtil.GetDBNullIfEmpty(participantsModel.id_institution));
-                    command.Parameters.AddWithValue("@Id", participantsModel.id);
+                    command.Parameters.AddWithValue("@Id", participantsModel.Id);
 
-                    Console.WriteLine(participantsModel.id);
+                    Console.WriteLine(participantsModel.Id);
                     Console.WriteLine(participantsModel.name);
                     Console.WriteLine(participantsModel.email);
                     Console.WriteLine(participantsModel.cpf);
@@ -124,7 +124,7 @@ namespace projeto_ludico.Repository
                             if (reader.Read()) {
                                 // Inicializa o modelo apenas se o participante for encontrado
                                 participantsModel = new ParticipantsModel {
-                                    id = reader.GetInt32(reader.GetOrdinal("id")),
+                                    Id = reader.GetInt32(reader.GetOrdinal("id")),
                                     name = reader.GetString(reader.GetOrdinal("name")),
                                     email = reader.IsDBNull(reader.GetOrdinal("email")) ? "" : reader.GetString(reader.GetOrdinal("email")),
                                     cpf = reader.IsDBNull(reader.GetOrdinal("cpf")) ? "" : reader.GetString(reader.GetOrdinal("cpf")),

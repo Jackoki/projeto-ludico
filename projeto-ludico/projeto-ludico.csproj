@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ParticipantsEscapeRoomsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\InstitutionController.cs" />
     <Compile Include="Controllers\BoardGamesController.cs" />
@@ -61,11 +62,14 @@
     <Compile Include="Database\AppDbContext.cs" />
     <Compile Include="Database\Configurations\BoardGamesBarCodesModelConfiguration.cs" />
     <Compile Include="Database\Configurations\BoardGamesListModelConfiguration.cs" />
+    <Compile Include="Database\Configurations\ParticipantsModelConfiguration.cs" />
     <Compile Include="Database\Configurations\ListsModelConfiguration.cs" />
     <Compile Include="Database\Configurations\BoardGamesModelConfiguration.cs" />
     <Compile Include="Database\Configurations\BoardGamesNamesModelConfiguration.cs" />
+    <Compile Include="Database\Configurations\ParticipantsEscapeRoomModelConfiguration.cs" />
     <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="Models\BoardGamesBarCodesModel.cs" />
+    <Compile Include="Models\ParticipantsEscapeRoomModel.cs" />
     <Compile Include="Models\BoardGamesNamesModel.cs" />
     <Compile Include="Models\EventsModel.cs" />
     <Compile Include="Models\BoardGamesListModel.cs" />
@@ -76,6 +80,7 @@
     <Compile Include="Models\ParticipantsModel.cs" />
     <Compile Include="Models\PlacesModel.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="Repository\ParticipantEscapeRoomRepository.cs" />
     <Compile Include="Repository\EventsRepository.cs" />
     <Compile Include="Repository\InstitutionRepository.cs" />
     <Compile Include="Repository\BoardGamesRepository.cs" />
@@ -116,6 +121,13 @@
     <Compile Include="View\BoardGamesForms\BoardGamesEdit.Designer.cs">
       <DependentUpon>BoardGamesEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EscapeRoomsForms\EscapeRoomParticipantsForms\EscapeRoomParticipants.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EscapeRoomsForms\EscapeRoomParticipantsForms\EscapeRoomParticipants.Designer.cs">
+      <DependentUpon>EscapeRoomParticipants.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EscapeRoomsForms\EscapeRoomParticipantsForms\LoadEscapeRoomDataViewers.cs" />
     <Compile Include="View\EventsForms\Events.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -274,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\EscapeRoomsForms\EscapeRoomsEdit.resx">
       <DependentUpon>EscapeRoomsEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EscapeRoomsForms\EscapeRoomParticipantsForms\EscapeRoomParticipants.resx">
+      <DependentUpon>EscapeRoomParticipants.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\EventsForms\Events.resx">
       <DependentUpon>Events.cs</DependentUpon>

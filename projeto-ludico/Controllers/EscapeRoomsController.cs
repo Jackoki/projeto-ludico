@@ -90,7 +90,7 @@ namespace projeto_ludico.Controllers
         public void DeleteEscapeRooms(EscapeRoomsModel escapeRoomsModel)
         {
             try {
-                _escapeRoomsRepository.DeleteEscapeRooms(escapeRoomsModel.id);
+                _escapeRoomsRepository.DeleteEscapeRooms(escapeRoomsModel.Id);
                 MessageBox.Show("Escape room deletado!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 

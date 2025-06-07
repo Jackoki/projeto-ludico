@@ -35,10 +35,10 @@ namespace projeto_ludico.View.EscapeRoomsForms
         //Atribuimos os campos de preenchimento do formulário com as informações do participante identificado pelo Id passado pelo Row
         private void loadEscapeRooms(DataGridViewRow row) {
             if (row.Cells["id"].Value != null && int.TryParse(row.Cells["id"].Value.ToString(), out int id)) {
-                escapeRoomsModel.id = id;
+                escapeRoomsModel.Id = id;
             }
 
-            escapeRoomsModel = escapeRoomsController.GetEscapeRoomsById(escapeRoomsModel.id);
+            escapeRoomsModel = escapeRoomsController.GetEscapeRoomsById(escapeRoomsModel.Id);
 
             textBoxName.Text = escapeRoomsModel.name;
             txtDescricao.Text = escapeRoomsModel.description;
@@ -55,7 +55,7 @@ namespace projeto_ludico.View.EscapeRoomsForms
 
         private EscapeRoomsModel loadNewValues() {
             EscapeRoomsModel newEscapeRoomsModel = new EscapeRoomsModel();
-            newEscapeRoomsModel.id = escapeRoomsModel.id;
+            newEscapeRoomsModel.Id = escapeRoomsModel.Id;
             newEscapeRoomsModel.name = textBoxName.Text;
             newEscapeRoomsModel.description = txtDescricao.Text;
             newEscapeRoomsModel.id_event = comboBoxEvents.SelectedValue != null ? Convert.ToInt32(comboBoxEvents.SelectedValue) : 0;

@@ -29,10 +29,10 @@ namespace projeto_ludico.View.ParticipantsForms
         //Atribuimos os campos de preenchimento do formulário com as informações do participante identificado pelo Id passado pelo Row
         private void loadParticipant(DataGridViewRow row) {
             if (row.Cells["id"].Value != null && int.TryParse(row.Cells["id"].Value.ToString(), out int id)) {
-                participantsModel.id = id;
+                participantsModel.Id = id;
             }
 
-            participantsModel = participantController.GetParticipantById(participantsModel.id);
+            participantsModel = participantController.GetParticipantById(participantsModel.Id);
 
             textBoxName.Text = participantsModel.name;
             textBoxEmail.Text = participantsModel.email;
@@ -54,7 +54,7 @@ namespace projeto_ludico.View.ParticipantsForms
 
         private ParticipantsModel loadNewValues() {
             ParticipantsModel newParticipantsModel = new ParticipantsModel();
-            newParticipantsModel.id = participantsModel.id;
+            newParticipantsModel.Id = participantsModel.Id;
             newParticipantsModel.name = textBoxName.Text;
             newParticipantsModel.email = textBoxEmail.Text;
             newParticipantsModel.cpf = textBoxCpf.Text;

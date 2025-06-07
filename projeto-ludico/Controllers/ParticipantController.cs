@@ -80,7 +80,7 @@ namespace projeto_ludico.Controllers
         public void DeleteParticipant(ParticipantsModel participantsModel)
         {
             try {
-                _participantRepository.DeleteParticipant(participantsModel.id);
+                _participantRepository.DeleteParticipant(participantsModel.Id);
                 MessageBox.Show("Participante deletado!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
