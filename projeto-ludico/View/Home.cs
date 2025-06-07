@@ -16,6 +16,7 @@ using projeto_ludico.View.ListForms;
 using projeto_ludico.View.ParticipantsForms;
 using projeto_ludico.View.PlacesForms;
 using projeto_ludico.View.EscapeRoomsForms;
+using projeto_ludico.View.RPGForms;
 
 namespace projeto_ludico
 {
@@ -71,5 +72,10 @@ namespace projeto_ludico
         {
             loadScreen<EscapeRooms>();
         }
-}
+
+        private void rpgMenuItem_Click(object sender, EventArgs e)
+        {
+            loadScreen<RPG>();
+        }
+    }
 }
