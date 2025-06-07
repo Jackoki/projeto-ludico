@@ -22,14 +22,14 @@ namespace projeto_ludico.Repository
                 sql = "INSERT INTO lists (name, id_event) VALUES (@name, @id_event);";
                 command = new SqliteCommand(sql, connection);
 
-                if (listModel.id_event == 0)
+                if (listModel.EventId == 0)
                 {
                     command.Parameters.AddWithValue("@id_event", DBNull.Value);
                 }
 
                 else
                 {
-                    command.Parameters.AddWithValue("@id_event", listModel.id_event);
+                    command.Parameters.AddWithValue("@id_event", listModel.EventId);
                 }
 
                 command.Parameters.AddWithValue("@name", listModel.name);

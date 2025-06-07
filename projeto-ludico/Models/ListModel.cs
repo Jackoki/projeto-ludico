@@ -10,12 +10,14 @@ namespace projeto_ludico.Models
     {
         public int id { get; set; }
         public string name { get; set; }
-        public int id_event { get; set; }
-        public List<BoardGamesList> games { get; set; }
+        public int EventId { get; set; }
+        public EventsModel Event { get; set; }
+        public List<BoardGamesListModel> games { get; set; }
 
         public ListModel()
         {
-            games = new List<BoardGamesList>();
+            games = new List<BoardGamesListModel>();
+            Event = new EventsModel();
         }
 
     }

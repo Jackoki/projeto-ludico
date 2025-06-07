@@ -53,7 +53,7 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\InstitutionController.cs" />
     <Compile Include="Controllers\BoardGamesController.cs" />
-    <Compile Include="Controllers\ListGamesController .cs" />
+    <Compile Include="Controllers\BoardGamesListController.cs" />
     <Compile Include="Controllers\ListController.cs" />
     <Compile Include="Controllers\EscapeRoomsController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
@@ -61,13 +61,15 @@
     <Compile Include="Controllers\RPGController.cs" />
     <Compile Include="Database\AppDbContext.cs" />
     <Compile Include="Database\Configurations\BoardGamesBarCodesModelConfiguration.cs" />
+    <Compile Include="Database\Configurations\BoardGamesListModelConfiguration.cs" />
+    <Compile Include="Database\Configurations\ListsModelConfiguration.cs" />
     <Compile Include="Database\Configurations\BoardGamesModelConfiguration.cs" />
     <Compile Include="Database\Configurations\BoardGamesNamesModelConfiguration.cs" />
     <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="Models\BoardGamesBarCodesModel.cs" />
     <Compile Include="Models\BoardGamesNamesModel.cs" />
     <Compile Include="Models\EventsModel.cs" />
-    <Compile Include="Models\BoardGamesList.cs" />
+    <Compile Include="Models\BoardGamesListModel.cs" />
     <Compile Include="Models\InstitutionsModel.cs" />
     <Compile Include="Models\BoardGamesModel.cs" />
     <Compile Include="Models\ListModel.cs" />
@@ -79,7 +81,7 @@
     <Compile Include="Repository\EventsRepository.cs" />
     <Compile Include="Repository\InstitutionRepository.cs" />
     <Compile Include="Repository\BoardGamesRepository.cs" />
-    <Compile Include="Repository\ListGamesRepository .cs" />
+    <Compile Include="Repository\BoardGamesListRepository.cs" />
     <Compile Include="Repository\ListRepository.cs" />
     <Compile Include="Repository\EscapeRoomsRepository.cs" />
     <Compile Include="Repository\ParticipantRepository.cs" />
@@ -207,6 +209,7 @@
     <Compile Include="View\ListForms\ListManagerForms\ListManager.Designer.cs">
       <DependentUpon>ListManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ListForms\ListManagerForms\LoadDataViewers.cs" />
     <Compile Include="View\ParticipantsForms\Participants.cs">
       <SubType>Form</SubType>
     </Compile>

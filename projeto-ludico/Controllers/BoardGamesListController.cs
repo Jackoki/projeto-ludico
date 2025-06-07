@@ -10,38 +10,33 @@ using System.Windows.Forms;
 
 namespace projeto_ludico.Controllers
 {
-    internal class ListGamesController
+    internal class BoardGamesListController
     {
-        private readonly ListGamesRepository _repository;
+        private readonly BoardGamesListRepository _repository;
 
-        public ListGamesController()
+        public BoardGamesListController()
         {
-            _repository = new ListGamesRepository();
+            _repository = new BoardGamesListRepository();
         }
 
-        public void AddGame(int id_list, int id_board_game)
-        {
-            try
-            {
+        public void AddGame(int id_list, int id_board_game) {
+            try {
                 _repository.AddGameToList(id_list, id_board_game);
+                MessageBox.Show("Jogo adicionado na lista!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 MessageBox.Show("Erro ao adicionar jogo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        public void RemoveGame(int id_list, int id_board_game)
-        {
-            try
-            {
-                _repository.RemoveGameFromList(id_list, id_board_game);
+        public void RemoveGame(int id_list, int id) {
+            try {
+                _repository.RemoveGameFromList(id_list, id);
                 MessageBox.Show("Jogo removido da lista!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 MessageBox.Show("Erro ao remover jogo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

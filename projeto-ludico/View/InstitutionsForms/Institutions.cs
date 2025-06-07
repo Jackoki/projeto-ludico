@@ -64,6 +64,9 @@ namespace projeto_ludico.View.InstitutionsForms
         //Se o botão selecionado for o btnEdit, será aberto a tela de edição, se for o btnDelete, será a tela de deleção
         private void DataViewer_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0)
+                return;
+
             DataGridViewRow row = dataViewer.Rows[e.RowIndex];
 
             if (dataViewer.Columns[e.ColumnIndex].Name == "btnEdit")
