@@ -25,7 +25,7 @@ namespace projeto_ludico.View.BoardGamesForms
         {
             // Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite
             string[] desiredColumns = {
-                "board_games.id", "board_games_names.name"
+                "board_games.id as id", "COALESCE(board_games_names.name, '') AS name"
             };
 
             string[] searchableColumns = { "board_games_names.name", "board_games.id" };  // Colunas usadas na busca
@@ -50,7 +50,7 @@ namespace projeto_ludico.View.BoardGamesForms
         {
             // Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite
             string[] desiredColumns = {
-                "board_games.id", "board_games_names.name"
+                "board_games.id as id", "COALESCE(board_games_names.name, '') AS name"
             };
 
             string[] searchableColumns = { "board_games_names.name", "board_games_bar_codes.bar_code"};  // Colunas usadas na busca
@@ -84,6 +84,9 @@ namespace projeto_ludico.View.BoardGamesForms
 
         //Criação dos botões de editar e deletar em cada linha de forma automática
         private void dataViewer_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+            if (e.RowIndex < 0) 
+                return;
+
             DataGridViewRow row = dataViewer.Rows[e.RowIndex];
 
             if (dataViewer.Columns[e.ColumnIndex].Name == "btnEdit") {

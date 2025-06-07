@@ -43,7 +43,8 @@ namespace projeto_ludico.View.ListForms
         }
         private void DataViewer_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            if (e.RowIndex < 0) 
+                return;
 
             DataGridViewRow row = dataViewer.Rows[e.RowIndex];
 
@@ -60,9 +61,8 @@ namespace projeto_ludico.View.ListForms
             }
             else if (dataViewer.Columns[e.ColumnIndex].Name == "btnManagement")
             {
-                ListManager manageForm = new ListManager();
-                manageForm.ManageList(row);
-                manageForm.Show();
+                ListManager managerForm = new ListManager(row);
+                managerForm.Show();
             }
         }
 

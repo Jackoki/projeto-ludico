@@ -27,11 +27,15 @@ public class AppDbContext : DbContext
     public DbSet<BoardGamesModel> BoardGames { get; set; }
     public DbSet<BoardGamesNamesModel> BoardGamesNames { get; set; }
     public DbSet<BoardGamesBarCodesModel> BoardGamesBarCodes { get; set; }
+    public DbSet<ListModel> List { get; set; }
+    public DbSet<BoardGamesListModel> BoardGamesList { get; set; }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
         modelBuilder.Configurations.Add(new BoardGamesModelConfiguration());
         modelBuilder.Configurations.Add(new BoardGamesNamesModelConfiguration());
         modelBuilder.Configurations.Add(new BoardGamesBarCodesModelConfiguration());
+        modelBuilder.Configurations.Add(new ListsModelConfiguration());
+        modelBuilder.Configurations.Add(new BoardGamesListModelConfiguration());
     }
 }

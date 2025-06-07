@@ -75,6 +75,9 @@ namespace projeto_ludico.View.EscapeRoomsForms
 
         //Criação dos botões de editar e deletar em cada linha de forma automática
         private void dataViewer_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+            if (e.RowIndex < 0)
+                return;
+
             DataGridViewRow row = dataViewer.Rows[e.RowIndex];
 
             if (dataViewer.Columns[e.ColumnIndex].Name == "btnEdit") {

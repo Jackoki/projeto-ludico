@@ -31,11 +31,7 @@ namespace projeto_ludico.View.EscapeRoomsForms
             comboBoxEvents.SelectedIndex = -1;
         }
 
-        //Se clicar no botão de criar instituição, será aberto o formulário de criação de instituição
-        //Se ele registrar uma instituição nova, será mandado um EventHendler, que é uma notificação para realizar o carregamento do ComboBox
-
-
-        //Ao clicar no botão de criação, será montado as informações preenchidas ao participante, sendo esse passado no Controller, que por sua vez chama o Repository
+        //Se clicar no botão de criar, será aberto o formulário de criação de escape room
         private void btnCreate_Click(object sender, EventArgs e) {
             escapeRoomsModel.name = textBoxName.Text;
             escapeRoomsModel.description= txtDescricao.Text;

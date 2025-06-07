@@ -111,8 +111,64 @@ namespace projeto_ludico.Repository
             }
         }
 
+        public List<object> GetAllGamesWithMainName()
+        {
+            using (var context = new AppDbContext())
+            {
+                var games = context.BoardGames
+                    .Select(bg => new
+                    {
+                        ID = bg.id,
+                        NomeDoJogo = bg.names
+                            .Where(n => n.is_principal)
+                            .Select(n => n.name)
+                            .FirstOrDefault() ?? ""
+                    })
+                    .ToList<object>();
 
+                return games;
+            }
+        }
+
+        public List<object> SearchGamesByNameOrBarcode(string searchTerm)
+        {
+            using (var context = new AppDbContext())
+            {
+                var gamesQuery = context.BoardGames.AsQueryable();
+
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    gamesQuery = gamesQuery.Where(bg =>
+                        bg.names.Any(n => n.is_principal && n.name.Contains(searchTerm)) ||
+                        bg.codes.Any(c => c.bar_code.Contains(searchTerm))
+                    );
+                }
+
+                // Realiza a projeção para o formato desejado
+                var games = gamesQuery
+                    .Select(bg => new
+                    {
+                        ID = bg.id,
+                        NomeDoJogo = bg.names
+                            .Where(n => n.is_principal)
+                            .Select(n => n.name)
+                            .FirstOrDefault() ?? "",
+
+                        Barcode = bg.codes
+                            .Select(c => c.bar_code)
+                            .FirstOrDefault() ?? ""
+                    })
+                    .ToList<object>();
+
+                return games;
+            }
+        }
 
 
     }
+
+
+
+
 }
+

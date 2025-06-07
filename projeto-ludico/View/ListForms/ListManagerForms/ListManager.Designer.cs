@@ -29,30 +29,30 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListManager));
-            this.dataViewer = new System.Windows.Forms.DataGridView();
+            this.dataViewerList = new System.Windows.Forms.DataGridView();
             this.dataViewerGames = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataViewerList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewerGames)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataViewer
+            // dataViewerList
             // 
-            this.dataViewer.AllowUserToAddRows = false;
-            this.dataViewer.AllowUserToDeleteRows = false;
-            this.dataViewer.AllowUserToOrderColumns = true;
-            this.dataViewer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataViewer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataViewer.Location = new System.Drawing.Point(10, 384);
-            this.dataViewer.Name = "dataViewer";
-            this.dataViewer.ReadOnly = true;
-            this.dataViewer.Size = new System.Drawing.Size(689, 176);
-            this.dataViewer.TabIndex = 5;
-            this.dataViewer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataViewer_CellContentClick);
+            this.dataViewerList.AllowUserToAddRows = false;
+            this.dataViewerList.AllowUserToDeleteRows = false;
+            this.dataViewerList.AllowUserToOrderColumns = true;
+            this.dataViewerList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataViewerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataViewerList.Location = new System.Drawing.Point(10, 384);
+            this.dataViewerList.Name = "dataViewerList";
+            this.dataViewerList.ReadOnly = true;
+            this.dataViewerList.Size = new System.Drawing.Size(689, 176);
+            this.dataViewerList.TabIndex = 5;
+            this.dataViewerList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataViewerList_CellContentClick);
             // 
             // dataViewerGames
             // 
@@ -61,7 +61,7 @@
             this.dataViewerGames.AllowUserToOrderColumns = true;
             this.dataViewerGames.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataViewerGames.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataViewerGames.Location = new System.Drawing.Point(10, 78);
+            this.dataViewerGames.Location = new System.Drawing.Point(10, 72);
             this.dataViewerGames.Name = "dataViewerGames";
             this.dataViewerGames.ReadOnly = true;
             this.dataViewerGames.Size = new System.Drawing.Size(689, 232);
@@ -123,11 +123,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataViewerGames);
-            this.Controls.Add(this.dataViewer);
+            this.Controls.Add(this.dataViewerList);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ListManager";
             this.Text = "Sistema - Lúdico UTFPR";
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataViewerList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewerGames)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -136,7 +136,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataViewer;
+        private System.Windows.Forms.DataGridView dataViewerList;
         private System.Windows.Forms.DataGridView dataViewerGames;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
