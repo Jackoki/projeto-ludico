@@ -25,7 +25,7 @@ namespace projeto_ludico.View.RPGForms
         {
             RPGModel rpgModel = new RPGModel();
             rpgModel.name = txtBoxName.Text.Trim();
-            rpgModel.description = textBox1.Text.Trim();
+            rpgModel.description = txtDescricao.Text.Trim();
 
             RPGController rpgController = new RPGController();
             rpgController.RegisterRPG(rpgModel);

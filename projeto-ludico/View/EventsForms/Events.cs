@@ -6,9 +6,11 @@ using projeto_ludico.Controllers;
 using projeto_ludico.Service;
 using projeto_ludico.Utils;
 using projeto_ludico.View.BoardGamesForms;
+using projeto_ludico.View.EventsForms.EventsManagement;
 using projeto_ludico.View.Institutions;
 using projeto_ludico.View.InstitutionsForms;
 using projeto_ludico.View.ListForms;
+using projeto_ludico.View.EventsForms.EventsManagement;
 
 namespace projeto_ludico.View.EventsForms
 {
@@ -109,8 +111,9 @@ namespace projeto_ludico.View.EventsForms
 
             else if (dataViewer.Columns[e.ColumnIndex].Name == "btnManagement")
             {
-                //EventDelete eventDelete = new EventDelete();
-                //eventDelete.DeleteEvent(row);
+                EventManagement eventManagement = new EventManagement();
+                eventManagement.loadManagement(row);
+                eventManagement.Show();
             }
         }
 

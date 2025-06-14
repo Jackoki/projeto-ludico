@@ -124,7 +124,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataViewerGames);
             this.Controls.Add(this.dataViewerList);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "ListManager";
             this.Text = "Sistema - Lúdico UTFPR";
             ((System.ComponentModel.ISupportInitialize)(this.dataViewerList)).EndInit();

@@ -86,7 +86,9 @@
             this.Controls.Add(this.boxSearch);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnRegister);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Places";
             this.Text = "Sistema - Lúdico UTFPR";
             this.Load += new System.EventHandler(this.Places_Load);

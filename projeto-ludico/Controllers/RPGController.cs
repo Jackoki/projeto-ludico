@@ -83,5 +83,34 @@ namespace projeto_ludico.Controllers
                 MessageBox.Show("Erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public RPGModel GetRpg(int id) {
+            try {
+                RPGModel rpgModel = new RPGModel();
+
+                rpgModel = _rpgRepository.GetRpg(id);
+
+                if (rpgModel == null) {
+                    throw new KeyNotFoundException("Participante não encontrado.");
+                }
+
+                return rpgModel;
+            }
+
+            catch (KeyNotFoundException ex) {
+                MessageBox.Show(ex.Message, "Falha na consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+
+            catch (InvalidOperationException ex) {
+                MessageBox.Show(ex.Message, "Erro ao carregar informações do RPG", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
+            catch (Exception ex) {
+                MessageBox.Show("Erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }

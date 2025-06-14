@@ -55,5 +55,46 @@ namespace projeto_ludico.Repository
                 }
             }
         }
+
+        public RPGModel GetRpg(int id)
+        {
+            RPGModel rpgModel = new RPGModel();
+
+            try
+            {
+                using (var connection = DatabaseConnection.GetConnection())
+                {
+                    string sql = @"SELECT id, name, description 
+                           FROM role_play_games 
+                           WHERE id = @Id;";
+
+                    using (var command = new SqliteCommand(sql, connection))
+                    {
+                        // Adiciona o parâmetro do ID
+                        command.Parameters.AddWithValue("@Id", id);
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                rpgModel = new RPGModel
+                                {
+                                    id = reader.GetInt32(reader.GetOrdinal("id")),
+                                    name = reader.GetString(reader.GetOrdinal("name")),
+                                    description = reader.GetString(reader.GetOrdinal("description"))
+                                };
+                            }
+                        }
+                    }
+                }
+
+                return rpgModel;
+            }
+
+            catch (Exception)
+            {
+                throw new InvalidOperationException("Erro ao buscar evento no banco de dados.");
+            }
+        }
     }
 }

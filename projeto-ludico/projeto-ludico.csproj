@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ParticipantEventController.cs" />
     <Compile Include="Controllers\ParticipantsEscapeRoomsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\InstitutionController.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Models\BoardGamesModel.cs" />
     <Compile Include="Models\ListModel.cs" />
     <Compile Include="Models\EscapeRoomsModel.cs" />
+    <Compile Include="Models\ParticipantsEventsModel.cs" />
     <Compile Include="Models\ParticipantsModel.cs" />
     <Compile Include="Models\PlacesModel.cs" />
     <Compile Include="Models\RPGModel.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="Repository\BoardGamesListRepository.cs" />
     <Compile Include="Repository\ListRepository.cs" />
     <Compile Include="Repository\EscapeRoomsRepository.cs" />
+    <Compile Include="Repository\ParticipantEventRepository.cs" />
     <Compile Include="Repository\ParticipantRepository.cs" />
     <Compile Include="Repository\PlacesRepository.cs" />
     <Compile Include="Repository\RPGRepository.cs" />
@@ -169,6 +172,37 @@
     <Compile Include="View\EscapeRoomsForms\EscapeRoomsEdit.Designer.cs">
       <DependentUpon>EscapeRoomsEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EventsForms\EventsManagement\EventsGames\EventsGames.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsManagement\EventsGames\EventsGames.Designer.cs">
+      <DependentUpon>EventsGames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsManagement\EventLending.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsManagement\EventLending.Designer.cs">
+      <DependentUpon>EventLending.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsManagement\EventLendingParticipants.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsManagement\EventLendingParticipants.Designer.cs">
+      <DependentUpon>EventLendingParticipants.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsManagement\EventManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsManagement\EventManagement.Designer.cs">
+      <DependentUpon>EventManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsManagement\EventsPresence\EventPresence.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsManagement\EventsPresence\EventPresence.Designer.cs">
+      <DependentUpon>EventPresence.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EventsForms\EventsManagement\EventsPresence\EventPresenceUtil.cs" />
     <Compile Include="View\InstitutionsForms\Institutions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,6 +360,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\EventsForms\EventsEdit.resx">
       <DependentUpon>EventsEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EventsForms\EventsManagement\EventsGames\EventsGames.resx">
+      <DependentUpon>EventsGames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EventsForms\EventsManagement\EventLending.resx">
+      <DependentUpon>EventLending.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EventsForms\EventsManagement\EventLendingParticipants.resx">
+      <DependentUpon>EventLendingParticipants.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EventsForms\EventsManagement\EventManagement.resx">
+      <DependentUpon>EventManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EventsForms\EventsManagement\EventsPresence\EventPresence.resx">
+      <DependentUpon>EventPresence.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\InstitutionsForms\Institutions.resx">
       <DependentUpon>Institutions.cs</DependentUpon>

@@ -21,17 +21,12 @@ namespace projeto_ludico.View.RPGForms
             dataViewer.CellContentClick += DataViewer_CellContentClick;
         }
 
-        private void RPG_Load(object sender, EventArgs e)
-        {
-        }
-
         private void ConfigureRPGViewer()
         {
-            string[] desiredColumns = { "name", "description", "id" };
+            string[] desiredColumns = { "name", "id" };
             var columnMappings = new Dictionary<string, string>
             {
                 { "name", "Nome" },
-                { "description", "Descrição" }
             };
 
             ConfigureDataViewer(dataViewer, "role_play_games", desiredColumns, columnMappings, null, true);
@@ -40,13 +35,12 @@ namespace projeto_ludico.View.RPGForms
 
         private void PerformSearch(string searchString)
         {
-            string[] desiredColumns = { "name", "description", "id" };
-            string[] searchableColumns = { "name", "description" };
+            string[] desiredColumns = { "name", "id" };
+            string[] searchableColumns = { "name" };
 
             var columnMappings = new Dictionary<string, string>
             {
                 { "name", "Nome" },
-                { "description", "Descrição" }
             };
 
             ConfigureSearchDataViewer(dataViewer, searchString, "role_play_games", desiredColumns, columnMappings, searchableColumns, null);

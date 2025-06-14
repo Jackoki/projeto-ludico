@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RPG));
             this.dataViewer = new System.Windows.Forms.DataGridView();
             this.boxSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -63,6 +64,7 @@
             this.btnSearch.TabIndex = 9;
             this.btnSearch.Text = "Buscar";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnRegister
             // 
@@ -83,8 +85,11 @@
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.boxSearch);
             this.Controls.Add(this.dataViewer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "RPG";
-            this.Text = "RPG";
+            this.Text = "Sistema - Lúdico UTFPR";
             ((System.ComponentModel.ISupportInitialize)(this.dataViewer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
