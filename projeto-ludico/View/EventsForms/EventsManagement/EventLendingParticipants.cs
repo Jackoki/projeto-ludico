@@ -12,8 +12,9 @@ namespace projeto_ludico.View.EventsForms.EventsManagement
 {
     public partial class EventLendingParticipants : Form
     {
-        public EventLendingParticipants()
-        {
+        public int id_event;
+        public EventLendingParticipants(int id_event) {
+            this.id_event = id_event;
             InitializeComponent();
         }
     }

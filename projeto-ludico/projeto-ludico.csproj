@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BoardGamesEventsController.cs" />
     <Compile Include="Controllers\ParticipantEventController.cs" />
     <Compile Include="Controllers\ParticipantsEscapeRoomsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Database\Configurations\ParticipantsEscapeRoomModelConfiguration.cs" />
     <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="Models\BoardGamesBarCodesModel.cs" />
+    <Compile Include="Models\BoardGamesEventsModel.cs" />
     <Compile Include="Models\ParticipantsEscapeRoomModel.cs" />
     <Compile Include="Models\BoardGamesNamesModel.cs" />
     <Compile Include="Models\EventsModel.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="Models\PlacesModel.cs" />
     <Compile Include="Models\RPGModel.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="Repository\BoardGamesEventsRepository.cs" />
     <Compile Include="Repository\ParticipantEscapeRoomRepository.cs" />
     <Compile Include="Repository\EventsRepository.cs" />
     <Compile Include="Repository\InstitutionRepository.cs" />
@@ -172,16 +175,16 @@
     <Compile Include="View\EscapeRoomsForms\EscapeRoomsEdit.Designer.cs">
       <DependentUpon>EscapeRoomsEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\EventsForms\EventsManagement\EventsGames\EventsGames.cs">
+    <Compile Include="View\EventsForms\EventsManagement\EventsGames\EventGames.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\EventsForms\EventsManagement\EventsGames\EventsGames.Designer.cs">
-      <DependentUpon>EventsGames.cs</DependentUpon>
+    <Compile Include="View\EventsForms\EventsManagement\EventsGames\EventGames.Designer.cs">
+      <DependentUpon>EventGames.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\EventsForms\EventsManagement\EventLending.cs">
+    <Compile Include="View\EventsForms\EventsManagement\EventsLending\EventLending.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\EventsForms\EventsManagement\EventLending.Designer.cs">
+    <Compile Include="View\EventsForms\EventsManagement\EventsLending\EventLending.Designer.cs">
       <DependentUpon>EventLending.cs</DependentUpon>
     </Compile>
     <Compile Include="View\EventsForms\EventsManagement\EventLendingParticipants.cs">
@@ -196,6 +199,8 @@
     <Compile Include="View\EventsForms\EventsManagement\EventManagement.Designer.cs">
       <DependentUpon>EventManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EventsForms\EventsManagement\EventsGames\EventGamesUtil.cs" />
+    <Compile Include="View\EventsForms\EventsManagement\EventsLending\EventLendingUtil.cs" />
     <Compile Include="View\EventsForms\EventsManagement\EventsPresence\EventPresence.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -361,10 +366,10 @@
     <EmbeddedResource Include="View\EventsForms\EventsEdit.resx">
       <DependentUpon>EventsEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\EventsForms\EventsManagement\EventsGames\EventsGames.resx">
-      <DependentUpon>EventsGames.cs</DependentUpon>
+    <EmbeddedResource Include="View\EventsForms\EventsManagement\EventsGames\EventGames.resx">
+      <DependentUpon>EventGames.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\EventsForms\EventsManagement\EventLending.resx">
+    <EmbeddedResource Include="View\EventsForms\EventsManagement\EventsLending\EventLending.resx">
       <DependentUpon>EventLending.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\EventsForms\EventsManagement\EventLendingParticipants.resx">

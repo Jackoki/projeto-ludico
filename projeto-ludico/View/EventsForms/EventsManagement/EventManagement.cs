@@ -28,9 +28,9 @@ namespace projeto_ludico.View.EventsForms.EventsManagement
 
             // Adiciona as abas com formulários embutidos
             _tabControl.TabPages.Add(CreateTabWithEmbeddedForm("Registro de Participantes", new EventPresence(id)));
-            _tabControl.TabPages.Add(CreateTabWithEmbeddedForm("Registro de Jogos", new EventsGames()));
-            _tabControl.TabPages.Add(CreateTabWithEmbeddedForm("Empréstimo de Jogo", new EventLending()));
-            _tabControl.TabPages.Add(CreateTabWithEmbeddedForm("Lista de Empréstimos", new EventLendingParticipants()));
+            _tabControl.TabPages.Add(CreateTabWithEmbeddedForm("Registro de Jogos", new EventGames(id)));
+            _tabControl.TabPages.Add(CreateTabWithEmbeddedForm("Empréstimo de Jogo", new EventLending(id)));
+            _tabControl.TabPages.Add(CreateTabWithEmbeddedForm("Lista de Empréstimos", new EventLendingParticipants(id)));
 
             Controls.Clear();
             Controls.Add(_tabControl);

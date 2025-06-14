@@ -57,7 +57,7 @@ namespace projeto_ludico.View.EventsForms.EventsManagement
 
         private void LoadEventParticipants() {
             string tableName = "participants_events";
-            string[] columns = { "participants_events.id", "participants.name", "strftime('%d/%m/%Y %H:%M', participants_events.arrived_hour) AS arrived_hour" };
+            string[] columns = { "participants_events.id", "participants.name", "participants_events.arrived_hour" };
 
             Dictionary<string, string> columnMappings = new Dictionary<string, string> {
                 { "name", "Nome do Participante" },
@@ -74,6 +74,15 @@ namespace projeto_ludico.View.EventsForms.EventsManagement
                 var deleteButton = CreateDeleteButton();
                 dataViewer.Columns.Add(deleteButton);
             }
+
+            dataViewer.CellFormatting += (s, e) => {
+                if (dataViewer.Columns[e.ColumnIndex].Name == "Hora de Chegada" && e.Value != null) {
+                    if (DateTime.TryParse(e.Value.ToString(), out var dateValue)) {
+                        e.Value = dateValue.ToString("dd/MM/yyyy HH:mm");
+                        e.FormattingApplied = true;
+                    }
+                }
+            };
         }
 
         private void dataViewer_CellContentClick(object sender, DataGridViewCellEventArgs e)
