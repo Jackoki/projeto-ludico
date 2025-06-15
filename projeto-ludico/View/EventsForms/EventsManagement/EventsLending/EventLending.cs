@@ -17,6 +17,7 @@ namespace projeto_ludico.View.EventsForms.EventsManagement
     public partial class EventLending : Form
     {
         public int id_event;
+        BoardGamesEventsWithdrawalController boardGamesEventsWithdrawalController = new BoardGamesEventsWithdrawalController();
 
         public EventLending(int id_event) {
             this.id_event = id_event;
@@ -25,15 +26,21 @@ namespace projeto_ludico.View.EventsForms.EventsManagement
 
         private void btnSearchGame_Click(object sender, EventArgs e) {
             string searchString = textBoxSearchGame.Text.Trim();
-            BoardGamesModel boardGamesModel = boardGamesEventsWithdrawalController.PerformSearchBoardGame(searchString);
-            EventLendingUtil.UpdateComboBoxWithBoardGame(boardGamesModel);
+            var boardGames = boardGamesEventsWithdrawalController.PerformSearchBoardGame(searchString);
+            EventLendingUtil.UpdateComboBoxWithBoardGame(boardGames, comboBoxGame);
         }
 
         private void btnSearchParticipant_Click(object sender, EventArgs e) {
             string searchString = textBoxSearchParticipant.Text.Trim();
             ParticipantsModel participantsModel = boardGamesEventsWithdrawalController.PerformSearchParticipant(searchString);
-            EventLendingUtil.UpdateComboBoxWithParticipant(participantsModel);
+            EventLendingUtil.UpdateComboBoxWithParticipant(participantsModel, comboBoxParticipant);
         }
 
+        private void btnRegister_Click(object sender, EventArgs e) {
+            int id_board_game = comboBoxGame.SelectedValue != null ? (int)comboBoxGame.SelectedValue : 0;
+            int id_participant = comboBoxParticipant.SelectedValue != null ? (int)comboBoxParticipant.SelectedValue : 0;
+
+            boardGamesEventsWithdrawalController.AddGame(id_event, id_board_game, id_participant);
+        }
     }
 }

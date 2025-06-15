@@ -37,7 +37,7 @@
             this.textBoxSearchParticipant = new System.Windows.Forms.TextBox();
             this.btnSearchParticipant = new System.Windows.Forms.Button();
             this.comboBoxParticipant = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxSearchGame
@@ -108,21 +108,22 @@
             this.comboBoxParticipant.Size = new System.Drawing.Size(444, 21);
             this.comboBoxParticipant.TabIndex = 13;
             // 
-            // button2
+            // btnRegister
             // 
-            this.button2.Location = new System.Drawing.Point(15, 316);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(656, 32);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Emprestar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnRegister.Location = new System.Drawing.Point(15, 316);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(656, 32);
+            this.btnRegister.TabIndex = 14;
+            this.btnRegister.Text = "Emprestar";
+            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // EventLending
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(683, 373);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.comboBoxParticipant);
             this.Controls.Add(this.btnSearchParticipant);
             this.Controls.Add(this.textBoxSearchParticipant);
@@ -148,6 +149,6 @@
         private System.Windows.Forms.TextBox textBoxSearchParticipant;
         private System.Windows.Forms.Button btnSearchParticipant;
         private System.Windows.Forms.ComboBox comboBoxParticipant;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnRegister;
     }
 }

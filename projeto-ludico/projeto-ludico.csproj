@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BoardGamesEventsWithdrawalController.cs" />
     <Compile Include="Controllers\BoardGamesEventsController.cs" />
     <Compile Include="Controllers\ParticipantEventController.cs" />
     <Compile Include="Controllers\ParticipantsEscapeRoomsController.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Models\RPGModel.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Repository\BoardGamesEventsRepository.cs" />
+    <Compile Include="Repository\BoardGamesWithdrawalRepository.cs" />
     <Compile Include="Repository\ParticipantEscapeRoomRepository.cs" />
     <Compile Include="Repository\EventsRepository.cs" />
     <Compile Include="Repository\InstitutionRepository.cs" />
