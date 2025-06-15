@@ -62,6 +62,7 @@
     <Compile Include="Controllers\EscapeRoomsController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Controllers\PlacesController.cs" />
+    <Compile Include="Controllers\RPGCampaignController.cs" />
     <Compile Include="Controllers\RPGController.cs" />
     <Compile Include="Database\AppDbContext.cs" />
     <Compile Include="Database\Configurations\BoardGamesBarCodesModelConfiguration.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Models\ParticipantsEventsModel.cs" />
     <Compile Include="Models\ParticipantsModel.cs" />
     <Compile Include="Models\PlacesModel.cs" />
+    <Compile Include="Models\RPGCampaignModel.cs" />
     <Compile Include="Models\RPGModel.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Repository\BoardGamesEventsRepository.cs" />
@@ -99,6 +101,7 @@
     <Compile Include="Repository\ParticipantEventRepository.cs" />
     <Compile Include="Repository\ParticipantRepository.cs" />
     <Compile Include="Repository\PlacesRepository.cs" />
+    <Compile Include="Repository\RPGCampaignRepository.cs" />
     <Compile Include="Repository\RPGRepository.cs" />
     <Compile Include="Utils\ButtonsDataGridView.cs" />
     <Compile Include="Utils\ComboBoxLoader.cs" />
@@ -321,11 +324,24 @@
     <Compile Include="View\RPGForms\RPGEdit.Designer.cs">
       <DependentUpon>RPGEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\RPGForms\RPGManagerForms\RPGCampaignCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RPGForms\RPGManagerForms\RPGCampaignCreate.Designer.cs">
+      <DependentUpon>RPGCampaignCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\RPGForms\RPGManagerForms\RPGCampaignDelete.cs" />
     <Compile Include="View\RPGForms\RPGManagerForms\RPGManager.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\RPGForms\RPGManagerForms\RPGManager.Designer.cs">
       <DependentUpon>RPGManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\RPGForms\RPGManagerForms\RPGParticipantsForms\RPGParticipants.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RPGForms\RPGManagerForms\RPGParticipantsForms\RPGParticipants.Designer.cs">
+      <DependentUpon>RPGParticipants.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -434,6 +450,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\RPGForms\RPGEdit.resx">
       <DependentUpon>RPGEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RPGForms\RPGManagerForms\RPGCampaignCreate.resx">
+      <DependentUpon>RPGCampaignCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RPGForms\RPGManagerForms\RPGManager.resx">
+      <DependentUpon>RPGManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RPGForms\RPGManagerForms\RPGParticipantsForms\RPGParticipants.resx">
+      <DependentUpon>RPGParticipants.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Database\Database.db" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />

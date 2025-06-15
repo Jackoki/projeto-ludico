@@ -1,13 +1,5 @@
-﻿using projeto_ludico.View.ListForms;
-using projeto_ludico.View.RPGForms.RPGManagerForms;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace projeto_ludico.View.RPGForms
@@ -66,7 +58,7 @@ namespace projeto_ludico.View.RPGForms
             }
             else if (dataViewer.Columns[e.ColumnIndex].Name == "btnManagement")
             {
-                RPGManager rpgManager = new RPGManager();
+                RPGManager rpgManager = new RPGManager(row);
                 rpgManager.Show();
             }
         }

@@ -91,7 +91,7 @@ namespace projeto_ludico.Controllers
                 rpgModel = _rpgRepository.GetRpg(id);
 
                 if (rpgModel == null) {
-                    throw new KeyNotFoundException("Participante não encontrado.");
+                    throw new KeyNotFoundException("RPG não encontrado.");
                 }
 
                 return rpgModel;
