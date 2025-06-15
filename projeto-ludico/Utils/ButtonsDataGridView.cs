@@ -61,5 +61,15 @@ namespace projeto_ludico.Utils
             btnRemove.UseColumnTextForButtonValue = true;
             return btnRemove;
         }
+
+        public DataGridViewButtonColumn GetReturnButton()
+        {
+            DataGridViewButtonColumn btnReturn = new DataGridViewButtonColumn();
+            btnReturn.HeaderText = "";
+            btnReturn.Name = "btnReturn";
+            btnReturn.Text = "Devolver Jogo";
+            btnReturn.UseColumnTextForButtonValue = true;
+            return btnReturn;
+        }
     }
 }

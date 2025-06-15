@@ -17,6 +17,7 @@ namespace projeto_ludico.View.EventsForms.EventsManagement
     public partial class EventLending : Form
     {
         public int id_event;
+        public event Action OnGameRegistered;
         BoardGamesEventsWithdrawalController boardGamesEventsWithdrawalController = new BoardGamesEventsWithdrawalController();
 
         public EventLending(int id_event) {
@@ -41,6 +42,9 @@ namespace projeto_ludico.View.EventsForms.EventsManagement
             int id_participant = comboBoxParticipant.SelectedValue != null ? (int)comboBoxParticipant.SelectedValue : 0;
 
             boardGamesEventsWithdrawalController.AddGame(id_event, id_board_game, id_participant);
+
+            //Função que realiza a chamada de Action, que vai atualizar a aba de jogos em empréstimo
+            OnGameRegistered?.Invoke();
         }
     }
 }

@@ -42,9 +42,13 @@ namespace projeto_ludico.Controllers
 
         public void RemoveGameWithdrawal(DataGridViewRow row) {
             try {
-                int id = Convert.ToInt32(row.Cells["id"].Value);
-               // _boardGamesEventsWithdrawalRepository.RemoveGameWithdrawal(id);
-                MessageBox.Show("Jogo deletado!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show("Tem certeza que deseja deletar este jogo?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes) {
+                    int id = Convert.ToInt32(row.Cells["id"].Value);
+                    _boardGamesEventsWithdrawalRepository.RemoveGameWithdrawal(id);
+                    MessageBox.Show("Jogo deletado!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
 
             catch (InvalidOperationException ex) {
@@ -56,6 +60,29 @@ namespace projeto_ludico.Controllers
                 MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public void ReturnGameWithdrawal(DataGridViewRow row) {
+            try {
+                DialogResult result = MessageBox.Show("Tem certeza que deseja devolver este jogo?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes) {
+                    int id = Convert.ToInt32(row.Cells["id"].Value);
+                    _boardGamesEventsWithdrawalRepository.ReturnGameWithdrawal(id);
+                    MessageBox.Show("Jogo devolvido!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Erro na operação do banco de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         public Dictionary<int, string> PerformSearchBoardGame(string searchText) {
             try {

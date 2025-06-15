@@ -74,6 +74,11 @@ namespace projeto_ludico.View
             var btnDataGridViewManagement = new ButtonsDataGridView();
             return btnDataGridViewManagement.GetManagementButton();
         }
+        public DataGridViewButtonColumn CreateReturnButton()
+        {
+            var btnDataGridViewReturn = new ButtonsDataGridView();
+            return btnDataGridViewReturn.GetReturnButton();
+        }
 
         //Função utilizada para ocultar colunas da tabela, sendo passada a tabela e as colunas a serem ocultadas
         public void OccultColumns(DataGridView viewer, params string[] columnsToOccult) {

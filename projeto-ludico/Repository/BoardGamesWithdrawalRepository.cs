@@ -30,11 +30,36 @@ namespace projeto_ludico.Repository
             }
         }
 
+        public void RemoveGameWithdrawal(int id) {
+            using (var connection = DatabaseConnection.GetConnection()) {
+                string deleteSql = "DELETE FROM board_games_event_withdrawal WHERE id = @Id";
 
+                using (var deleteCommand = new SqliteCommand(deleteSql, connection)) {
+                    deleteCommand.Parameters.AddWithValue("@Id", id);
 
-        public void RemoveGame(int id_list, int id) {
-            
+                    connection.Open();
+                    deleteCommand.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
         }
+
+        public void ReturnGameWithdrawal(int id) {
+            using (var connection = DatabaseConnection.GetConnection()) {
+                string updateSql = "UPDATE board_games_event_withdrawal SET hour_devolution = @HourDevolution WHERE id = @Id";
+
+                using (var updateCommand = new SqliteCommand(updateSql, connection)) {
+                    updateCommand.Parameters.AddWithValue("@HourDevolution", DateTime.Now);
+                    updateCommand.Parameters.AddWithValue("@Id", id);
+
+                    connection.Open();
+                    updateCommand.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+        }
+
+
 
         public Dictionary<int, string> PerformSearchBoardGame(string searchText) {
             var results = new Dictionary<int, string>();

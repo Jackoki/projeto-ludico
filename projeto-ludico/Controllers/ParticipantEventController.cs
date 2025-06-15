@@ -34,9 +34,13 @@ namespace projeto_ludico.Controllers
         public void DeleteParticipant(DataGridViewRow row)
         {
             try {
-                int id = Convert.ToInt32(row.Cells["id"].Value);
-                _participantEventRepository.DeleteParticipant(id);
-                MessageBox.Show("Participante deletado!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show("Tem certeza que deseja deletar este participante do evento?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes) {
+                    int id = Convert.ToInt32(row.Cells["id"].Value);
+                    _participantEventRepository.DeleteParticipant(id);
+                    MessageBox.Show("Participante deletado!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
 
             catch (InvalidOperationException ex) {

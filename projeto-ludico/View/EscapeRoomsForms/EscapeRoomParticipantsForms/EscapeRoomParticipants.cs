@@ -31,9 +31,14 @@ namespace projeto_ludico.View.EscapeRoomsForms
         private void ConfigureParticipantsViewer() {
             string[] desiredColumns = { "participants.id", "participants.name" }; // Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite
 
+            string joinClause = "INNER JOIN participants_events ON (participants_events.id_participant = participants.id)" +
+                                "INNER JOIN events ON (events.id = participants_events.id_event) " +
+                                "INNER JOIN escape_rooms ON (escape_rooms.id_event = events.id AND escape_rooms.id = " + id_escape_room.ToString() + ")";
+
+
             var columnMappings = GetColumnMappings();
 
-            ConfigureDataViewerWithoutButtons(dataViewerParticipants, "participants", desiredColumns, columnMappings, null);
+            ConfigureDataViewerWithoutButtons(dataViewerParticipants, "participants", desiredColumns, columnMappings, joinClause);
             OccultColumns(dataViewerParticipants, "id");
 
             var btnAdd = buttonsDataGridView.GetAddButton();
@@ -45,10 +50,14 @@ namespace projeto_ludico.View.EscapeRoomsForms
             string[] desiredColumns = { "participants.id", "participants.name" }; // Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite
             string[] searchableColumns = { "participants.name"};
 
+            string joinClause = "INNER JOIN participants_events ON (participants_events.id_participant = participants.id)" +
+                                "INNER JOIN events ON (events.id = participants_events.id_event) " +
+                                "INNER JOIN escape_rooms ON (escape_rooms.id_event = events.id AND escape_rooms.id = " + id_escape_room.ToString() + ")";
+
             var columnMappings = GetColumnMappings();
 
             // A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário
-            ConfigureSearchDataViewer(dataViewerParticipants, searchString, "participants", desiredColumns, columnMappings, searchableColumns, null);
+            ConfigureSearchDataViewer(dataViewerParticipants, searchString, "participants", desiredColumns, columnMappings, searchableColumns, joinClause);
             OccultColumns(dataViewerParticipants, "id"); // Oculta as colunas especificadas
         }
 

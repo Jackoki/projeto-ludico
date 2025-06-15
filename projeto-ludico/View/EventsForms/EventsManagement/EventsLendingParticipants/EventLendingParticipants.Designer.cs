@@ -29,21 +29,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EventLendingParticipants));
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxGames = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataViewer = new System.Windows.Forms.DataGridView();
+            this.labelCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewer)).BeginInit();
             this.SuspendLayout();
             // 
-            // checkBox1
+            // checkBoxGames
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(12, 32);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(143, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Mostrar jogos devolvidos";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxGames.AutoSize = true;
+            this.checkBoxGames.Location = new System.Drawing.Point(12, 32);
+            this.checkBoxGames.Name = "checkBoxGames";
+            this.checkBoxGames.Size = new System.Drawing.Size(143, 17);
+            this.checkBoxGames.TabIndex = 0;
+            this.checkBoxGames.Text = "Mostrar jogos devolvidos";
+            this.checkBoxGames.UseVisualStyleBackColor = true;
+            this.checkBoxGames.CheckedChanged += new System.EventHandler(this.checkBoxGames_CheckedChanged);
             // 
             // label1
             // 
@@ -66,15 +68,25 @@
             this.dataViewer.ReadOnly = true;
             this.dataViewer.Size = new System.Drawing.Size(632, 339);
             this.dataViewer.TabIndex = 2;
+            this.dataViewer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataViewer_CellContentClick);
+            // 
+            // labelCount
+            // 
+            this.labelCount.AutoSize = true;
+            this.labelCount.Location = new System.Drawing.Point(610, 36);
+            this.labelCount.Name = "labelCount";
+            this.labelCount.Size = new System.Drawing.Size(0, 13);
+            this.labelCount.TabIndex = 3;
             // 
             // EventLendingParticipants
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(656, 428);
+            this.Controls.Add(this.labelCount);
             this.Controls.Add(this.dataViewer);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.checkBoxGames);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EventLendingParticipants";
             ((System.ComponentModel.ISupportInitialize)(this.dataViewer)).EndInit();
@@ -85,8 +97,9 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxGames;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataViewer;
+        private System.Windows.Forms.Label labelCount;
     }
 }

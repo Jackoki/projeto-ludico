@@ -26,18 +26,27 @@ namespace projeto_ludico.View.EventsForms.EventsManagement
                 Dock = DockStyle.Fill
             };
 
-            // Adiciona as abas com formulários embutidos
-            _tabControl.TabPages.Add(CreateTabWithEmbeddedForm("Registro de Participantes", new EventPresence(id)));
-            _tabControl.TabPages.Add(CreateTabWithEmbeddedForm("Registro de Jogos", new EventGames(id)));
-            _tabControl.TabPages.Add(CreateTabWithEmbeddedForm("Empréstimo de Jogo", new EventLending(id)));
-            _tabControl.TabPages.Add(CreateTabWithEmbeddedForm("Lista de Empréstimos", new EventLendingParticipants(id)));
+            // Instancia os formulários
+            var eventPresenceForm = new EventPresence(id);
+            var eventGamesForm = new EventGames(id);
+            var eventLendingForm = new EventLending(id);
+            var eventLendingParticipantsForm = new EventLendingParticipants(id);
+
+            // Vincula o evento do EventLending ao método do EventLendingParticipants
+            eventLendingForm.OnGameRegistered += eventLendingParticipantsForm.ConfigureBoardGamesViewer;
+
+            // Adiciona as abas com os formulários embutidos
+            _tabControl.TabPages.Add(CreateTabWithEmbeddedForm("Registro de Participantes", eventPresenceForm));
+            _tabControl.TabPages.Add(CreateTabWithEmbeddedForm("Registro de Jogos", eventGamesForm));
+            _tabControl.TabPages.Add(CreateTabWithEmbeddedForm("Empréstimo de Jogo", eventLendingForm));
+            _tabControl.TabPages.Add(CreateTabWithEmbeddedForm("Lista de Empréstimos", eventLendingParticipantsForm));
 
             Controls.Clear();
             Controls.Add(_tabControl);
         }
 
-        private TabPage CreateTabWithEmbeddedForm(string title, Form form)
-        {
+
+        private TabPage CreateTabWithEmbeddedForm(string title, Form form) {
             var tabPage = new TabPage(title);
 
             // Configura o formulário para ser usado como controle dentro da aba

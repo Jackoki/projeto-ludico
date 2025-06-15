@@ -177,6 +177,7 @@
     <Compile Include="View\EscapeRoomsForms\EscapeRoomsEdit.Designer.cs">
       <DependentUpon>EscapeRoomsEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EventsForms\EventsManagement\EventsLendingParticipants\EventLendingParticipantsUtil.cs" />
     <Compile Include="View\EventsForms\EventsManagement\EventsGames\EventGames.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,10 +190,10 @@
     <Compile Include="View\EventsForms\EventsManagement\EventsLending\EventLending.Designer.cs">
       <DependentUpon>EventLending.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\EventsForms\EventsManagement\EventLendingParticipants.cs">
+    <Compile Include="View\EventsForms\EventsManagement\EventsLendingParticipants\EventLendingParticipants.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\EventsForms\EventsManagement\EventLendingParticipants.Designer.cs">
+    <Compile Include="View\EventsForms\EventsManagement\EventsLendingParticipants\EventLendingParticipants.Designer.cs">
       <DependentUpon>EventLendingParticipants.cs</DependentUpon>
     </Compile>
     <Compile Include="View\EventsForms\EventsManagement\EventManagement.cs">
@@ -374,7 +375,7 @@
     <EmbeddedResource Include="View\EventsForms\EventsManagement\EventsLending\EventLending.resx">
       <DependentUpon>EventLending.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\EventsForms\EventsManagement\EventLendingParticipants.resx">
+    <EmbeddedResource Include="View\EventsForms\EventsManagement\EventsLendingParticipants\EventLendingParticipants.resx">
       <DependentUpon>EventLendingParticipants.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\EventsForms\EventsManagement\EventManagement.resx">
