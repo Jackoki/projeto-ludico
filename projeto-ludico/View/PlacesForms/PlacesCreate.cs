@@ -19,6 +19,7 @@ namespace projeto_ludico.View.PlacesForms
             InitializeComponent();
         }
 
+        //Ao clicar no botão de criação, será montado as informações preenchidas ao participante, sendo esse passado no Controller, que por sua vez chama o Repository
         private void btnRegister_Click(object sender, EventArgs e)
         {
             PlacesModel placesModel = new PlacesModel();
