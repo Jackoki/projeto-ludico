@@ -22,6 +22,7 @@ namespace projeto_ludico.View.ListForms
             listModel = new ListModel();
         }
 
+        //Atribuimos os campos de preenchimento do formulário com as informações da lista identificada pelo Id passado pelo Row
         public void EditList(DataGridViewRow row)
         {
             if (row.Cells["id"].Value != null && int.TryParse(row.Cells["id"].Value.ToString(), out int id))
@@ -30,6 +31,8 @@ namespace projeto_ludico.View.ListForms
             }
         }
 
+        //Ao clicar no botão de editar, será chamada a função de loadNewValues(), que esse cria um novo ListModel
+        //Esse ListModel pega o Id anterior e recebe as informações dos formulários atuais
         private void btnEdit_Click(object sender, EventArgs e)
         {
             listModel.name = txtBoxName.Text;
