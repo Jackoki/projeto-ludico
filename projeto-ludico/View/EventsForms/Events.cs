@@ -22,6 +22,7 @@ namespace projeto_ludico.View.EventsForms
             ConfigureEventsViewer();
         }
 
+        //Realiza a chamada das informações do SQL, passamos as colunas que queremos e as renomeamos no da DataGrid
         private void ConfigureEventsViewer()
         {
             string[] desiredColumns = {
@@ -44,12 +45,13 @@ namespace projeto_ludico.View.EventsForms
             //Passamos o true para dizer que iremos adicionar o botão "Gerenciar" na linha
             ConfigureDataViewer(dataViewer, "events", desiredColumns, columnMappings, joinClause, true);
 
-            OccultColumns(dataViewer, "id", "events_local_id");
+            OccultColumns(dataViewer, "id", "events_local_id");// Oculta as colunas especificadas
         }
 
-
+        //Função responsável para realizar a atualização de pesquisa quando o usuário realizar a pesquisa no formulário
         private void PerformSearch(string searchString)
         {
+            // Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite
             string[] desiredColumns = {
                 "events.id", "events.name", "events.date",
                 "events_local.name AS events_local", "events_local.id AS events_local_id"
@@ -90,6 +92,7 @@ namespace projeto_ludico.View.EventsForms
             eventsCreate.Show();
         }
 
+        //Criação dos botões de editar e deletar em cada linha de forma automática
         private void DataViewer_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) 
