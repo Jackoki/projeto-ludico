@@ -39,7 +39,7 @@ namespace projeto_ludico.View.EventsForms.EventsManagement
             };
 
             string joinClause = "INNER JOIN board_games ON (board_games.id = board_games_event_withdrawal.id_board_game and board_games_event_withdrawal.hour_devolution IS NULL)" +
-                                "INNER JOIN participants ON (participants.id = board_games_event_withdrawal.id_participant)" +
+                                "INNER JOIN participants ON (participants.id = board_games_event_withdrawal.id_participant and board_games_event_withdrawal.id_event = " + id_event + ")" +
                                 "LEFT JOIN board_games_names ON (board_games_names.id_board_game = board_games.id AND board_games_names.is_principal = 1)";
 
             ConfigureDataViewerWithoutButtons(dataViewer, "board_games_event_withdrawal", desiredColumns, columnMappings, joinClause);
@@ -73,7 +73,7 @@ namespace projeto_ludico.View.EventsForms.EventsManagement
              };
 
             string joinClause = "INNER JOIN board_games ON (board_games.id = board_games_event_withdrawal.id_board_game)" +
-                                "INNER JOIN participants ON (participants.id = board_games_event_withdrawal.id_participant)" +
+                                "INNER JOIN participants ON (participants.id = board_games_event_withdrawal.id_participant and board_games_event_withdrawal.id_event = " + id_event + ")" +
                                 "LEFT JOIN board_games_names ON (board_games_names.id_board_game = board_games.id AND board_games_names.is_principal = 1)";
 
             ConfigureDataViewerWithoutButtons(dataViewer, "board_games_event_withdrawal", desiredColumns, columnMappings, joinClause);

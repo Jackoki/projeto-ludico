@@ -38,7 +38,7 @@ namespace projeto_ludico.View.EventsForms.EventsManagement
                 { "name", "Nome do Jogo" }
             };
 
-            string joinClause = "INNER JOIN board_games ON (board_games.id = board_games_events.id_board_game)" +
+            string joinClause = "INNER JOIN board_games ON (board_games.id = board_games_events.id_board_game and board_games_events.id_event = " + id_event + ")" +
                                 "LEFT JOIN board_games_names ON (board_games_names.id_board_game = board_games.id AND board_games_names.is_principal = 1)";
 
             ConfigureDataViewerWithoutButtons(dataViewer, tableName, columns, columnMappings, joinClause);

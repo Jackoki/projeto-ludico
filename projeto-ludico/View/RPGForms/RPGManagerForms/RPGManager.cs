@@ -27,13 +27,15 @@ namespace projeto_ludico.View.RPGForms
 
         //Realiza a chamada das informações do SQL, passamos as colunas que queremos e as renomeamos no da DataGrid
         private void ConfigureRPGViewer() {
-            string[] desiredColumns = { "name", "id" };
+            string[] desiredColumns = { "role_play_games_campaigns.name", "role_play_games_campaigns.id" };
             var columnMappings = new Dictionary<string, string>
             {
                 { "name", "Nome da Campanha" },
             };
 
-            ConfigureDataViewerWithoutButtons(dataViewer, "role_play_games_campaigns", desiredColumns, columnMappings, null);
+            string joinClause = "INNER JOIN role_play_games ON (role_play_games.id = role_play_games_campaigns.id_role_play_game and role_play_games.id = " + id_role_play + ")";
+
+            ConfigureDataViewerWithoutButtons(dataViewer, "role_play_games_campaigns", desiredColumns, columnMappings, joinClause);
 
             // Verifica se o botão delete já foi adicionado
             if (!dataViewer.Columns.Contains("btnDelete")) {
@@ -53,17 +55,19 @@ namespace projeto_ludico.View.RPGForms
          //Função responsável para realizar a atualização de pesquisa quando o usuário realizar a pesquisa no formulário
         private void PerformSearch(string searchString) {
             // Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite
-            string[] desiredColumns = { "name", "id" };
-            string[] searchableColumns = { "name" }; // Colunas usadas na busca
+            string[] desiredColumns = { "role_play_games_campaigns.name", "role_play_games_campaigns.id" };
+            string[] searchableColumns = { "role_play_games_campaigns.name" }; // Colunas usadas na busca
 
             var columnMappings = new Dictionary<string, string>
             {
                 { "name", "Nome da Campanha" },
             };
 
+            string joinClause = "INNER JOIN role_play_games ON (role_play_games.id = role_play_games_campaigns.id_role_play_game and role_play_games.id = " + id_role_play + ")";
+
             // A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário
             //Passamos o null no final pois não temos nenhum JOIN a ser retornado na tabela
-            ConfigureSearchDataViewer(dataViewer, searchString, "role_play_games_campaigns", desiredColumns, columnMappings, searchableColumns, null);
+            ConfigureSearchDataViewer(dataViewer, searchString, "role_play_games_campaigns", desiredColumns, columnMappings, searchableColumns, joinClause);
             OccultColumns(dataViewer, "id"); // Oculta as colunas especificadas
         }
 

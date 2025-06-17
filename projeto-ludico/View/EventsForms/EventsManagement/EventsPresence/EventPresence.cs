@@ -64,7 +64,7 @@ namespace projeto_ludico.View.EventsForms.EventsManagement
                 { "arrived_hour", "Hora de Chegada" },
             };
 
-            string joinClause = "INNER JOIN participants ON (participants_events.id_participant = participants.id)";
+            string joinClause = "INNER JOIN participants ON (participants_events.id_participant = participants.id and participants_events.id_event = " + id_event + ")";
 
             ConfigureDataViewerWithoutButtons(dataViewer, tableName, columns, columnMappings, joinClause);
             OccultColumns(dataViewer, "id");
