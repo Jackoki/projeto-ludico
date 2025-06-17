@@ -14,11 +14,13 @@ namespace projeto_ludico.Service
 
         public void DeletePlace(DataGridViewRow row)
         {
+            //Análisa se o id é diferente de nulo e se consegue converter para INT
             if (row.Cells["id"].Value != null && int.TryParse(row.Cells["id"].Value.ToString(), out int id))
             {
                 PlacesModel placesModel = new PlacesModel();
                 placesModel.id = id;
 
+                // Exibe uma mensagem de confirmação, se o usuário apertar Sim, irá deletar pelo controller
                 DialogResult result = MessageBox.Show("Tem certeza de que deseja excluir este registro?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
