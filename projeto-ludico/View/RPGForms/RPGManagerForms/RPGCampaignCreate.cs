@@ -17,6 +17,7 @@ namespace projeto_ludico.View.RPGForms
     {
         public int id_role_play;
 
+        //Ao renderizar a função, será carregado o ComboBox da função abaixo, atribuindo o Nome e Id como Valor
         public RPGCampaignCreate(int id_role_play) {
             this.id_role_play = id_role_play;
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace projeto_ludico.View.RPGForms
             comboBoxEvents.SelectedIndex = -1;
         }
 
+        //Ao clicar no botão de criação, será montado as informações preenchidas ao participante, sendo esse passado no Controller, que por sua vez chama o Repository
         private void btnRegister_Click(object sender, EventArgs e)
         {
             RPGCampaignModel rpgCampaignModel = new RPGCampaignModel();
