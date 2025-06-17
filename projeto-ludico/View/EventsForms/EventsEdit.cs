@@ -11,6 +11,7 @@ namespace projeto_ludico.View.EventsForms
         EventsModel eventsModel = new EventsModel();
         EventsController eventsController = new EventsController();
 
+        //Ao renderizar esse formulário, passamos o ID do evento pela identificação do row
         public EventsEdit(DataGridViewRow row)
         {
             InitializeComponent();
@@ -18,6 +19,7 @@ namespace projeto_ludico.View.EventsForms
             loadBoardGames(row);
         }
 
+        //Atribuimos os campos de preenchimento do formulário com as informações do evento identificado pelo Id passado pelo Row
         private void loadBoardGames(DataGridViewRow row)
         {
             if (row.Cells["id"].Value != null && int.TryParse(row.Cells["id"].Value.ToString(), out int id))
@@ -48,6 +50,8 @@ namespace projeto_ludico.View.EventsForms
             Close();
         }
 
+        //Ao clicar no botão de editar, será chamada a função de loadNewValues(), que esse cria um novo EventsModel
+        //Esse EventsModel pega o Id anterior e recebe as informações dos formulários atuais
         private void btnEdit_Click(object sender, EventArgs e)
         {
             eventsModel.id = eventsModel.id;
