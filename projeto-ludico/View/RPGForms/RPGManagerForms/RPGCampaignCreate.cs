@@ -30,7 +30,7 @@ namespace projeto_ludico.View.RPGForms
             comboBoxEvents.SelectedIndex = -1;
         }
 
-        //Ao clicar no botão de criação, será montado as informações preenchidas ao participante, sendo esse passado no Controller, que por sua vez chama o Repository
+        //Ao clicar no botão de criação, será montado as informações preenchidas à Campanha, sendo esse passado no Controller, que por sua vez chama o Repository
         private void btnRegister_Click(object sender, EventArgs e)
         {
             RPGCampaignModel rpgCampaignModel = new RPGCampaignModel();
