@@ -14,11 +14,14 @@ namespace projeto_ludico.View.ListForms
 {
     public partial class ListCreate : Form
     {
+
+        //Ao renderizar a função, será carregado o ComboBox da função abaixo, atribuindo o Nome e Id como Valor
         public ListCreate()
         {
             InitializeComponent();
         }
 
+        //Ao clicar no botão de criação, será montado as informações preenchidas à Lista, sendo esse passado no Controller, que por sua vez chama o Repository
         private void btnRegister_Click(object sender, EventArgs e)
         {
             // Cria o modelo com os dados do formulário
