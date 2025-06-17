@@ -32,6 +32,7 @@ namespace projeto_ludico.View.EventsForms
             datePickerEvent.CustomFormat = "dd/MM/yyyy HH:mm";
         }
 
+         //Ao clicar no botão de criação, será montado as informações preenchidas ao participante, sendo esse passado no Controller, que por sua vez chama o Repository
         private void btnRegister_Click(object sender, EventArgs e)
         {
             eventsModel.name = txtBoxName.Text;
