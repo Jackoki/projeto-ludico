@@ -23,6 +23,7 @@ namespace projeto_ludico.View.RPGForms
             
         }
 
+        //Atribuimos os campos de preenchimento do formulário com as informações do RPG identificado pelo Id passado pelo Row
         public void EditRPG(DataGridViewRow row)
         {
             if (row.Cells["id"].Value != null && int.TryParse(row.Cells["id"].Value.ToString(), out int id))
