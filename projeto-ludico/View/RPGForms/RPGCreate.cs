@@ -21,6 +21,7 @@ namespace projeto_ludico.View.RPGForms
             InitializeComponent();
         }
 
+         //Ao clicar no botão de criação, será montado as informações preenchidas ao RPG, sendo esse passado no Controller, que por sua vez chama o Repository
         private void btnRegister_Click(object sender, EventArgs e)
         {
             RPGModel rpgModel = new RPGModel();
