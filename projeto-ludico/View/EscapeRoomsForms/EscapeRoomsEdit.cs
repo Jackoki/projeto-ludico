@@ -19,7 +19,7 @@ namespace projeto_ludico.View.EscapeRoomsForms
         EscapeRoomsModel escapeRoomsModel = new EscapeRoomsModel();
         EscapeRoomsController escapeRoomsController = new EscapeRoomsController();
 
-        //Ao renderizar esse formulário, passamos o ID do participante pela identificação do row
+        //Ao renderizar esse formulário, passamos o ID do escape room pela identificação do row
         public EscapeRoomsEdit(DataGridViewRow row) {
             InitializeComponent();
             loadComboBox();
@@ -32,7 +32,7 @@ namespace projeto_ludico.View.EscapeRoomsForms
             comboBoxLoader.LoadComboBox(comboBoxEvents, "events", "id", "name");
         }
 
-        //Atribuimos os campos de preenchimento do formulário com as informações do participante identificado pelo Id passado pelo Row
+        //Atribuimos os campos de preenchimento do formulário com as informações do escape room identificado pelo Id passado pelo Row
         private void loadEscapeRooms(DataGridViewRow row) {
             if (row.Cells["id"].Value != null && int.TryParse(row.Cells["id"].Value.ToString(), out int id)) {
                 escapeRoomsModel.Id = id;
@@ -47,8 +47,8 @@ namespace projeto_ludico.View.EscapeRoomsForms
 
         
 
-        //Ao clicar no botão de editar, será chamada a função de loadNewValues(), que esse cria um novo ParticipantModel
-        //Esse ParticipantModel pega o Id anterior e recebe as informações dos formulários atuais
+        //Ao clicar no botão de editar, será chamada a função de loadNewValues(), que esse cria um novo EscapeRoomsModel
+        //Esse EscapeRoomsModel pega o Id anterior e recebe as informações dos formulários atuais
         private void btnCreate_Click(object sender, EventArgs e) {
             escapeRoomsController.EditEscapeRooms(loadNewValues());
         }
