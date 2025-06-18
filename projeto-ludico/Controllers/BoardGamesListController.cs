@@ -12,6 +12,7 @@ namespace projeto_ludico.Controllers
 {
     internal class BoardGamesListController
     {
+        //Cria um Repository para realizar o registro de dados, se ocorrer um erro, o catch irá ser acionado
         private readonly BoardGamesListRepository _repository;
 
         public BoardGamesListController()
@@ -26,6 +27,7 @@ namespace projeto_ludico.Controllers
             }
 
             catch (Exception ex) {
+                // Exibe um erro inesperado
                 MessageBox.Show("Erro ao adicionar jogo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -37,6 +39,7 @@ namespace projeto_ludico.Controllers
             }
 
             catch (Exception ex) {
+                // Exibe um erro inesperado
                 MessageBox.Show("Erro ao remover jogo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
