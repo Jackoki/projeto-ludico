@@ -62,7 +62,6 @@ namespace projeto_ludico.View.EscapeRoomsForms
             string joinClause = "LEFT JOIN events ON (escape_rooms.id_event = events.id)";
 
             // A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário
-            //Passamos o null no final pois não temos nenhum JOIN a ser retornado na tabela
             ConfigureSearchDataViewer(dataViewer, searchString, "escape_rooms", desiredColumns, columnMappings, searchableColumns, joinClause);
 
             // Oculta as colunas especificadas
