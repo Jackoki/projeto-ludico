@@ -12,6 +12,7 @@ namespace projeto_ludico.Controllers
 {
     internal class ListController
     {
+        //Cria um Repository para realizar o registro de dados, se ocorrer um erro, o catch irá ser acionado
         private readonly ListRepository _repository;
 
         public ListController()
@@ -23,6 +24,7 @@ namespace projeto_ludico.Controllers
         {
             try
             {
+                //Chamada da classe ValidationUtil para validar os tipos de dados do listModel
                 if (!ValidationUtils.IsValidName(listModel.name))
                     throw new ArgumentException("O nome da lista é inválido.");
 
@@ -33,6 +35,7 @@ namespace projeto_ludico.Controllers
 
             catch (Exception ex)
             {
+                // Exibe um erro inesperado
                 MessageBox.Show("Erro ao criar lista: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -41,6 +44,7 @@ namespace projeto_ludico.Controllers
         {
             try
             {
+                // Valida o nome da lista
                 if (!ValidationUtils.IsValidName(listModel.name))
                     throw new ArgumentException("O nome da lista é inválido.");
 
@@ -57,6 +61,7 @@ namespace projeto_ludico.Controllers
             }
             catch (Exception ex)
             {
+                // Exibe um erro inesperado
                 MessageBox.Show("Erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -71,6 +76,7 @@ namespace projeto_ludico.Controllers
 
             catch (Exception ex)
             {
+                // Exibe um erro inesperado
                 MessageBox.Show("Erro ao deletar lista: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
