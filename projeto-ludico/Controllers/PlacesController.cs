@@ -5,6 +5,7 @@ using projeto_ludico.Models;
 
 public class PlacesController
 {
+    //Cria um Repository para realizar o registro de dados, se ocorrer um erro, o catch irá ser acionado
     private readonly PlacesRepository _placesRepository;
 
     public PlacesController()
@@ -16,6 +17,7 @@ public class PlacesController
     {
         try
         {
+            //Chamada da classe ValidationUtil para validar os tipos de dados do placesModel
             if (!ValidationUtils.IsValidName(placesModel.name))
                 throw new ArgumentException("Nome não pode ser vazio.");
 
@@ -32,6 +34,7 @@ public class PlacesController
         }
         catch (Exception ex)
         {
+             // Captura qualquer outra exceção que não tenha sido tratada acima
             MessageBox.Show("Erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
@@ -40,9 +43,11 @@ public class PlacesController
     {
         try
         {
+            // Valida o nome do local
             if (!ValidationUtils.IsValidName(placesModel.name))
                 throw new ArgumentException("Nome não pode ser vazio.");
 
+            // Atualiza o local no banco de dados
             _placesRepository.UpdatePlace(placesModel);
             MessageBox.Show("Local editado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -56,6 +61,7 @@ public class PlacesController
         }
         catch (Exception ex)
         {
+            // Captura qualquer outra exceção que não tenha sido tratada acima
             MessageBox.Show("Erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
@@ -73,6 +79,7 @@ public class PlacesController
         }
         catch (Exception ex)
         {
+            // Captura qualquer outra exceção que não tenha sido tratada acima
             MessageBox.Show("Erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
