@@ -22,6 +22,7 @@ namespace projeto_ludico.Controllers
 
         public void AddGame(int id_event, int id_board_game, int id_participant) {
             try {
+                //Verifica se um jogo ou participante foi encontrado
                 if (id_board_game == 0 || id_participant == 0) {
                     throw new KeyNotFoundException("Não foi selecionado o jogo ou o participante.");
                 }
@@ -35,6 +36,7 @@ namespace projeto_ludico.Controllers
             }
 
             catch (Exception ex) {
+                // Captura qualquer outra exceção que não tenha sido tratada acima
                 MessageBox.Show($"Erro ao adicionar jogo: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -79,6 +81,7 @@ namespace projeto_ludico.Controllers
 
             catch (Exception ex)
             {
+                // Captura qualquer outra exceção que não tenha sido tratada acima
                 MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -86,6 +89,7 @@ namespace projeto_ludico.Controllers
 
         public Dictionary<int, string> PerformSearchBoardGame(string searchText) {
             try {
+                //Chamada da classe ValidationUtil para validar os tipos de dados do boardGamesModel
                 if (!ValidationUtils.IsValidName(searchText)) {
                     throw new KeyNotFoundException("Texto do jogo não pode ser vazio.");
                 }
@@ -109,6 +113,7 @@ namespace projeto_ludico.Controllers
             }
 
             catch (Exception ex) {
+                // Captura qualquer outra exceção que não tenha sido tratada acima
                 MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return new Dictionary<int, string>();
             }
@@ -140,6 +145,7 @@ namespace projeto_ludico.Controllers
             }
 
             catch (Exception ex) {
+                // Captura qualquer outra exceção que não tenha sido tratada acima
                 MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
