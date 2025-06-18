@@ -19,11 +19,11 @@ namespace projeto_ludico.View.BoardGamesForms
         BoardGamesModel boardgamesModel = new BoardGamesModel();
         ParseIntOrDefault parseIntOrDefault = new ParseIntOrDefault();
 
-        //Ao renderizar a função, será carregado o ComboBox da função abaixo, atribuindo o Nome e Id como Valor
         public BoardGamesCreate() {
             InitializeComponent();
         }
 
+        //Ao clicar no botão de criação, será montado as informações preenchidas ao board game, sendo esse passado no Controller, que por sua vez chama o Repository
         private void PreencherBoardGameModel()
         {
             boardgamesModel.description = txtDescricao.Text;
