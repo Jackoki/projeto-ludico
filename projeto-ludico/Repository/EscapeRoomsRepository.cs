@@ -16,11 +16,11 @@ namespace projeto_ludico.Repository
         public void AddEscapeRooms(EscapeRoomsModel escapeRoomsModel) {
             using (var connection = DatabaseConnection.GetConnection())
             {
-                // Realiza a adição do participante pela Query abaixo
+                // Realiza a adição do escape room pela Query abaixo
                 string sql = @"INSERT INTO escape_rooms  (id_event, Name, Description) 
                              VALUES (@Id_Event, @Name, @Description);";
 
-                //Ocorre a atribuição de variáveis a partir do command, que resgata os valores do participantModel passado no parâmetro
+                //Ocorre a atribuição de variáveis a partir do command, que resgata os valores do escaperoomModel passado no parâmetro
                 using (var command = new SqliteCommand(sql, connection))
                 {
                     if(escapeRoomsModel.id_event == 0) {
@@ -71,7 +71,7 @@ namespace projeto_ludico.Repository
             }
         }
 
-        //Realiza a deleção do participante pelo Id na query
+        //Realiza a deleção do escape room pelo Id na query
         public void DeleteEscapeRooms(int id)
         {
             using (var connection = DatabaseConnection.GetConnection())
@@ -92,7 +92,7 @@ namespace projeto_ludico.Repository
             }
         }
 
-        //Retorna todas as informações do ParticipantModel a partir do SELECT filtrado pelo id no parâmetro
+        //Retorna todas as informações do EscapeRoomModel a partir do SELECT filtrado pelo id no parâmetro
         public EscapeRoomsModel GetEscapeRoomsById(int id) {
             EscapeRoomsModel escapeRoomsModel = new EscapeRoomsModel();
 
