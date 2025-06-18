@@ -19,7 +19,9 @@ namespace projeto_ludico.Repository
                 string sql;
                 SqliteCommand command;
 
+                // Realiza a adição da lista pela Query abaixo
                 sql = "INSERT INTO lists (name, id_event) VALUES (@name, @id_event);";
+                //Ocorre a atribuição de variáveis a partir do command, que resgata os valores do listModel passado no parâmetro
                 command = new SqliteCommand(sql, connection);
 
                 if (listModel.EventId == 0)
@@ -38,10 +40,12 @@ namespace projeto_ludico.Repository
             }
         }
 
+        //Funcionamento basicamente identico com a função acima, única diferença seria a query do SQL, que é um Update
         public void UpdateList(ListModel listModel)
         {
             using (var connection = DatabaseConnection.GetConnection())
             {
+                // Certifique-se de que o nome da tabela e as colunas estejam corretos
                 string sql = "UPDATE lists SET name = @Name WHERE id = @Id;";
                 using (var command = new SqliteCommand(sql, connection))
                 {
@@ -52,6 +56,7 @@ namespace projeto_ludico.Repository
             }
         }
 
+        //Realiza a deleção da lista pelo Id na query
         public void DeleteList(int id)
         {
             using (var connection = DatabaseConnection.GetConnection())
@@ -59,6 +64,7 @@ namespace projeto_ludico.Repository
                 string deleteGamesSql = "DELETE FROM board_games_list WHERE id_list = @id;";
                 using (var deleteDependentsCommand = new SqliteCommand(deleteGamesSql, connection))
                 {
+                    // Adiciona o parâmetro do ID
                     deleteDependentsCommand.Parameters.AddWithValue("@id", id);
                     deleteDependentsCommand.ExecuteNonQuery();
                 }
@@ -72,6 +78,7 @@ namespace projeto_ludico.Repository
             }
         }
 
+        //Funções abaixo adicionam e removem jogos à lista
         public void AddGameToList(int id_list, int id_board_game)
         {
             
