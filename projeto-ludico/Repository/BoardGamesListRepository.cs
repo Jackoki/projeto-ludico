@@ -14,6 +14,7 @@ namespace projeto_ludico.Repository
         {
             using (var context = new AppDbContext())
             {
+                 // Verifica se o jogo já existe na lista para evitar duplicidade
                 bool exists = context.BoardGamesList.Any(bg => bg.id_list == id_list && bg.id_board_game == id_board_game);
 
                 if (exists) {
@@ -26,6 +27,7 @@ namespace projeto_ludico.Repository
                     throw new Exception("Jogo a ser removido não foi encontrado.");
                 }
 
+                // Cria nova entrada na lista de jogos com o jogo existente
                 var boardGameList = new BoardGamesListModel
                 {
                     id_list = id_list,
@@ -38,7 +40,7 @@ namespace projeto_ludico.Repository
             }
         }
 
-
+        // Remove um jogo específico de uma lista, com base no ID da lista e ID do item.
         public void RemoveGameFromList(int id_list, int id)
         {
             using (var context = new AppDbContext())
@@ -56,7 +58,7 @@ namespace projeto_ludico.Repository
             }
         }
 
-
+        // Retorna uma lista de tuplas contendo o ID e o nome principal de cada jogo associado a uma lista específica.
         public List<(int id, string main_name)> GetGamesByListId(int id_list)
         {
             using (var context = new AppDbContext())
