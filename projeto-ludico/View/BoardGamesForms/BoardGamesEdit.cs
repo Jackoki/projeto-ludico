@@ -22,14 +22,14 @@ namespace projeto_ludico.View.BoardGamesForms
         BoardGamesController boardgamesController = new BoardGamesController();
         ParseIntOrDefault parseIntOrDefault = new ParseIntOrDefault();
 
-        //Ao renderizar esse formulário, passamos o ID do participante pela identificação do row
+        //Ao renderizar esse formulário, passamos o ID do board game pela identificação do row
         public BoardGamesEdit(DataGridViewRow row) {
             InitializeComponent();
             loadComboBox();
             loadBoardGames(row);
         }
 
-        //Atribuimos os campos de preenchimento do formulário com as informações do participante identificado pelo Id passado pelo Row
+        //Atribuimos os campos de preenchimento do formulário com as informações do board game identificado pelo Id passado pelo Row
         private void loadBoardGames(DataGridViewRow row) {
             if (row.Cells["id"].Value != null && int.TryParse(row.Cells["id"].Value.ToString(), out int id)) {
                 boardgamesModel.id = id;
