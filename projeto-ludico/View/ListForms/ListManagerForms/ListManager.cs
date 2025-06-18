@@ -1,13 +1,8 @@
 ﻿using projeto_ludico.Controllers;
-using projeto_ludico.Models;
-using projeto_ludico.Repository;
 using projeto_ludico.Utils;
 using projeto_ludico.View.ListForms.ListManagerForms;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace projeto_ludico.View.ListForms

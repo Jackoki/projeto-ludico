@@ -1,5 +1,4 @@
-﻿using projeto_ludico.Models;
-using projeto_ludico.Repository;
+﻿using projeto_ludico.Repository;
 using System;
 using System.Data.Entity.Infrastructure;
 using System.Windows.Forms;

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using projeto_ludico.Models;
+﻿using System.Windows.Forms;
 
 namespace projeto_ludico.View.EventsForms.EventsManagement
 {

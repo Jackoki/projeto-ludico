@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Windows.Forms;
-using projeto_ludico.Database;
-using projeto_ludico.Models;
 
 namespace projeto_ludico.Repository
 {

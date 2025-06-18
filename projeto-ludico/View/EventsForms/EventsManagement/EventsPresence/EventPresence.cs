@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using projeto_ludico.Controllers;
 using projeto_ludico.Models;
-using projeto_ludico.Service;
-using projeto_ludico.View.BoardGamesForms;
 using projeto_ludico.View.EventsForms.EventsManagement.EventsPresence;
 using projeto_ludico.View.ParticipantsForms;
 

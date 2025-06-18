@@ -1,5 +1,4 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using System.Reflection;
 using projeto_ludico.Models;
 
 public class BoardGamesBarCodesModelConfiguration : EntityTypeConfiguration<BoardGamesBarCodesModel>

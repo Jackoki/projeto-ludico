@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Xml.Linq;
-using projeto_ludico.Models;
 
 namespace projeto_ludico.Repository
 {

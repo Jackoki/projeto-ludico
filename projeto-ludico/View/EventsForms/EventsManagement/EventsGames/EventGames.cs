@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using projeto_ludico.Controllers;
 using projeto_ludico.Models;
-using projeto_ludico.View.BoardGamesForms;
 using projeto_ludico.View.EventsForms.EventsManagement.EventsGames;
-using projeto_ludico.View.EventsForms.EventsManagement.EventsPresence;
-using projeto_ludico.View.ParticipantsForms;
 
 namespace projeto_ludico.View.EventsForms.EventsManagement
 {

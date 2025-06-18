@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace projeto_ludico.View.EventsForms.EventsLendingParticipants

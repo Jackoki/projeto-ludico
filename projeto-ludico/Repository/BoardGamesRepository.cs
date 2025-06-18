@@ -2,13 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Data.Sqlite;
-using projeto_ludico.Database;
 using projeto_ludico.Models;
-using projeto_ludico.Utils;
-using projeto_ludico.View.BoardGamesForms;
 
 namespace projeto_ludico.Repository
 {
