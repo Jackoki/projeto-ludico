@@ -8,6 +8,7 @@ namespace projeto_ludico.Controllers
 {
     internal class ParticipantsEscapeRoomController
     {
+        //Cria um Repository para realizar o registro de dados, se ocorrer um erro, o catch irá ser acionado
         private readonly ParticipantsEscapeRoomRepository _repository;
 
         public ParticipantsEscapeRoomController()
@@ -30,6 +31,7 @@ namespace projeto_ludico.Controllers
                 }
                 else
                 {
+                    // Captura qualquer outra exceção que não tenha sido tratada acima
                     MessageBox.Show(dbEx.Message, "Erro ao salvar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
