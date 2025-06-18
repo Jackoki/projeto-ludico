@@ -26,6 +26,7 @@ namespace projeto_ludico.Controllers
 
             catch (Exception ex)
             {
+                // Exibe um erro inesperado
                 MessageBox.Show($"Erro ao adicionar participante: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
