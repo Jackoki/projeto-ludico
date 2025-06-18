@@ -13,9 +13,11 @@ namespace projeto_ludico.Repository
     {
         public void AddRPGCampaign(RPGCampaignModel rpgCampaignModel) {
             using (var connection = DatabaseConnection.GetConnection())  {
+                // Realiza a adição da campanha pela Query abaixo
                 string sql = "INSERT INTO role_play_games_campaigns (name, description, id_role_play_game, id_event) " +
                              "VALUES (@Name, @Description, @Id_role_play_game, @Id_event);";
 
+                //Ocorre a atribuição de variáveis a partir do command, que resgata os valores do rpgCampaignModel passado no parâmetro
                 using (var command = new SqliteCommand(sql, connection)) {
                     if (rpgCampaignModel.id_event == 0) {
                         command.Parameters.AddWithValue("@Id_event", DBNull.Value);
@@ -33,6 +35,7 @@ namespace projeto_ludico.Repository
             }
         }
 
+        //Realiza a deleção da campanha pelo Id na query
         public void DeleteRPGCampaign(int id)
         {
             using (var connection = DatabaseConnection.GetConnection())
@@ -86,6 +89,7 @@ namespace projeto_ludico.Repository
         }
 
 
+        //Realiza a deleção do participante na campanha pelo Id na query
         public void RemoveParticipant(int id) {
             using (var connection = DatabaseConnection.GetConnection()) {
                 string sql = "DELETE FROM participants_role_play_games_campaign WHERE Id = @Id;";
