@@ -35,6 +35,7 @@ namespace projeto_ludico.Controllers
             }
 
             catch (Exception ex) {
+                // Captura qualquer outra exceção que não tenha sido tratada acima
                 MessageBox.Show($"Erro ao adicionar jogo: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -65,6 +66,7 @@ namespace projeto_ludico.Controllers
 
         public BoardGamesEventsModel PerformSearch(string searchText) {
             try {
+                //Chamada da classe ValidationUtil para validar os tipos de dados do searchText
                 if (!ValidationUtils.IsValidName(searchText)) {
                     throw new KeyNotFoundException("Texto não pode ser vazio.");
                 }
@@ -101,6 +103,7 @@ namespace projeto_ludico.Controllers
         public BoardGamesEventsModel GetParticipantsByEventId(string searchText){
             try
             {
+                //Chamada da classe ValidationUtil para validar os tipos de dados do searchText
                 if (!ValidationUtils.IsValidName(searchText))
                 {
                     throw new KeyNotFoundException("Texto não pode ser vazio.");
@@ -153,6 +156,7 @@ namespace projeto_ludico.Controllers
             }
 
             catch (Exception ex) {
+                // Qualquer outro erro inesperado
                 MessageBox.Show("Erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -171,6 +175,7 @@ namespace projeto_ludico.Controllers
             }
 
             catch (Exception ex) {
+                // Qualquer outro erro inesperado
                 MessageBox.Show("Erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -190,6 +195,7 @@ namespace projeto_ludico.Controllers
             }
 
             catch (Exception ex) {
+                // Qualquer outro erro inesperado
                 MessageBox.Show($"Erro ao adicionar jogos na lista: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
