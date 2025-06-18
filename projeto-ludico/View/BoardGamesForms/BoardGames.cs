@@ -67,11 +67,7 @@ namespace projeto_ludico.View.BoardGamesForms
 
 
             // A chamada das funções é feita pelo BaseForm, que é a classe mãe desse formulário
-            //Passamos o null no final pois não temos nenhum JOIN a ser retornado na tabela
             ConfigureSearchDataViewer(dataViewer, searchString, "board_games", desiredColumns, columnMappings, searchableColumns, joinClause);
-
-            // Oculta as colunas especificadas
-
 
             // Oculta as colunas especificadas
             OccultColumns(dataViewer, "id");
