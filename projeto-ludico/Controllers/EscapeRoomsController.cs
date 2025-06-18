@@ -24,7 +24,7 @@ namespace projeto_ludico.Controllers
         {
             try
             {
-                //Chamada da classe ValidationUtil para validar os tipos de dados do institutionsModel
+                //Chamada da classe ValidationUtil para validar os tipos de dados do escapeRoomsModel
                 if (!ValidationUtils.IsValidName(escapeRoomsModel.name)) {
                     throw new ArgumentException("Nome não pode ser vazio.");
                 }
@@ -60,13 +60,13 @@ namespace projeto_ludico.Controllers
         {
             try
             {
-                // Valida o nome da instituição
+                // Valida o nome da escape room
                 if (!ValidationUtils.IsValidName(escapeRoomsModel.name))
                 {
                     throw new ArgumentException("Nome não pode ser vazio.");
                 }
 
-                // Atualiza a instituição no banco de dados
+                // Atualiza a escape room no banco de dados
                 _escapeRoomsRepository.UpdateEscapeRooms(escapeRoomsModel);
                 MessageBox.Show("Escape room editado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -122,7 +122,7 @@ namespace projeto_ludico.Controllers
 
             catch (KeyNotFoundException ex)
             {
-                // Se não encontrar o participante
+                // Se não encontrar a escape room
                 MessageBox.Show(ex.Message, "Falha na consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return null;
             }
