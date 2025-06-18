@@ -121,12 +121,14 @@ namespace projeto_ludico.Repository
             return boardGamesEventsModel;
         }
 
+        // Método que busca todos os participantes associados a um evento específico
         public List<ParticipantsModel> GetParticipantsByEventId(int eventId){
             string query = @"SELECT p.id, p.name 
                      FROM participants_events pe
                      LEFT JOIN participants p ON pe.id_participant = p.id
                      WHERE pe.id_event = @IdEvent";
 
+            // Lista que irá armazenar os participantes encontrados
             List<ParticipantsModel> participants = new List<ParticipantsModel>();
 
             try
@@ -158,9 +160,11 @@ namespace projeto_ludico.Repository
             return participants;
         }
 
+        // Método que retorna todas as listas cadastradas no banco de dados
         public List<ListModel> GetListsByEventId() {
             string query = @"SELECT l.id, l.name  FROM lists l";
 
+            // Lista que irá armazenar os resultados
             List<ListModel> lists = new List<ListModel>();
 
             try {
