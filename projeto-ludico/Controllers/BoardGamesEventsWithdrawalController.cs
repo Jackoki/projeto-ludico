@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using projeto_ludico.Models;
 using projeto_ludico.Utils;
 using System.Windows.Forms;

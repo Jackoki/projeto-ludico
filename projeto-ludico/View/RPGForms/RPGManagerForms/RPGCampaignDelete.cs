@@ -1,10 +1,4 @@
 ﻿using projeto_ludico.Controllers;
-using projeto_ludico.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace projeto_ludico.View.RPGForms

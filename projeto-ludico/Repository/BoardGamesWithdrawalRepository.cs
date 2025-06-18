@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Windows.Forms;
 using Microsoft.Data.Sqlite;
 using projeto_ludico.Database;
 using projeto_ludico.Models;

@@ -1,5 +1,4 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using projeto_ludico.Models;
 
 public class ParticipantsEscapeRoomModelConfiguration : EntityTypeConfiguration<ParticipantsEscapeRoomModel>
 {

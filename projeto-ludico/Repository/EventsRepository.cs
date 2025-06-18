@@ -1,5 +1,4 @@
 using System;
-using System.Data;
 using Microsoft.Data.Sqlite;
 using projeto_ludico.Database;
 using projeto_ludico.Models;

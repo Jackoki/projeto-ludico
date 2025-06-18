@@ -1,9 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using Microsoft.Data.Sqlite;
-using projeto_ludico.Database;
-
-namespace projeto_ludico.Models
+﻿namespace projeto_ludico.Models
 {
     public class PlacesModel
     {

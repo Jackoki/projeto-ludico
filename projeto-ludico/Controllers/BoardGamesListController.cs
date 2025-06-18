@@ -1,11 +1,5 @@
-﻿using projeto_ludico.Models;
-using projeto_ludico.Repository;
-using projeto_ludico.Utils;
+﻿using projeto_ludico.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace projeto_ludico.Controllers

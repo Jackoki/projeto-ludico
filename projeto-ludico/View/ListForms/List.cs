@@ -1,6 +1,4 @@
-﻿using projeto_ludico.View.ListForms;
-using projeto_ludico.View.PlacesForms;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
