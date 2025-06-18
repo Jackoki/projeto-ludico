@@ -10,6 +10,7 @@ namespace projeto_ludico.Controllers
 {
     public class EventsController
     {
+        //Cria um Repository para realizar o registro de dados, se ocorrer um erro, o catch irá ser acionado
         private EventsRepository _repository;
 
         public EventsController()
