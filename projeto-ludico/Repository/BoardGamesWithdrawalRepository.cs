@@ -10,6 +10,7 @@ using projeto_ludico.Models;
 namespace projeto_ludico.Repository
 {
     internal class BoardGamesEventsWithdrawalRepository {
+        // Adiciona um registro de retirada de jogo por um participante em um evento
         public void AddGame(int id_event, int id_board_game, int id_participant)
         {
             using (var connection = DatabaseConnection.GetConnection()) {
@@ -30,6 +31,7 @@ namespace projeto_ludico.Repository
             }
         }
 
+        // Remove um registro de retirada com base no ID
         public void RemoveGameWithdrawal(int id) {
             using (var connection = DatabaseConnection.GetConnection()) {
                 string deleteSql = "DELETE FROM board_games_event_withdrawal WHERE id = @Id";
@@ -44,6 +46,7 @@ namespace projeto_ludico.Repository
             }
         }
 
+        // Atualiza o registro de retirada, marcando a data/hora de devolução
         public void ReturnGameWithdrawal(int id) {
             using (var connection = DatabaseConnection.GetConnection()) {
                 string updateSql = "UPDATE board_games_event_withdrawal SET hour_devolution = @HourDevolution WHERE id = @Id";
@@ -60,12 +63,13 @@ namespace projeto_ludico.Repository
         }
 
 
-
+        // Pesquisa por jogos de tabuleiro com base no nome ou no código de barra
         public Dictionary<int, string> PerformSearchBoardGame(string searchText) {
             var results = new Dictionary<int, string>();
 
             try {
                 using (var connection = DatabaseConnection.GetConnection()) {
+                    // SQL com INNER JOIN e LEFT JOIN para trazer nome e código de barras
                     string sql = @"SELECT bg.id, bgn.name FROM board_games bg
                            INNER JOIN board_games_events bge ON (bge.id_board_game = bg.id)
                            LEFT JOIN board_games_bar_codes bgbc ON (bgbc.id_board_game = bg.id)
@@ -80,6 +84,7 @@ namespace projeto_ludico.Repository
                                 int id = reader.GetInt32(reader.GetOrdinal("id"));
                                 string name = reader.GetString(reader.GetOrdinal("name"));
 
+                                // Evita duplicidade
                                 if (!results.ContainsKey(id)) {
                                     results.Add(id, name);
                                 }
@@ -96,6 +101,7 @@ namespace projeto_ludico.Repository
             return results;
         }
 
+        // Pesquisa um participante pelo nome
         public ParticipantsModel PerformSearchParticipant(string searchText) {
             ParticipantsModel participantsModel = null; // Inicializa como null
             bool found = false;
