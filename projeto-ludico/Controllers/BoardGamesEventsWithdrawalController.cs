@@ -89,7 +89,7 @@ namespace projeto_ludico.Controllers
 
         public Dictionary<int, string> PerformSearchBoardGame(string searchText) {
             try {
-                //Chamada da classe ValidationUtil para validar os tipos de dados do boardGamesModel
+                //Chamada da classe ValidationUtil para validar os tipos de dados do searcgText
                 if (!ValidationUtils.IsValidName(searchText)) {
                     throw new KeyNotFoundException("Texto do jogo não pode ser vazio.");
                 }
