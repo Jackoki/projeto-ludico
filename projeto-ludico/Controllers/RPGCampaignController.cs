@@ -12,6 +12,7 @@ namespace projeto_ludico.Controllers
 {
     internal class RPGCampaignController
     {
+        //Cria um Repository para realizar o registro de dados, se ocorrer um erro, o catch irá ser acionado
         private readonly RPGCampaignRepository _rpgCampaignRepository;
 
         public RPGCampaignController() {
@@ -20,6 +21,7 @@ namespace projeto_ludico.Controllers
 
         public void RegisterCampaignRPG(RPGCampaignModel rpgCampaignModel) {
             try {
+                //Chamada da classe ValidationUtil para validar os tipos de dados do rpgCampaignsModel
                 if (!ValidationUtils.IsValidName(rpgCampaignModel.name))
                     throw new ArgumentException("Nome não pode ser vazio.");
 
@@ -36,6 +38,7 @@ namespace projeto_ludico.Controllers
             }
 
             catch (Exception ex) {
+                // Captura qualquer outra exceção que não tenha sido tratada acima
                 MessageBox.Show("Erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -51,6 +54,7 @@ namespace projeto_ludico.Controllers
             }
 
             catch (Exception ex) {
+                // Captura qualquer outra exceção que não tenha sido tratada acima
                 MessageBox.Show("Erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -66,6 +70,7 @@ namespace projeto_ludico.Controllers
             }
 
             catch (Exception ex) {
+                // Captura qualquer outra exceção que não tenha sido tratada acima
                 MessageBox.Show("Erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -81,6 +86,7 @@ namespace projeto_ludico.Controllers
             }
 
             catch (Exception ex) {
+                // Captura qualquer outra exceção que não tenha sido tratada acima
                 MessageBox.Show("Erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
