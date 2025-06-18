@@ -12,6 +12,7 @@ namespace projeto_ludico.Controllers
 {
     internal class RPGController
     {
+        //Cria um Repository para realizar o registro de dados, se ocorrer um erro, o catch irá ser acionado
         private readonly RPGRepository _rpgRepository;
 
         public RPGController()
@@ -23,6 +24,7 @@ namespace projeto_ludico.Controllers
         {
             try
             {
+                //Chamada da classe ValidationUtil para validar os tipos de dados do RPGsModel
                 if (!ValidationUtils.IsValidName(rpgModel.name))
                     throw new ArgumentException("Nome não pode ser vazio.");
 
@@ -31,6 +33,7 @@ namespace projeto_ludico.Controllers
             }
             catch (ArgumentException ex)
             {
+                // Captura a exceção de ArgumentException (campo de texto vazio) e exibe uma mensagem
                 MessageBox.Show(ex.Message, "Falha ao registrar RPG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (InvalidOperationException ex)
@@ -47,9 +50,11 @@ namespace projeto_ludico.Controllers
         {
             try
             {
+                // Valida o nome do RPG
                 if (!ValidationUtils.IsValidName(rpgModel.name))
                     throw new ArgumentException("Nome não pode ser vazio.");
 
+                // Atualiza a instituição no banco de dados
                 _rpgRepository.UpdateRPG(rpgModel);
                 MessageBox.Show("RPG editado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -80,6 +85,7 @@ namespace projeto_ludico.Controllers
             }
             catch (Exception ex)
             {
+                // Captura qualquer outra exceção que não tenha sido tratada acima
                 MessageBox.Show("Erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -98,16 +104,19 @@ namespace projeto_ludico.Controllers
             }
 
             catch (KeyNotFoundException ex) {
+                // Se não encontrar o RPG
                 MessageBox.Show(ex.Message, "Falha na consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return null;
             }
 
             catch (InvalidOperationException ex) {
+                // Erro ao realizar a operação, como problemas com o banco de dados
                 MessageBox.Show(ex.Message, "Erro ao carregar informações do RPG", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
 
             catch (Exception ex) {
+                // Qualquer outro erro inesperado
                 MessageBox.Show("Erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
