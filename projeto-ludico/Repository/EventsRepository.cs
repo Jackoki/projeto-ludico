@@ -12,11 +12,13 @@ namespace projeto_ludico.Repository
         {
             using (var connection = DatabaseConnection.GetConnection())
             {
+                // Realiza a adição do evento pela Query abaixo
                 string sql = @"INSERT INTO events 
                             (Name, Date, Id_event_local, Is_active) 
                             VALUES 
                             (@Name, @Date, @Id_event_local, @Is_active);";
 
+                //Ocorre a atribuição de variáveis a partir do command, que resgata os valores do eventModel passado no parâmetro
                 using (var command = new SqliteCommand(sql, connection))
                 {
                     if (eventsModel.id_event_local == 0)
@@ -37,10 +39,12 @@ namespace projeto_ludico.Repository
             }
         }
 
+        //Funcionamento basicamente identico com a função acima, única diferença seria a query do SQL, que é um Update
         public void UpdateEvent(EventsModel eventsModel)
         {
             using (var connection = DatabaseConnection.GetConnection())
             {
+                // Certifique-se de que o nome da tabela e as colunas estejam corretos
                 string sql = @"UPDATE events 
                             SET Name = @Name, 
                                 Date = @Date, 
@@ -69,6 +73,7 @@ namespace projeto_ludico.Repository
             }
         }
 
+        //Realiza a deleção do evento pelo Id na query
         public void DeleteEvent(int id)
         {
             using (var connection = DatabaseConnection.GetConnection())
@@ -85,6 +90,7 @@ namespace projeto_ludico.Repository
             }
         }
 
+        //Retorna todas as informações do EventModel a partir do SELECT filtrado pelo id no parâmetro
         public EventsModel GetEventsById(int id)
         {
             EventsModel eventsModel = new EventsModel();
