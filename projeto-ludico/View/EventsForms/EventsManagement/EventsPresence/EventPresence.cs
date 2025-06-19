@@ -11,7 +11,6 @@ namespace projeto_ludico.View.EventsForms.EventsManagement
     public partial class EventPresence : BaseForm
     {
         ParticipantEventController participantEventController = new ParticipantEventController();
-        ParticipantsCreate participantsCreate = new ParticipantsCreate();
         public int id_event;
 
         public EventPresence(int id_event)
@@ -96,8 +95,8 @@ namespace projeto_ludico.View.EventsForms.EventsManagement
         }
 
 
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
+        private void btnCreate_Click(object sender, EventArgs e) {
+            ParticipantsCreate participantsCreate = new ParticipantsCreate();
             participantsCreate.Show();
         }
     }

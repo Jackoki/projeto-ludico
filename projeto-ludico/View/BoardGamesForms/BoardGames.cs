@@ -14,8 +14,10 @@ namespace projeto_ludico.View.BoardGamesForms
         }
 
         //Realiza a chamada das informações do SQL, passamos as colunas que queremos e as renomeamos no da DataGrid
-        private void ConfigureBoardGamesViewer()
-        {
+        private void ConfigureBoardGamesViewer() {
+            dataViewer.Columns.Clear();
+            dataViewer.DataSource = null;
+
             // Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite
             string[] desiredColumns = {
                 "board_games.id as id", "COALESCE(board_games_names.name, '') AS name"
@@ -39,8 +41,10 @@ namespace projeto_ludico.View.BoardGamesForms
         }
 
         //Função responsável para realizar a atualização de pesquisa quando o usuário realizar a pesquisa no formulário
-        private void PerformSearch(string searchString)
-        {
+        private void PerformSearch(string searchString) {
+            dataViewer.Columns.Clear();
+            dataViewer.DataSource = null;
+
             // Passamos o nome da coluna que queremos que seja retornada da consulta do SQLite
             string[] desiredColumns = {
                 "board_games.id as id", "COALESCE(board_games_names.name, '') AS name"
@@ -64,6 +68,8 @@ namespace projeto_ludico.View.BoardGamesForms
 
             // Oculta as colunas especificadas
             OccultColumns(dataViewer, "id");
+
+            AddActionButtonsToViewer(dataViewer, false);
         }
 
         private void btnSearch_Click(object sender, EventArgs e) {
