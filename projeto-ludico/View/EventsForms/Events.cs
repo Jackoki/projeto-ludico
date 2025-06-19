@@ -38,6 +38,8 @@ namespace projeto_ludico.View.EventsForms
             ConfigureDataViewer(dataViewer, "events", desiredColumns, columnMappings, joinClause, true);
 
             OccultColumns(dataViewer, "id", "events_local_id");// Oculta as colunas especificadas
+
+            AddDateTimeFormatting(dataViewer, "Data", "dd/MM/yyyy HH:mm");
         }
 
         //Função responsável para realizar a atualização de pesquisa quando o usuário realizar a pesquisa no formulário
@@ -70,7 +72,24 @@ namespace projeto_ludico.View.EventsForms
 
             // Oculta as colunas especificadas
             OccultColumns(dataViewer, "id");
+
+            AddDateTimeFormatting(dataViewer, "Data", "dd/MM/yyyy HH:mm");
         }
+
+        public static void AddDateTimeFormatting(DataGridView dataViewer, string columnName, string dateFormat)
+        {
+            dataViewer.CellFormatting += (s, e) => {
+                if (dataViewer.Columns[e.ColumnIndex].Name == columnName && e.Value != null)
+                {
+                    if (DateTime.TryParse(e.Value.ToString(), out var dateValue))
+                    {
+                        e.Value = dateValue.ToString(dateFormat);
+                        e.FormattingApplied = true;
+                    }
+                }
+            };
+        }
+
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
